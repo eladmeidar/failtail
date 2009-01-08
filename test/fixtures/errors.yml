@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: MyString
+  hash_string: MyString
+  name: MyString
+  description: MyText
+  properties: MyText
+  backtrace: MyText
+  closed: false
+
+two:
+  project_id: MyString
+  hash_string: MyString
+  name: MyString
+  description: MyText
+  properties: MyText
+  backtrace: MyText
+  closed: false
