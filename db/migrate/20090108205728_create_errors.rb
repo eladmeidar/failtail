@@ -1,7 +1,7 @@
 class CreateErrors < ActiveRecord::Migration
   def self.up
     create_table :errors do |t|
-      t.string :project_id
+      t.integer :project_id
       t.string :hash_string
       t.string :name
       t.text :description

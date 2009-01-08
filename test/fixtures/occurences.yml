@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  error_id: 1
+  properties: MyText
+
+two:
+  error_id: 1
+  properties: MyText
