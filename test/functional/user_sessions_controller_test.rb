@@ -24,21 +24,35 @@ class UserSessionsControllerTest < ActionController::TestCase
   
   context "on POST to :create" do
     context "when not logged in" do
-      setup do
-        @user = Factory(:user)
-        post :create, :user_session => { :login => @user.login, :password => "aaabbb" }
-        @user_session = UserSession.find
+      context "with correct credentials" do
+        setup do
+          @user = Factory(:user)
+          post :create, :user_session => { :login => @user.login, :password => "aaabbb" }
+          @user_session = UserSession.find
+        end
+        
+        should "find user session" do
+          assert @user_session
+        end
+        
+        should "have correct user" do
+          assert_equal @user.id, @user_session.user.id
+        end
+        
+        should_redirect_to "account_path"
+      end
+      context "with incorrect credentials" do
+        setup do
+          @user = Factory(:user)
+          post :create, :user_session => { :login => @user.login, :password => "aaagg" }
+          @user_session = UserSession.find
+        end
+        
+        should_respond_with :success
+        should_render_template "user_sessions/new.html.erb"
+        should_render_a_form
       end
       
-      should "find user session" do
-        assert @user_session
-      end
-      
-      should "have correct user" do
-        assert_equal @user.id, @user_session.user.id
-      end
-      
-      should_redirect_to "account_path"
     end
     context "when logged in" do
       setup do
