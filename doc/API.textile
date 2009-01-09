@@ -1,0 +1,17 @@
+h1. Errors API
+
+  report:
+    api_token: 23354A46A...
+    error:
+      name: MethodNotFound at /some/path.rb:45
+      description: an optional description
+      hash_string: 8976531AFBCE...
+      properties:
+        path: /hello/user
+        exception: MethodNotFound
+      backtrace: "..."
+    occurence:
+      properties:
+        session: "..."
+        params: "..."
+  
