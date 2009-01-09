@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   validates_presence_of :login
   validates_presence_of :email
   
+  validates_length_of :name, :minimum => 2
+  validates_length_of :login, :minimum => 2
+  
   validates_uniqueness_of :login
   validates_uniqueness_of :email
   
