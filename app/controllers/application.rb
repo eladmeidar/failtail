@@ -50,4 +50,25 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
   
+  def require_membership
+    raise ActiveRecord::RecordNotFound if project.nil?
+    membership = project.memberships.find(:first, :conditions => { :user_id => current_user.id })
+    raise ActiveRecord::RecordNotFound if membership.nil?
+  rescue ActiveRecord::RecordNotFound => e
+    flash[:notice] = "You must be a member of this project to access this page"
+    redirect_to root_url
+    return false
+  end
+  
+  def require_ownership
+    raise ActiveRecord::RecordNotFound if project.nil?
+    raise ActiveRecord::RecordNotFound if project.owner_id != current_user.id
+  rescue ActiveRecord::RecordNotFound => e
+    flash[:notice] = "You must be the owner of this project to access this page"
+    redirect_to root_path
+    return false
+  end
+  
+  def project ; nil ; end
+  
 end

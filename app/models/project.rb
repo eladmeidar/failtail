@@ -15,4 +15,17 @@ class Project < ActiveRecord::Base
   has_many :reports, :dependent => :destroy,
     :class_name => "Error", :foreign_key => "project_id"
   
+  before_validation :generate_api_token
+  after_create :create_membership_for_owner
+  
+  private
+  
+  def generate_api_token
+    self.api_token ||= Digest::SHA1.hexdigest("--#{self.name}--#{DateTime.new}--")
+  end
+  
+  def create_membership_for_owner
+    self.memberships.create(:user => self.owner)
+  end
+  
 end
