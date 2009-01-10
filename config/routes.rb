@@ -2,9 +2,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :user_session
   map.resource :account, :controller => "users"
-  
-  map.resources :projects
   map.resources :users
+  
+  map.resource :reports, :only => :create 
+  map.resources :projects
   
   map.root :controller => 'projects', :action => 'index'
   
