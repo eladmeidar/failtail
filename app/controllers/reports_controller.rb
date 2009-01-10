@@ -9,7 +9,8 @@ class ReportsController < ApplicationController
     status   = :unprocessable_entity
   ensure
     respond_to do |format|
-      format.xml { render :xml => response, :status => status }
+      format.json { render :json => response, :status => status }
+      format.xml  { render :xml  => response, :status => status }
     end
   end
   
