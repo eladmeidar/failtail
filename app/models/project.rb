@@ -15,6 +15,9 @@ class Project < ActiveRecord::Base
   has_many :reports, :dependent => :destroy,
     :class_name => "Error", :foreign_key => "project_id"
   
+  named_scope :with_api_token, lambda { |t|
+    { :conditions => { :api_token => t } } }
+  
   before_validation :generate_api_token
   after_create :create_membership_for_owner
   

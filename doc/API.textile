@@ -1,7 +1,8 @@
 h1. Errors API
 
   report:
-    api_token: 23354A46A...
+    project:
+      api_token: 23354A46A...
     error:
       name: MethodNotFound at /some/path.rb:45
       description: an optional description
