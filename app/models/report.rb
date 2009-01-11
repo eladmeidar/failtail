@@ -53,6 +53,7 @@ class Report
         @error.save!
         @error_was_created = true
       end
+      @error.updated_at = DateTime.now
     elsif object.is_a? Error
       @error = object
     else

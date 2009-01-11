@@ -24,9 +24,12 @@ class Error < ActiveRecord::Base
   end
   
   serialize(:properties)
+  def properties
+    read_attribute(:properties) || {}
+  end
   
   belongs_to :project
-  has_many :occurences, :dependent => :destroy
+  has_many :occurences, :dependent => :destroy, :order => 'updated_at DESC'
   
   named_scope :with_hash, lambda { |h|
     { :conditions => { :hash_string => h } } }

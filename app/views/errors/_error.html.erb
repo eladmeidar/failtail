@@ -1,3 +1,5 @@
-<% div_for error do %>
-  <%= link_to h(error.name), [@project, error] %>
-<% end %>
+<tr>
+  <td class="first"><%= link_to h(error.name), [@project, error] %></td>
+  <td><%= error.updated_at.to_formatted_s(:short) %></td>
+  <td class="last"><%= error.occurences.count %></td>
+</tr>

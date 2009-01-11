@@ -1,3 +1,5 @@
-<% div_for project do %>
-  <%=link_to h(project.name), project %>
-<% end %>
+<tr>
+  <td class="first"><%=link_to h(project.name), project %></td>
+  <td class="last" width="150">
+    <%= project.updated_at.to_formatted_s(:short) %></td>
+</tr>

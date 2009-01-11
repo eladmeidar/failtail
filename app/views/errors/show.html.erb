@@ -1,1 +1,35 @@
 <h1><%= error.name %></h1>
+
+<h2>Description</h2>
+<p>
+  <%=h error.description %>
+</p>
+
+<% if error.properties? %>
+<h2>Properties</h2>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <th class="first" colspan="2">Properties</th>
+  </tr>
+  <% error.properties.each do |name, value| %>
+    <tr>
+      <td><%=h name %></td>
+      <td><%=h value %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+<% if error.backtrace? %>
+<h2>Backtrace</h2>
+<pre><%=h error.backtrace.split("\n")[0..5].join("\n") %></pre>
+<% end %>
+
+<h2>Occurences</h2>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <th class="first">Error</th>
+    <th>When</th>
+  </tr>
+  <%= render :partial => error.occurences.all %>
+</table>

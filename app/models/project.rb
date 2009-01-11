@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
   has_many :members, :through => :memberships, :source => :user
   
   # we can't user 'errors' here as it would conflict with AR's error handeling
-  has_many :reports, :dependent => :destroy,
+  has_many :reports, :dependent => :destroy, :order => 'updated_at DESC',
     :class_name => "Error", :foreign_key => "project_id"
   
   named_scope :with_api_token, lambda { |t|
