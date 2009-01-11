@@ -5,7 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.resource :reports, :only => :create 
-  map.resources :projects
+  map.resources :projects do |projects|
+    projects.resources :errors
+  end
   
   map.root :controller => 'projects', :action => 'index'
   
