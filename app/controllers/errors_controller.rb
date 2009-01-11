@@ -8,6 +8,7 @@ class ErrorsController < ApplicationController
   def index
     errors
     respond_to do |format|
+      format.html { redirect_to project }
       format.xml  { render :xml  => errors }
       format.json { render :json => errors }
     end
