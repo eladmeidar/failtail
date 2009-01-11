@@ -9,7 +9,7 @@ class Error < ActiveRecord::Base
   
   validate do |error|
     msg = "properties must be a hash with strings for keys and values."
-    if error.properties
+    unless error.properties.nil?
       if error.properties.is_a? Hash
         error.properties.each do |k,v|
           unless k.is_a?(String) and v.is_a?(String)

@@ -1,9 +1,13 @@
 class Report
   
   class Invalid < Exception
-    def intialize(base)
-      @report = base
+    def initialize(report)
+      @report = report
     end
+    def report
+      @report
+    end
+    alias_method :record, :report
   end
   
   def self.create!(params={})
