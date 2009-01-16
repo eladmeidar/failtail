@@ -3,10 +3,6 @@ class CreateErrors < ActiveRecord::Migration
     create_table :errors do |t|
       t.integer :project_id
       t.string :hash_string
-      t.string :name
-      t.text :description
-      t.text :properties
-      t.text :backtrace
       t.boolean :closed, :default => false
 
       t.timestamps

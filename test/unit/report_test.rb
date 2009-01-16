@@ -9,10 +9,10 @@ class ReportTest < ActiveSupport::TestCase
     
     should "require error" do
       error = Factory.attributes_for(:error, :project => @project).
-        slice(:properties, :name, :description, :hash_string, :backtrace).
+        slice(:hash_string).
         stringify_keys
       occurence = Factory.attributes_for(:occurence, :error => error).
-        slice(:properties).
+        slice(:name, :description, :backtrace, :properties).
         stringify_keys
       valid = {
         'project' => { 'api_token' => @project.api_token },

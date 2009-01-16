@@ -7,9 +7,9 @@ class ErrorsControllerTest < ActionController::TestCase
       set_session_for @user
       @project = Factory(:project, :owner => @user)
       @errors = []
-      @errors << Factory(:error, :project => @project)
-      @errors << Factory(:error, :project => @project)
-      @errors << Factory(:error, :project => @project)
+      @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)
+      @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)
+      @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)
     end
     
     context "on GET to :show" do

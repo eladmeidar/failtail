@@ -11,10 +11,10 @@ class ReportsControllerTest < ActionController::TestCase
         setup do
           project = Factory(:project)
           error = Factory.attributes_for(:error, :project => project).
-            slice(:properties, :name, :description, :hash_string, :backtrace).
+            slice(:hash_string).
             stringify_keys
           occurence = Factory.attributes_for(:occurence, :error => error).
-            slice(:properties).
+            slice(:name, :description, :backtrace, :properties).
             stringify_keys
           @report = {
             'project' => { 'api_token' => project.api_token },
