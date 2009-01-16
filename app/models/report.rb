@@ -35,7 +35,12 @@ class Report
   # end
   
   def save!
-    raise ReportInvalid.new(self) unless valid?
+    unless valid?
+      raise ActiveRecord::RecordInvalid.new(@project)   unless @project.nil?   or @project.valid?
+      raise ActiveRecord::RecordInvalid.new(@error)     unless @error.nil?     or @error.valid?
+      raise ActiveRecord::RecordInvalid.new(@occurence) unless @occurence.nil? or @occurence.valid?
+      raise ReportInvalid.new(self) 
+    end
     @error.save!
     @occurence.save!
   end

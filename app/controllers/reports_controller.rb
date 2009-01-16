@@ -12,8 +12,6 @@ class ReportsController < ApplicationController
   rescue ActiveRecord::RecordInvalid => e
     response = { :success => 0, :errors => e.record.errors }
     status   = :unprocessable_entity
-  rescue => e
-    raise e
   ensure
     unless response.nil?
       respond_to do |format|

@@ -66,6 +66,17 @@ class ReportsControllerTest < ActionController::TestCase
           should_respond_with_content_type format
         end
         
+        context "with invalid occurence" do
+          setup do
+            @report['occurence'] = @report['occurence'].except!('name')
+            post( :create,
+                { :report => @report, :format => extention }) 
+          end
+          
+          should_respond_with :unprocessable_entity
+          should_respond_with_content_type format
+        end
+        
       end
       
     end
