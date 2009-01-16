@@ -1,13 +1,12 @@
 class Report
   
-  class Invalid < Exception
-    def initialize(report)
-      @report = report
+  include ::Validateable
+  
+  class ReportInvalid < Exception
+    attr_accessor :record
+    def initialize(record)
+      @record = record
     end
-    def report
-      @report
-    end
-    alias_method :record, :report
   end
   
   def self.create!(params={})
@@ -16,19 +15,27 @@ class Report
   
   attr_accessor :project, :error, :occurence
   
+  validates_presence_of :project
+  validates_presence_of :error
+  validates_presence_of :occurence
+  
+  validates_associated :project
+  validates_associated :error
+  validates_associated :occurence
+  
   def initialize(params={})
     self.project   = params['project']
     self.error     = params['error']
     self.occurence = params['occurence']
   end
   
-  def valid?
-    (!occurence.nil? and !project.nil?  and !error.nil? and
-    occurence.valid? and project.valid? and error.valid?)
-  end
+  # def valid?
+  #   (!occurence.nil? and !project.nil?  and !error.nil? and
+  #   occurence.valid? and project.valid? and error.valid?)
+  # end
   
   def save!
-    raise Report::Invalid.new(self) unless valid?
+    raise ReportInvalid.new(self) unless valid?
     @error.save!
     @occurence.save!
   end

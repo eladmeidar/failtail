@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ErrorsControllerTest < ActionController::TestCase
+  
   context "with some date" do
     setup do
       @user = Factory(:user)
@@ -10,6 +11,12 @@ class ErrorsControllerTest < ActionController::TestCase
       @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)
       @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)
       @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)
+    end
+    
+    context "on GET to :index" do
+      setup { get :index, :project_id => @project.id }
+
+      should_redirect_to "project_path(@project)"
     end
     
     context "on GET to :show" do

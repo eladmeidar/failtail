@@ -19,17 +19,17 @@ class ReportTest < ActiveSupport::TestCase
         'error' => error,
         'occurence' => occurence
       }
-      assert_raise Report::Invalid do
+      assert_raise Report::ReportInvalid do
         Report.create!({
         })
       end
-      assert_raise Report::Invalid do
+      assert_raise Report::ReportInvalid do
         Report.create!(valid.except('project'))
       end
-      assert_raise Report::Invalid do
+      assert_raise Report::ReportInvalid do
         Report.create!(valid.except('error'))
       end
-      assert_raise Report::Invalid do
+      assert_raise Report::ReportInvalid do
         Report.create!(valid.except('occurence'))
       end
       assert_nothing_raised do
