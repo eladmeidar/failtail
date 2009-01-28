@@ -1,12 +1,25 @@
-<h1>Projects</h1>
-<div class="actions">
-  <%= link_to 'New project', new_project_path %>
-</div>
 
-<table border="0" cellspacing="0" cellpadding="5">
+<div class="block" id="block-projects">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="active first"><a href="#block-projects">Projects</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <h2 class="title">Projects</h2>
+  <div class="content">
+
+<table class="table">
   <tr>
-    <th class="first">Name</th>
-    <th>Last error</th>
+    <th width="100%" class="first">Name</th>
+    <th width="75">Last error</th>
   </tr>
   <%= render :partial => projects %>
 </table>
+
+<% actions do |link|
+  link.to 'New project', new_project_path
+end %>
+
+  </div>
+</div>

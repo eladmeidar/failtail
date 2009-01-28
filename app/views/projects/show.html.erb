@@ -1,12 +1,40 @@
-<h1><%= project.name %></h1>
+
+<div class="block" id="block-project">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first active"><a href="#block-project">Project</a></li>
+      <li><a href="#block-errors">Errors</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <h2 class="title"><%= project.name %></h2>
+  <div class="content">
+
 <p><%= project.api_token %></p>
 
-<h2>Errors</h2>
-<table border="0" cellspacing="0" cellpadding="5">
+  </div>
+</div>
+
+<div class="block" id="block-errors">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first"><a href="#block-project">Project</a></li>
+      <li class="active"><a href="#block-errors">Errors</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <h2 class="title">Errors</h2>
+  <div class="content">
+
+<table class="table">
   <tr>
-    <th class="first">Error</th>
-    <th>Last occurence</th>
-    <th class="last">Count</th>
+    <th width="100%" class="first">Error</th>
+    <th width="75">Last occurence</th>
+    <th width="75" class="last">Count</th>
   </tr>
   <%= render :partial => project.reports.all %>
 </table>
+
+
+  </div>
+</div>
