@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
+  helper_method :sidebar_blocks
   
   private
   
@@ -70,5 +71,9 @@ class ApplicationController < ActionController::Base
   end
   
   def project ; nil ; end
+  
+  def sidebar_blocks
+    @sidebar_blocks ||= {}
+  end
   
 end

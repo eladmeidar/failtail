@@ -2,4 +2,15 @@
   
   <%= yield :sidebar_actions %>
   
+  <% if sidebar_blocks[:projects] %>
+  <div class="block">
+    <h3>Projects</h3>
+    <% menu_block(:class => 'navigation') do |link|
+      @projects.each do |project|
+        link.to project.name, project
+      end
+    end %>
+  </div>
+  <% end %>
+  
 </div>

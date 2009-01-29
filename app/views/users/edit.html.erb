@@ -1,9 +1,19 @@
-<h1>Edit My Account</h1>
+<div class="block" id="block-project">
+  <div class="secondary-navigation">
+  </div>
+  <h2 class="title">Edit My Account</h2>
+  <div class="content">
 
-<% form_for @user, :url => account_path do |f| %>
+<% form_for @user, :url => account_path, :html => {:class=>'form'} do |f| %>
   <%= f.error_messages %>
-  <%= render :partial => "form", :object => f %>
-  <%= f.submit "Update" %>
+  <div class="column left">
+    <%= render :partial => "form", :object => f %>
+  </div>
+  <div class="clear"></div>
+  <div class="group navform">
+    <%= f.submit "Update", :class => 'button' %>
+  </div>
 <% end %>
 
-<br /><%= link_to "My Profile", account_path %>
+  </div>
+</div>
