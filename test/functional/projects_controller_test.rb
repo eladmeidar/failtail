@@ -105,15 +105,15 @@ class ProjectsControllerTest < ActionController::TestCase
   context "require account" do
     context "for :index" do
       setup { get :index }
-      should_redirect_to "new_user_session_url"
+      should_redirect_to "home_url"
     end
     context "for :new" do
       setup { get :new }
-      should_redirect_to "new_user_session_url"
+      should_redirect_to "home_url"
     end
     context "for :create" do
       setup { post :create }
-      should_redirect_to "new_user_session_url"
+      should_redirect_to "home_url"
     end
   end
   
