@@ -5,4 +5,6 @@ db/*.db
 db/schema.*
 doc/api
 doc/app
-coverage*
+coverage
+coverage.data
+config/deploy.*.rb
