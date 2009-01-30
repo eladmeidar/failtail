@@ -1,3 +1,4 @@
 FAILTALE = {
-  :allow_registration => false
+  :allow_registration => false,
+  :allow_invitations => false
 }

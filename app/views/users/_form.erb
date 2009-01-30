@@ -1,3 +1,6 @@
+<% if @invitation%>
+  <%= hidden_field_tag "invitation", @invitation.code %>
+<% end %>
 <div class="group">
   <%= form.label :name, nil, :class => 'title' %>
   <%= form.text_field :name, :class => 'text' %>

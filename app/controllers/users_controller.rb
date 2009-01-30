@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      @invitation.destroy
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
     else
@@ -40,8 +41,16 @@ class UsersController < ApplicationController
   
   def only_if_registration_allowed
     unless FAILTALE[:allow_registration]
-      redirect_to root_path
-      return false
+      if FAILTALE[:allow_invitations] and !params[:invitation].blank?
+        @invitation = Invitation.first(:conditions => {:code => params[:invitation]})
+        unless @invitation
+          redirect_to root_path
+          return false
+        end
+      else
+        redirect_to root_path
+        return false
+      end
     end
   end
   

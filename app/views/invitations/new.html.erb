@@ -1,0 +1,19 @@
+<div class="block">
+  <div class="secondary-navigation">
+  </div>
+  <h2 class="title">Invite someone</h2>
+  <div class="content">
+
+<% form_for @invitation, :html => { :class => "form" } do |f| %>
+  <%= f.error_messages %>
+  <div class="column left">
+    <%= render :partial => "form", :object => f %>
+  </div>
+  <div class="clear"></div>
+  <div class="group navform">
+    <%= f.submit "Send", :class => 'button' %>
+  </div>
+<% end %>
+
+  </div>
+</div>

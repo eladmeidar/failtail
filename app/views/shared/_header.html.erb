@@ -3,6 +3,7 @@
   <% if current_user %>
   <div id="user-navigation">
     <% menu_block do |link|
+      link.to('Invitations', new_invitation_path) if FAILTALE[:allow_invitations]
       link.to('Profile', edit_account_path)
       link.to('Settings', '#')
       link.to('Logout', user_session_path, :method => :delete)

@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.resource :account, :controller => "users"
   map.resources :users
+  map.resources :invitations
   
   map.resource :reports, :only => :create 
   map.resources :projects do |projects|
