@@ -1,33 +1,28 @@
-
 <div class="block" id="block-project">
   <div class="secondary-navigation">
     <% menu_block do |link|
-      occurence = error.last_occurence
-      link.to 'Summary', [project, error]
+      link.to 'Summary', [project, error, occurence]
       link.to 'Backtrace', [:backtrace, project, error, occurence]     if occurence.backtrace?
       link.to 'Environment', [:environment, project, error, occurence] if occurence.properties?
     end %>
     <div class="clear"></div>
   </div>
-  <h2 class="title"><%= error.name %></h2>
+  <h2 class="title"><%= occurence.name %></h2>
   <div class="content">
 
-<p>
-  <%=h error.description %>
-</p>
-
-<% if error.backtrace? %>
-<h3>Backtrace</h3>
-<pre><%=h error.backtrace.split("\n")[0..5].join("\n") %></pre>
-<br/>
-<% end %>
-
+<% if occurence.properties? %>
 <table class="table">
   <tr>
-    <th class="first last" colspan="2">Occurences</th>
+    <th class="first last" colspan="2">Properties</th>
   </tr>
-  <%= render :partial => error.occurences.all %>
+  <% occurence.properties.each do |name, value| %>
+    <tr>
+      <td><%=h name %></td>
+      <td><%=h value %></td>
+    </tr>
+  <% end %>
 </table>
+<% end %>
 
   </div>
 </div>

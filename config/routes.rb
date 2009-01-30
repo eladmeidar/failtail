@@ -8,7 +8,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :reports, :only => :create 
   map.resources :projects do |projects|
     projects.resources :memberships
-    projects.resources :errors
+    projects.resources :errors do |errors|
+      errors.resources :occurences, :member => { :backtrace => :get, :environment => :get }
+    end
   end
   
   map.home 'home', :controller => 'pages', :action => 'home'
