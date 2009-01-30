@@ -1,6 +1,6 @@
 class Invitation < ActiveRecord::Base
-  validates_uniqueness_of :email
   validates_presence_of :email
+  validates_uniqueness_of :email
   
   before_create :generate_code
   after_create :send_invitation
