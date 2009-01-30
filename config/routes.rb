@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :reports, :only => :create 
   map.resources :projects do |projects|
+    projects.resources :memberships
     projects.resources :errors
   end
   

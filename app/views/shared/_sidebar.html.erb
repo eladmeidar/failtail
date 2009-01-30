@@ -19,6 +19,13 @@
     <% list @project.members, :class => 'navigation' do |member| %>
       <%=link_to member.name, '#' %>
     <% end %>
+    <% if @project.owner_id == current_user.id %>
+    <ul class="navigation">
+      <li class="first last">
+        <%=link_to 'Add a member', [:new, @project, :membership]%>
+      </li>
+    </ul>
+    <% end %>
   </div>
   <% end %>
   
