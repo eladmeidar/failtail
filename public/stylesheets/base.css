@@ -35,6 +35,14 @@ body {
 
 #header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
   text-decoration: none;
+  margin-bottom:0;
+  line-height:1em;
+}
+
+#header h2 {
+  position:absolute; top: 31px; left: 130px;
+  font-size: 14px; margin: 0; font-weight: normal;
+  color:#fff;
 }
 
 #main {  
