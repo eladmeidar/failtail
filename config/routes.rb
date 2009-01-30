@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     projects.resources :errors
   end
   
+  map.home 'home', :controller => 'pages', :action => 'home'
   map.root :controller => 'projects', :action => 'index'
   
   map.connect ':controller/:action/:id'

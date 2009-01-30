@@ -5,7 +5,7 @@
     <% menu_block do |link|
       link.to('Profile', edit_account_path)
       link.to('Settings', '#')
-      link.to('Logout', user_session_path, :method => :destroy)
+      link.to('Logout', user_session_path, :method => :delete)
     end %>
     <div class="clear"></div>
   </div>
@@ -20,7 +20,7 @@
   <div id="main-navigation">
     <% menu_block do |link|
       link.to('Login', new_user_session_path)
-      link.to('Register', new_account_path)
+      link.to('Register', new_account_path) if FAILTALE[:allow_registration]
     end %>
     <div class="clear"></div>
   </div>
