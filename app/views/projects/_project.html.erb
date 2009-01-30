@@ -1,5 +1,4 @@
 <tr>
-  <td class="first"><%=link_to h(project.name), project %></td>
-  <td class="last" width="150">
-    <%= project.updated_at.to_formatted_s(:short) %></td>
+  <td class="first"><%=link_to h(truncate(project.name, :length => 100)), project %></td>
+  <td class="last" width="150"><%= project.updated_at.to_formatted_s(:short) %></td>
 </tr>
