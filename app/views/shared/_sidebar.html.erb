@@ -13,4 +13,13 @@
   </div>
   <% end %>
   
+  <% if sidebar_blocks[:members] %>
+  <div class="block">
+    <h3>Members</h3>
+    <% list @project.members, :class => 'navigation' do |member| %>
+      <%=link_to member.name, '#' %>
+    <% end %>
+  </div>
+  <% end %>
+  
 </div>

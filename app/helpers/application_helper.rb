@@ -47,4 +47,21 @@ module ApplicationHelper
     end
   end
   
+  def list(colection, options={}, item_options={})
+    concat(tag("ul", options, true))
+    l = colection.size - 1
+    colection.each_with_index do |item, i|
+      
+      classes = [(item_options[:class] || '').split(' ')].flatten.compact
+      classes << 'first'  if i == 0
+      classes << 'last'   if i == l
+      item_options[:class] = classes.join(' ')
+      
+      concat(tag("li", item_options, true))
+      yield(item)
+      concat('</li>')
+    end
+    concat('</ul>')
+  end
+  
 end
