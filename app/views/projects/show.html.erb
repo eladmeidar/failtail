@@ -18,6 +18,9 @@
   <%= render :partial => project.reports.all %>
 </table>
 
+<% actions do |link|
+  link.to 'Edit project', edit_project_path(project)
+end %>
 
   </div>
 </div>

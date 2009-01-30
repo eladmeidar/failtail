@@ -1,5 +1,15 @@
-<h1>Edit this project</h1>
-<% form_for project do |f| %>
+<div class="block" id="block-project">
+  <div class="secondary-navigation">
+  </div>
+  <h2 class="title">Edit this project</h2>
+  <div class="content">
+
+<% form_for project, :html => {:class=>'form'} do |f| %>
   <%= render :partial => f %>
-  <%= f.submit 'Save' %>
+  <div class="group navform">
+    <%= f.submit 'Save', :class => 'button' %>
+  </div>
 <% end %>
+
+  </div>
+</div>
