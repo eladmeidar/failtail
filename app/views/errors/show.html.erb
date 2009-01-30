@@ -1,15 +1,24 @@
-<h1><%= error.name %></h1>
 
-<h2>Description</h2>
+<div class="block" id="block-project">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first active"><a href="#">Summary</a></li>
+      <li class=""><a href="#">Backtrace</a></li>
+      <li class="last"><a href="#">Environment</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <h2 class="title"><%= error.name %></h2>
+  <div class="content">
+
 <p>
   <%=h error.description %>
 </p>
 
 <% if error.properties? %>
-<h2>Properties</h2>
-<table border="0" cellspacing="0" cellpadding="5">
+<table class="table">
   <tr>
-    <th class="first" colspan="2">Properties</th>
+    <th class="first last" colspan="2">Properties</th>
   </tr>
   <% error.properties.each do |name, value| %>
     <tr>
@@ -21,15 +30,18 @@
 <% end %>
 
 <% if error.backtrace? %>
-<h2>Backtrace</h2>
+<h3>Backtrace</h3>
 <pre><%=h error.backtrace.split("\n")[0..5].join("\n") %></pre>
+<br/>
 <% end %>
 
-<h2>Occurences</h2>
-<table border="0" cellspacing="0" cellpadding="5">
+<hr/>
+<table class="table">
   <tr>
-    <th class="first">Error</th>
-    <th>When</th>
+    <th class="first last" colspan="2">Occurences</th>
   </tr>
   <%= render :partial => error.occurences.all %>
 </table>
+
+  </div>
+</div>

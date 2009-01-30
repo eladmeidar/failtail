@@ -12,7 +12,7 @@
   <div id="main-navigation">
     <% menu_block do |link|
       link.to('Errors', root_path)
-      link.to(@project.name, @project) if @project and !@project.new_record?
+      link.to(@project.name, @project) { true } if @project and !@project.new_record?
     end %>
     <div class="clear"></div>
   </div>

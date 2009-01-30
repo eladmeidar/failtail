@@ -7,6 +7,7 @@ class Error < ActiveRecord::Base
   
   belongs_to :project
   has_many :occurences, :dependent => :destroy, :order => 'updated_at DESC'
+  has_one :last_occurence, :class_name => "Occurence", :order => 'id ASC'
   
   named_scope :with_hash, lambda { |h|
     { :conditions => { :hash_string => h } } }
@@ -14,12 +15,5 @@ class Error < ActiveRecord::Base
   delegate :name, :description, :to => :last_occurence
   delegate :properties, :properties?, :to => :last_occurence
   delegate :backtrace, :backtrace?, :to => :last_occurence
-  
-  private
-  
-  # the last ocurence is first
-  def last_occurence
-    self.occurences.first
-  end
   
 end

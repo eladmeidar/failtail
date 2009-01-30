@@ -43,10 +43,16 @@ class Report
     end
     @error.save!
     @occurence.save!
+  rescue => e
+    has_error = true
+    raise e
+  ensure
+    @error.destroy if has_error and @error_was_created
   end
   
   def project=(object)
     if object.is_a? Hash
+      object = object.slice(:api_token)
       @project = Project.with_api_token(object['api_token']).first
     elsif object.is_a? Project
       @project = object
@@ -59,6 +65,7 @@ class Report
     if @project.nil?
       @error = nil
     elsif object.is_a? Hash
+      object = object.slice(:hash_string)
       @error   = @project.reports.with_hash(object['hash_string']).first
       @error ||= @project.reports.build(object)
       if @error.new_record?
@@ -77,6 +84,7 @@ class Report
     if @error.nil?
       @occurence = nil
     elsif object.is_a? Hash
+      object = object.slice(:name, :description, :backtrace, :properties)
       @occurence = @error.occurences.build(object)
     elsif object.is_a? Occurence
       @occurence = object
