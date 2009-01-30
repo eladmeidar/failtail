@@ -5,6 +5,10 @@
       link.to 'Summary', [project, error, occurence]
       link.to 'Backtrace', [:backtrace, project, error, occurence]     if occurence.backtrace?
       link.to 'Environment', [:environment, project, error, occurence] if occurence.properties?
+      
+      if error.occurences.count > 1
+        link.to "#{error.occurences.count} other occurences", [project, error]
+      end
     end %>
     <div class="clear"></div>
   </div>
