@@ -1,6 +1,13 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def sidebar_message_block
+    mb = message_block.strip
+    unless mb == '<div id="message_block"></div>'
+      "<div class=\"block\"><h3></h3>#{mb}</div>"
+    end
+  end
+  
   def render_shared(template,options={})
     options[:partial] = "/shared/#{template}"
     render options

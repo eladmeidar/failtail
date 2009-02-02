@@ -5,7 +5,6 @@
   <div class="content">
 
 <% form_for [@project, @membership], :html => { :class => "form" } do |f| %>
-  <%= f.error_messages %>
   <div class="column left">
     <%= render :partial => "form", :object => f %>
   </div>
