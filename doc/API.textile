@@ -4,15 +4,13 @@ h1. Errors API
     project:
       api_token: 23354A46A...
     error:
+      hash_string: 8976531AFBCE...
+    occurence:
       name: MethodNotFound at /some/path.rb:45
       description: an optional description
-      hash_string: 8976531AFBCE...
+      backtrace: "..."
       properties:
         path: /hello/user
         exception: MethodNotFound
-      backtrace: "..."
-    occurence:
-      properties:
-        session: "..."
-        params: "..."
   
+POST /reports.xml
