@@ -65,7 +65,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     end
   end
   
-  context "on POST to :destroy" do
+  context "on DELETE to :destroy" do
     context "when logged in" do
       setup do
         @user = Factory(:user)
@@ -84,7 +84,7 @@ class UserSessionsControllerTest < ActionController::TestCase
         delete :destroy
       end
       
-      should_redirect_to "new_user_session_path"
+      should_redirect_to "home_url"
     end
   end
   

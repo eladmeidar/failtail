@@ -2,6 +2,10 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   
+  setup do
+    FAILTALE[:allow_registration] = true
+  end
+  
   context "on GET to :show" do
     context "when logged in" do
       setup do
@@ -19,7 +23,7 @@ class UsersControllerTest < ActionController::TestCase
         get :show, :id => @user.id
       end
       
-      should_redirect_to "new_user_session_url"
+      should_redirect_to "home_url"
     end
   end
   
@@ -63,7 +67,7 @@ class UsersControllerTest < ActionController::TestCase
         get :edit, :id => @user.id
       end
       
-      should_redirect_to "new_user_session_url"
+      should_redirect_to "home_url"
     end
   end
   
@@ -94,7 +98,7 @@ class UsersControllerTest < ActionController::TestCase
           post :create, :user => Factory.attributes_for(:user, :login => "mr-henry")
         end
         
-        should_redirect_to "account_url"
+        should_redirect_to "root_url"
       end
     end
   end
@@ -119,7 +123,7 @@ class UsersControllerTest < ActionController::TestCase
           put :update, :id => @user.id, :user => Factory.attributes_for(:user, :login => "mr-henry")
         end
         
-        should_redirect_to "account_url"
+        should_redirect_to "root_url"
       end
     end
     context "when not logged in" do
@@ -128,7 +132,7 @@ class UsersControllerTest < ActionController::TestCase
         put :update, :id => @user.id, :user => Factory.attributes_for(:user, :login => "mr-henry")
       end
       
-      should_redirect_to "new_user_session_url"
+      should_redirect_to "home_url"
     end
   end
   

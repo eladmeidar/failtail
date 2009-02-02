@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      @invitation.destroy
+      @invitation.destroy unless @invitation.nil?
       flash[:notice] = "Account registered!"
       redirect_back_or_default root_url
     else
