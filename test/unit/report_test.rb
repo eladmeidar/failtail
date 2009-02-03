@@ -20,8 +20,7 @@ class ReportTest < ActiveSupport::TestCase
         'occurence' => occurence
       }
       assert_raise Report::ReportInvalid do
-        Report.create!({
-        })
+        Report.create!({ })
       end
       assert_raise Report::ReportInvalid do
         Report.create!(valid.except('project'))

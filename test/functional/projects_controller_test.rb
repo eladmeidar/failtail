@@ -53,7 +53,7 @@ class ProjectsControllerTest < ActionController::TestCase
         
         should_change "@user.owned_projects.count", :by => 1
         should_change "@user.memberships.count", :by => 1
-        should_redirect_to "project_url(@user.owned_projects.last)"
+        should_redirect_to "project_url(@project)"
       end
       
       context "wtth invalid data" do
