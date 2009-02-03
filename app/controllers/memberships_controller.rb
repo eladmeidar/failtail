@@ -37,7 +37,7 @@ class MembershipsController < ApplicationController
   end
   
   def membership
-    @membership ||= current_user.memberships.first(:conditions => { :project_id => project.id})
+    @membership ||= current_user.memberships.first(:conditions => { :project_id => project.id })
   end
   
   def ownership?
@@ -52,7 +52,11 @@ class MembershipsController < ApplicationController
     unless ownership?
       store_location
       flash[:notice] = "You must be the owner of this project"
-      redirect_to home_path
+      if membership?
+        redirect_to @project
+      else
+        redirect_to home_path
+      end
       return false
     end
   end

@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
   
-  before_filter :only_if_invitations_allowed
   before_filter :require_user
+  before_filter :only_if_invitations_allowed
   
   def new
     @invitation = Invitation.new
