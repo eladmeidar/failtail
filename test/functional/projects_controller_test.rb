@@ -3,9 +3,9 @@ require 'test_helper'
 class ProjectsControllerTest < ActionController::TestCase
   
   context "while logged in" do
+    current_user_is { Factory(:user) }
     setup do
-      @user = Factory(:user)
-      set_session_for @user
+      @user = current_user || Factory(:user)
       @projects = [
         Factory(:membership, :user => @user).project,
         Factory(:project, :owner => @user)
@@ -19,6 +19,8 @@ class ProjectsControllerTest < ActionController::TestCase
       should_respond_with :success
       should_assign_to :projects, :equals => '@projects'
       should_render_template :index
+      
+      when_not_logged_in { should_redirect_to "home_url" }
     end
     
     context "on GET to :show" do
@@ -27,6 +29,8 @@ class ProjectsControllerTest < ActionController::TestCase
       should_respond_with :success
       should_assign_to :project, :class => Project, :equals => '@projects.first'
       should_render_template :show
+      
+      when_not_logged_in { should_redirect_to "home_url" }
     end
     
     context "on GET to :new" do
@@ -36,6 +40,8 @@ class ProjectsControllerTest < ActionController::TestCase
       should_assign_to :project, :class => Project
       should_render_template :new
       should_render_a_form
+      
+      when_not_logged_in { should_redirect_to "home_url" }
     end
     
     context "on GET to :edit" do
@@ -45,6 +51,8 @@ class ProjectsControllerTest < ActionController::TestCase
       should_assign_to :project, :class => Project, :equals => '@projects.last'
       should_render_template :edit
       should_render_a_form
+      
+      when_not_logged_in { should_redirect_to "home_url" }
     end
     
     context "on POST to :create" do
@@ -54,6 +62,8 @@ class ProjectsControllerTest < ActionController::TestCase
         should_change "@user.owned_projects.count", :by => 1
         should_change "@user.memberships.count", :by => 1
         should_redirect_to "project_url(@project)"
+      
+        when_not_logged_in { should_redirect_to "home_url" }
       end
       
       context "wtth invalid data" do
@@ -65,6 +75,8 @@ class ProjectsControllerTest < ActionController::TestCase
         should_assign_to :project, :class => Project
         should_render_template :new
         should_render_a_form
+      
+        when_not_logged_in { should_redirect_to "home_url" }
       end
     end
     
@@ -76,6 +88,8 @@ class ProjectsControllerTest < ActionController::TestCase
         should_not_change "@user.owned_projects.count"
         should_not_change "@user.memberships.count"
         should_redirect_to "project_url(@projects.last)"
+      
+        when_not_logged_in { should_redirect_to "home_url" }
       end
       
       context "wtth invalid data" do
@@ -88,6 +102,8 @@ class ProjectsControllerTest < ActionController::TestCase
         should_assign_to :project, :class => Project, :equals => '@projects.last'
         should_render_template :edit
         should_render_a_form
+      
+        when_not_logged_in { should_redirect_to "home_url" }
       end
     end
     
@@ -97,24 +113,10 @@ class ProjectsControllerTest < ActionController::TestCase
       should_change "@user.owned_projects.count", :by => -1
       should_change "@user.memberships.count", :by => -1
       should_redirect_to "root_url"
+      
+      when_not_logged_in { should_redirect_to "home_url" }
     end
     
-  end
-  
-  
-  context "require account" do
-    context "for :index" do
-      setup { get :index }
-      should_redirect_to "home_url"
-    end
-    context "for :new" do
-      setup { get :new }
-      should_redirect_to "home_url"
-    end
-    context "for :create" do
-      setup { post :create }
-      should_redirect_to "home_url"
-    end
   end
   
   context "require membership" do

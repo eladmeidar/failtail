@@ -3,9 +3,10 @@ require 'test_helper'
 class ErrorsControllerTest < ActionController::TestCase
   
   context "with some date" do
+    current_user_is { Factory(:user) }
+    
     setup do
-      @user = Factory(:user)
-      set_session_for @user
+      @user = current_user || Factory(:user)
       @project = Factory(:project, :owner => @user)
       @errors = []
       @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)
@@ -17,6 +18,8 @@ class ErrorsControllerTest < ActionController::TestCase
       setup { get :index, :project_id => @project.id }
 
       should_redirect_to "project_path(@project)"
+      
+      when_not_logged_in { should_redirect_to "home_url" }
     end
     
     context "on GET to :show" do
@@ -30,6 +33,8 @@ class ErrorsControllerTest < ActionController::TestCase
       should_assign_to :error,   :class => Error,   :equals => '@error'
       should_assign_to :project, :class => Project, :equals => '@project'
       should_render_template :show
+      
+      when_not_logged_in { should_redirect_to "home_url" }
     end
     
   end
