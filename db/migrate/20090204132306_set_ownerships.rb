@@ -1,7 +1,7 @@
 class SetOwnerships < ActiveRecord::Migration
   def self.up
     Membership.all.each do |membership|
-      if membership.user_id = membership.project.owner_id
+      if membership.user_id == membership.project.owner_id
         membership.role = 'owner'
         membership.save!
       end
