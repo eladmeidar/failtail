@@ -9,7 +9,6 @@ class UserTest < ActiveSupport::TestCase
   should_ensure_length_at_least :name, 2
   should_ensure_length_at_least :login, 2
   
-  should_have_many :owned_projects, :dependent => :destroy
   should_have_many :memberships, :dependent => :destroy
   should_have_many :projects, :through => :memberships
   

@@ -63,7 +63,8 @@ class ApplicationController < ActionController::Base
   
   def require_ownership
     raise ActiveRecord::RecordNotFound if project.nil?
-    raise ActiveRecord::RecordNotFound if project.owner_id != current_user.id
+    membership = project.memberships.find(:first, :conditions => { :user_id => current_user.id })
+    raise ActiveRecord::RecordNotFound if membership.role != 'owner'
   rescue ActiveRecord::RecordNotFound => e
     flash[:notice] = "You must be the owner of this project to access this page"
     redirect_to root_path

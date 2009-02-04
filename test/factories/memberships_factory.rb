@@ -1,5 +1,6 @@
 
 Factory.define :membership do |f|
-  f.association :user, :factory => :user
-  f.association :project, :factory => :project
+  f.user    { Factory(:user)    }
+  f.project { Factory(:project) }
+  f.role 'normal'
 end

@@ -8,7 +8,7 @@ class MembershipsControllerTest < ActionController::TestCase
     
     context "on GET to :new" do
       setup do
-        @project = Factory(:project, :owner => current_user || Factory(:user))
+        @project = Factory(:membership, :user => (current_user || Factory(:user)), :role => 'owner').project
         get :new, :project_id => @project.id
       end
       
@@ -20,7 +20,7 @@ class MembershipsControllerTest < ActionController::TestCase
     
     context "on POST to :create" do
       setup do
-        @project = Factory(:project, :owner => current_user || Factory(:user))
+        @project = Factory(:membership, :user => (current_user || Factory(:user)), :role => 'owner').project
         params   = { :email => Factory(:user).email }
         post :create, :project_id => @project.id, :membership => params
       end
@@ -38,7 +38,7 @@ class MembershipsControllerTest < ActionController::TestCase
     
     context "on GET to :new" do
       setup do
-        @project = Factory(:project, :owner => Factory(:user))
+        @project = Factory(:membership, :user => Factory(:user), :role => 'owner').project
         Factory(:membership, :project => @project, :user => current_user) if current_user
         get :new, :project_id => @project.id
       end
@@ -50,7 +50,7 @@ class MembershipsControllerTest < ActionController::TestCase
     
     context "on POST to :create" do
       setup do
-        @project = Factory(:project, :owner => Factory(:user))
+        @project = Factory(:membership, :user => Factory(:user), :role => 'owner').project
         Factory(:membership, :project => @project, :user => current_user) if current_user
         params   = { :email => Factory(:user).email }
         post :create, :project_id => @project.id, :membership => params

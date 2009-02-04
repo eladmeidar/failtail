@@ -7,7 +7,7 @@ class ErrorsControllerTest < ActionController::TestCase
     
     setup do
       @user = current_user || Factory(:user)
-      @project = Factory(:project, :owner => @user)
+      @project = @user.projects.create!(:name => Factory.next(:project_name))
       @errors = []
       @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)
       @errors << Factory(:error, :project => @project) ; Factory(:occurence, :error => @errors.last)

@@ -41,7 +41,7 @@ class MembershipsController < ApplicationController
   end
   
   def ownership?
-    current_user.id == project.owner_id
+    membership.role == 'owner'
   end
   
   def membership?

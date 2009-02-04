@@ -4,6 +4,7 @@ class MembershipTest < ActiveSupport::TestCase
   
   should_require_attributes :project_id
   should_require_attributes :user_id
+  should_require_attributes :role
   
   should_belong_to :project
   should_belong_to :user

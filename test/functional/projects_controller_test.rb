@@ -8,7 +8,7 @@ class ProjectsControllerTest < ActionController::TestCase
       @user = current_user || Factory(:user)
       @projects = [
         Factory(:membership, :user => @user).project,
-        Factory(:project, :owner => @user)
+        Factory(:membership, :user => @user, :role => 'owner').project
       ]
       Factory(:project)
     end
@@ -59,7 +59,7 @@ class ProjectsControllerTest < ActionController::TestCase
       context "wtth valid data" do
         setup { post :create, :project => Factory.attributes_for(:project) }
         
-        should_change "@user.owned_projects.count", :by => 1
+        should_change "@user.projects.count", :by => 1
         should_change "@user.memberships.count", :by => 1
         should_redirect_to "project_url(@project)"
       
@@ -69,7 +69,7 @@ class ProjectsControllerTest < ActionController::TestCase
       context "wtth invalid data" do
         setup { post :create, :project => Factory.attributes_for(:project, :name => nil) }
         
-        should_not_change "@user.owned_projects.count"
+        should_not_change "@user.projects.count"
         should_not_change "@user.memberships.count"
         should_respond_with :success
         should_assign_to :project, :class => Project
@@ -83,9 +83,9 @@ class ProjectsControllerTest < ActionController::TestCase
     context "on PUT to :update" do
       context "wtth valid data" do
         setup { put :update, :id => @projects.last.id,
-          :project => Factory.attributes_for(:project, :owner => @user) }
+          :project => Factory.attributes_for(:project) }
         
-        should_not_change "@user.owned_projects.count"
+        should_not_change "@user.projects.count"
         should_not_change "@user.memberships.count"
         should_redirect_to "project_url(@projects.last)"
       
@@ -94,9 +94,9 @@ class ProjectsControllerTest < ActionController::TestCase
       
       context "wtth invalid data" do
         setup { put :update, :id => @projects.last.id,
-          :project => Factory.attributes_for(:project, :owner => @user, :name => nil) }
+          :project => Factory.attributes_for(:project, :name => nil) }
         
-        should_not_change "@user.owned_projects.count"
+        should_not_change "@user.projects.count"
         should_not_change "@user.memberships.count"
         should_respond_with :success
         should_assign_to :project, :class => Project, :equals => '@projects.last'
@@ -110,7 +110,7 @@ class ProjectsControllerTest < ActionController::TestCase
     context "on DELETE to :destroy" do
       setup { delete :destroy, :id => @projects.last.id }
       
-      should_change "@user.owned_projects.count", :by => -1
+      should_change "@user.projects.count", :by => -1
       should_change "@user.memberships.count", :by => -1
       should_redirect_to "root_url"
       
@@ -137,7 +137,7 @@ class ProjectsControllerTest < ActionController::TestCase
       setup do
         @user       = Factory(:user)
         @owner      = Factory(:user)
-        @project    = Factory(:project, :owner => @owner)
+        @project    = Factory(:membership, :user => @owner, :role => 'owner').project
         set_session_for @user
         get :edit, :id => @project.id
       end
@@ -148,7 +148,7 @@ class ProjectsControllerTest < ActionController::TestCase
       setup do
         @user       = Factory(:user)
         @owner      = Factory(:user)
-        @project    = Factory(:project, :owner => @owner)
+        @project    = Factory(:membership, :user => @owner, :role => 'owner').project
         set_session_for @user
         put :update, :id => @project.id, :project => { :name => "Cool Project" }
       end
@@ -159,7 +159,7 @@ class ProjectsControllerTest < ActionController::TestCase
       setup do
         @user       = Factory(:user)
         @owner      = Factory(:user)
-        @project    = Factory(:project, :owner => @owner)
+        @project    = Factory(:membership, :user => @owner, :role => 'owner').project
         set_session_for @user
         delete :destroy, :id => @project.id
       end

@@ -2,6 +2,7 @@ class Membership < ActiveRecord::Base
   
   validates_presence_of :user_id
   validates_presence_of :project_id
+  validates_presence_of :role
   
   validates_uniqueness_of :user_id, :scope => :project_id
   
@@ -10,6 +11,13 @@ class Membership < ActiveRecord::Base
   
   attr_accessor :email
   before_validation :lookup_user_by_email
+  
+  def project_id=(id)
+    if id and Membership.count(:conditions => ["(role = ?) AND (project_id = ?)", 'owner', id]) == 0
+      self[:role]='owner'
+    end
+    self[:project_id] = id
+  end
   
   private
   
