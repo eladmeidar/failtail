@@ -13,3 +13,8 @@
 
   </div>
 </div>
+
+
+<% actions do |link|
+  link.to 'Delete this project', project_path(project), :method => :delete
+end %>
