@@ -1,4 +1,5 @@
 <tr>
   <td class="first"><%=link_to h(truncate(project.name, :length => 100)), project %></td>
-  <td class="last" width="150"><%= project.updated_at.to_formatted_s(:short) %></td>
+  <td width="75"><%= project.updated_at.to_formatted_s(:short) %></td>
+  <td class="last" width="75"><%= project.errors_count %></td>
 </tr>
