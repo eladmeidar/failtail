@@ -1,12 +1,10 @@
 class ResetCountValues < ActiveRecord::Migration
   def self.up
     Project.all do |project|
-      project.errors_count = project.reports.count
-      project.save!
+      Project.update_counters project.id, :errors_count => project.reports.all.size
     end
     Error.all do |error|
-      error.occurences_count = error.occurences.count
-      error.save!
+      Error.update_counters error.id, :occurences_count => error.occurences.all.size
     end
   end
 
