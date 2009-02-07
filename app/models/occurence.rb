@@ -23,6 +23,6 @@ class Occurence < ActiveRecord::Base
   
   serialize(:properties)
   
-  belongs_to :error
+  belongs_to :error, :counter_cache => true
   
 end
