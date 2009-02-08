@@ -1,0 +1,25 @@
+
+- block error.name do |link|
+  - occurence = error.last_occurence
+  - link.to 'Summary', error
+  - link.to 'Backtrace', [:backtrace, occurence]     if occurence.backtrace?
+  - link.to 'Environment', [:environment, occurence] if occurence.properties?
+  
+  %p= error.description
+  
+  - if error.backtrace?
+    %h3 Backtrace
+    %pre= error.backtrace.split("\n")[0..5].join("\n")
+    %br
+  
+  %table.table
+    %tr
+      %th.first.last{:colspan=>'2'} Occurences
+    
+    =render :partial => error.occurences.all
+
+- actions do |link|
+  - if error.closed
+    - link.to 'Mark as not closed', error_path(error, :error => {:closed => '0'}), :method => :put
+  - else
+    - link.to 'Mark as closed', error_path(error, :error => {:closed => '1'}), :method => :put

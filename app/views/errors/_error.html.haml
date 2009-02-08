@@ -1,0 +1,7 @@
+%tr
+  %td.first
+    = link_to h(truncate(error.name, :length => 100)), error
+  %td
+    = error.updated_at.to_formatted_s(:short)
+  %td.last
+    = error.occurences.count

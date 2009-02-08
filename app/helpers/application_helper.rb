@@ -14,13 +14,19 @@ module ApplicationHelper
   end
   
   class MenuBlockBuilder
-    def initialize(template)
+    def initialize(template, split=false)
       @template = template
+      @split = split
       @links = []
+      @content = ""
     end
     
     def build(&block)
-      block.call(self)
+      if @split
+        @content = @template.send(:capture, self, &block)
+      else
+        block.call(self)
+      end
       l = @links.size - 1
       @links.each_with_index do |(link, active), i|
         classes = []
@@ -30,6 +36,7 @@ module ApplicationHelper
         classes = classes.join(' ')
         @template.send(:concat, %{<li class="#{classes}">#{link}</li>})
       end
+      @content
     end
     
     def to(name, url, *args, &conditions)
@@ -41,9 +48,11 @@ module ApplicationHelper
   end
   
   def menu_block(options={}, &block)
+    split = options.delete(:split) || false
     concat(tag("ul", options, true))
-    MenuBlockBuilder.new(self).build(&block)
+    content = MenuBlockBuilder.new(self, split).build(&block)
     concat(%{ </ul> })
+    content
   end
   
   def actions(&block)
@@ -69,6 +78,20 @@ module ApplicationHelper
       concat('</li>')
     end
     concat('</ul>')
+  end
+  
+  def block(title=nil, &block)
+    concat(%{<div class="block"><div class="secondary-navigation">})
+    content = menu_block(:split => true, &block) if block.arity == 1
+    concat(%{<div class="clear"></div></div>})
+    concat(%{<h2 class="title">#{h(title)}</h2>}) if title
+    concat(%{<div class="content">})
+    if block.arity == 1
+      concat(content)
+    else
+      block.call
+    end
+    concat(%{</div></div>})
   end
   
 end
