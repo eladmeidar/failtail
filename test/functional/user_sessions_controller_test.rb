@@ -39,7 +39,7 @@ class UserSessionsControllerTest < ActionController::TestCase
           assert_equal @user.id, @user_session.user.id
         end
         
-        should_redirect_to "account_path"
+        should_redirect_to "root_path"
       end
       context "with incorrect credentials" do
         setup do
