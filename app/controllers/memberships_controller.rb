@@ -44,7 +44,7 @@ class MembershipsController < ApplicationController
     unless current_user.owner?(project)
       store_location
       flash[:notice] = "You must be the owner of this project"
-      if membership?
+      if current_user.member?(project)
         redirect_to project
       else
         redirect_to home_path

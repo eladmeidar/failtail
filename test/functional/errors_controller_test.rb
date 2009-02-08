@@ -15,9 +15,7 @@ class ErrorsControllerTest < ActionController::TestCase
     end
     
     context "on GET to :index" do
-      setup { get :index, :project_id => @project.id }
-
-      should_redirect_to "project_path(@project)"
+      setup { get :index }
       
       when_not_logged_in { should_redirect_to "home_url" }
     end
@@ -25,13 +23,12 @@ class ErrorsControllerTest < ActionController::TestCase
     context "on GET to :show" do
       setup do
         @error = @errors[1]
-        get :show, :project_id => @project.id, :id => @error.id
+        get :show, :id => @error.id
       end
       
       should_respond_with :success
       should_respond_with_content_type :html
       should_assign_to :error,   :class => Error,   :equals => '@error'
-      should_assign_to :project, :class => Project, :equals => '@project'
       should_render_template :show
       
       when_not_logged_in { should_redirect_to "home_url" }
