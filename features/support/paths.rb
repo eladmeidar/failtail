@@ -7,6 +7,8 @@ def path_to(page_name)
     new_account_path
   when /the login page/i
     new_user_session_path
+  when /the new project page/i
+    new_project_path
   
   else
     raise "Can't find mapping from \"#{page_name}\" to a path."

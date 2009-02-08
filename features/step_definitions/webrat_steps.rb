@@ -91,7 +91,7 @@ Then /^I should see "(.*)"$/ do |text|
 end
 
 Then /^I should not see "(.*)"$/ do |text|
-  assert_not_match(/#{text}/m, response.body)
+  assert_no_match(/#{text}/m, response.body)
 end
 
 Then /^the "(.*)" checkbox should be checked$/ do |label|

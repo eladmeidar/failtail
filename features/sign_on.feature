@@ -4,7 +4,7 @@ Guests should be able to
 Login to there accounts
 
 Scenario: Login with valid credentials
-  Given a registered user with login "john-doe" and password "my password"
+  Given a user with login "john-doe" and password "my password"
   When I go to the login page
    And I fill in "Login" with "john-doe"
    And I fill in "Password" with "my password"
@@ -12,7 +12,7 @@ Scenario: Login with valid credentials
   Then I should see "New project"
 
 Scenario: Login with valid credentials
-  Given a registered user with login "john-doe" and password "my password"
+  Given a user with login "john-doe" and password "my password"
   When I go to the login page
    And I fill in "Login" with "john-doe"
    And I fill in "Password" with ""
