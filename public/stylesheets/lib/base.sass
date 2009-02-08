@@ -1,0 +1,295 @@
+
+=block-margin-normal
+  :margin 15px 0
+=block-margin-small
+  :margin 10px 0
+=container-padding
+  :padding 0 20px
+=reset-list
+  :margin 0
+  :padding 0
+  :list-style-type none
+
+\*
+  :margin 0
+  :padding 0
+
+.clear
+  :clear both
+
+h1
+  +block-margin-normal
+  :font
+    :size 22px
+    :weight normal
+h2
+  +block-margin-normal
+  :font
+    :size 22px
+    :weight normal
+h3
+  +block-margin-small
+  :font
+    :size 18px
+    :weight normal
+h4
+  +block-margin-small
+  :font
+    :size 16px
+    :weight normal
+
+hr
+  :height 1px
+  :border 0
+
+p
+  +block-margin-normal
+
+a img
+  :border none
+
+body
+  :font
+    :size 12px
+    :family sans-serif
+
+#container
+  :min-width 960px
+
+#header
+  +container-padding
+  :position relative
+  :padding-top 1px
+  
+  h1
+    :padding 10px 0
+    :font-size 30px
+    
+    a:link, a:active, a:hover, a:visited
+      :text-decoration none
+      :margin-bottom 0
+      :line-height 1em
+  
+  h2
+    :position absolute
+    :top 31px
+    :left 130px
+    :font
+      :size 14px
+      :weight normal
+    :margin 0
+    :color #fff
+
+#main
+  :width 70%
+  :float left
+
+.actions-bar
+  :padding 10px 1px
+  
+  .actions
+    :float left
+  
+  .pagination
+    :float right
+    :padding 1px 0
+
+#sidebar
+  :width 25%
+  :float right
+  
+  h3
+    :padding 10px 15px
+    :margin 0
+    :font-size 13px
+  
+  .block
+    :margin-bottom 20px
+    :padding-bottom 10px
+    
+    .content
+      :padding 0 15px
+    
+    .sidebar-block
+      :padding 10px
+  
+  ul.navigation
+    li
+      a:link, a:visited
+        :display block
+        :padding 10px 15px
+  
+  .notice
+    :padding 10px
+
+#wrapper
+  +container-padding
+  :padding-top 20px
+
+#main
+  
+  .block
+    :margin-bottom 20px
+    
+    .content
+      :padding 0 15px
+
+  .main
+    p.first
+      :margin-top 0
+
+#user-navigation
+  :position absolute
+  :top 0px
+  :right 20px
+
+=horizontal-navigation
+  ul
+    +reset-list
+    
+    li
+      :float left
+      
+      a:link, a:visited, a:hover, a:active
+        :text-decoration none
+
+#user-navigation
+  +horizontal-navigation
+  ul li
+    :padding 5px 10px
+#main-navigation
+  +horizontal-navigation
+  ul li
+    :margin-right 5px
+  ul li a
+    :font-size 15px
+    :display block
+    :padding 8px 15px
+.secondary-navigation
+  +horizontal-navigation
+  :font-size 13px
+  :border-bottom-width 10px
+  :border-bottom-style solid
+  ul li a
+    :display block
+    :padding 10px 15px
+
+#sidebar ul.navigation
+  +reset-list
+
+
+#footer
+  +container-padding
+  :padding-bottom 20px
+
+/ pagination
+
+=pagination-item
+  :padding 2px 5px
+  :margin-right 5px
+  :display block
+  :float left
+
+.pagination
+  a
+    +pagination-item
+    :text-decoration none
+    :border-width 1px
+    :border-style solid
+  span
+    +pagination-item
+    &.current
+      :font-weight  bold
+      :border-width 1px
+      :border-style solid
+
+/ tables
+
+.table
+  :width 100%
+  :border-collapse collapse
+  :margin-bottom 15px
+
+.table th
+  :padding 10px
+  :font-weight bold
+  :text-align left
+
+
+.table th.first
+  :width 30px
+
+
+.table .checkbox
+  :margin-left 10px
+
+
+.table td
+  :padding 10px
+
+
+/ forms
+
+input.checkbox
+  :margin 0
+  :padding 0
+
+.form .group
+  :margin-bottom 15px
+
+.form .column
+  :width 48%
+
+.form .column.left
+  :float left
+
+.form .column.right
+  :float right
+
+.form label.title, .form input.text, .form textarea
+  :font-size 1.2em
+  :padding 1px 0
+  :margin 0
+
+.form input.checkbox, .form input.radio
+  :margin-right 5px
+
+.form label.checkbox, .form label.radio
+  :line-height 1.5em
+
+.form label.title
+  :display block
+  :padding-bottom 2px
+  :font-weight bold
+
+.form input.text, .form textarea.textarea
+  :width 100%
+  :border-width 1px
+  :border-style solid
+
+/ lists
+
+ul.list
+  :margin 0
+  :padding 0
+  :list-style-type none
+
+ul.list li
+  :clear left
+  :padding-bottom 5px
+
+ul.list li .left
+  :float left
+
+ul.list li .left .avatar
+  :width 50px
+  :height 50px
+
+ul.list li .item
+  :margin-left 80px
+
+ul.list li .item .avatar
+  :float left
+  :margin 0 5px 5px 0
+  :width 30px
+  :height 30px
