@@ -1,15 +1,4 @@
 
-=block-margin-normal
-  :margin 15px 0
-=block-margin-small
-  :margin 10px 0
-=container-padding
-  :padding 0 20px
-=reset-list
-  :margin 0
-  :padding 0
-  :list-style-type none
-
 \*
   :margin 0
   :padding 0
@@ -209,24 +198,15 @@ body
   :width 100%
   :border-collapse collapse
   :margin-bottom 15px
-
-.table th
-  :padding 10px
-  :font-weight bold
-  :text-align left
-
-
-.table th.first
-  :width 30px
-
-
-.table .checkbox
-  :margin-left 10px
-
-
-.table td
-  :padding 10px
-
+  
+  th
+    :padding 10px
+    :font-weight bold
+    :text-align left
+  .checkbox
+    :margin-left 10px
+  td
+    :padding 10px
 
 / forms
 
@@ -234,38 +214,36 @@ input.checkbox
   :margin 0
   :padding 0
 
-.form .group
-  :margin-bottom 15px
+.form
+  .group
+    :margin-bottom 15px
+  .column
+    :width 48%
+    &.left
+      :float left
+    &.right
+      :float right
 
-.form .column
-  :width 48%
+  label.title, input.text, textarea
+    :font-size 1.2em
+    :padding 1px 0
+    :margin 0
 
-.form .column.left
-  :float left
+  input.checkbox, input.radio
+    :margin-right 5px
 
-.form .column.right
-  :float right
+  label.checkbox, label.radio
+    :line-height 1.5em
 
-.form label.title, .form input.text, .form textarea
-  :font-size 1.2em
-  :padding 1px 0
-  :margin 0
+  label.title
+    :display block
+    :padding-bottom 2px
+    :font-weight bold
 
-.form input.checkbox, .form input.radio
-  :margin-right 5px
-
-.form label.checkbox, .form label.radio
-  :line-height 1.5em
-
-.form label.title
-  :display block
-  :padding-bottom 2px
-  :font-weight bold
-
-.form input.text, .form textarea.textarea
-  :width 100%
-  :border-width 1px
-  :border-style solid
+  input.text, textarea.textarea
+    :width 100%
+    :border-width 1px
+    :border-style solid
 
 / lists
 
@@ -273,23 +251,23 @@ ul.list
   :margin 0
   :padding 0
   :list-style-type none
+  
+  li
+    :clear left
+    :padding-bottom 5px
+    
+    .left
+      :float left
 
-ul.list li
-  :clear left
-  :padding-bottom 5px
+      .avatar
+        :width 50px
+        :height 50px
 
-ul.list li .left
-  :float left
+    .item
+      :margin-left 80px
 
-ul.list li .left .avatar
-  :width 50px
-  :height 50px
-
-ul.list li .item
-  :margin-left 80px
-
-ul.list li .item .avatar
-  :float left
-  :margin 0 5px 5px 0
-  :width 30px
-  :height 30px
+      .avatar
+        :float left
+        :margin 0 5px 5px 0
+        :width 30px
+        :height 30px

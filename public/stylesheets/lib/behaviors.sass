@@ -1,0 +1,42 @@
+
+!border_radius ||= 4px
+
+=rounded-borders-top-left
+  :-moz-border-radius-topleft = !border_radius
+  :-webkit-border-top-left-radius = !border_radius
+
+=rounded-borders-top-right
+  :-moz-border-radius-topright = !border_radius
+  :-webkit-border-top-right-radius = !border_radius
+
+=rounded-borders-bottom-left
+  :-moz-border-radius-bottomleft = !border_radius
+  :-webkit-border-bottom-left-radius = !border_radius
+
+=rounded-borders-bottom-right
+  :-moz-border-radius-bottomright = !border_radius
+  :-webkit-border-bottom-right-radius = !border_radius
+
+=rounded-borders-bottom
+  +rounded-borders-bottom-left
+  +rounded-borders-bottom-right
+
+=rounded-borders-top
+  +rounded-borders-top-left
+  +rounded-borders-top-right
+
+=rounded-borders
+  +rounded-borders-top
+  +rounded-borders-bottom
+
+
+=block-margin-normal
+  :margin 15px 0
+=block-margin-small
+  :margin 10px 0
+=container-padding
+  :padding 0 20px
+=reset-list
+  :margin 0
+  :padding 0
+  :list-style-type none
