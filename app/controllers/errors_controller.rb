@@ -3,12 +3,12 @@ class ErrorsController < ApplicationController
   helper_method :errors, :error, :project
   
   before_filter :require_user
-  before_filter :require_membership
+  before_filter :require_membership, :except => [:index]
   
   def index
     errors
     respond_to do |format|
-      format.html { redirect_to project }
+      format.html # render index.html.erb
       format.xml  { render :xml  => errors }
       format.json { render :json => errors }
     end
@@ -30,7 +30,16 @@ class ErrorsController < ApplicationController
   end
   
   def error
-    @error ||= project.reports.find(params[:id])
+    @error ||= Error.find(params[:id])
+  end
+  
+  def require_membership
+    unless current_user.member?(error)
+      store_location
+      flash[:notice] = "You must be a member of this project"
+      redirect_to home_path
+      return false
+    end
   end
   
 end

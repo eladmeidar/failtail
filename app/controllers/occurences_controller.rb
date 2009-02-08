@@ -1,9 +1,9 @@
 class OccurencesController < ApplicationController
-  
-  before_filter :require_user
-  before_filter :require_project_membership
 
   helper_method :project, :error, :occurence
+  
+  before_filter :require_user
+  before_filter :require_membership
 
   def show
     occurence
@@ -31,8 +31,8 @@ class OccurencesController < ApplicationController
     @occurence ||= Occurence.find(params[:id])
   end
   
-  def require_project_membership
-    unless membership?
+  def require_membership
+    unless current_user.member?(occurence)
       store_location
       flash[:notice] = "You must be a member of this project"
       redirect_to home_path

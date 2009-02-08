@@ -16,19 +16,24 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :projects, :through => :memberships
   
-  def owner?(record)
+  def owner?(record, aggregate=false)
     case record
-    when Membership then record.role == 'owner'
-    when Project    then owner?(memberships.first(:conditions => { :project_id => record.id }))
-    when Error      then owner?(record.project)
-    when Occurence  then owner?(record.error)
+    when Membership
+      if aggregate
+        record.role == 'owner' and record.user_id == self.id
+      else
+        record.user_id == self.id
+      end
+    when Project    then owner?(memberships.first(:conditions => {:project_id => record.id}), true)
+    when Error      then owner?(record.project, true)
+    when Occurence  then owner?(record.error, true)
     else false
     end
   end
   
   def member?(record)
     case record
-    when Membership then true
+    when Membership then record.user_id == self.id
     when Project    then owner?(memberships.first(:conditions => { :project_id => record.id }))
     when Error      then owner?(record.project)
     when Occurence  then owner?(record.error)

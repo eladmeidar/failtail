@@ -2,7 +2,7 @@ class MembershipsController < ApplicationController
   
   before_filter :require_user
   before_filter :require_project_ownership, :only => [:new, :create]
-  before_filter :require_project_ownership_or_membership, :only => [:destroy]
+  before_filter :require_ownership, :only => [:destroy]
   
   def new
     @membership = project.memberships.build
@@ -41,7 +41,7 @@ class MembershipsController < ApplicationController
   end
   
   def require_project_ownership
-    unless ownership?
+    unless current_user.owner?(project)
       store_location
       flash[:notice] = "You must be the owner of this project"
       if membership?
@@ -53,8 +53,8 @@ class MembershipsController < ApplicationController
     end
   end
   
-  def require_project_ownership_or_membership
-    unless ownership? or membership?
+  def require_ownership
+    unless current_user.owner?(membership)
       store_location
       flash[:notice] = "You must be the owner of this project"
       redirect_to home_path
