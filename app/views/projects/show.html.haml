@@ -1,0 +1,12 @@
+- sidebar_blocks[:members] = true
+- block project.name do
+  %p= project.api_token
+  %table.table
+    %tr
+      %th.first Error
+      %th       Last occurence
+      %th.last  Count
+    = render :partial => project.reports.all
+
+- actions do |link|
+  - link.to 'Edit project', edit_project_path(project)

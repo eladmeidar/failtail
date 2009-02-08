@@ -1,0 +1,4 @@
+%tr
+  %td.first= link_to h(truncate(project.name, :length => 100)), project
+  %td=       project.updated_at.to_formatted_s(:short)
+  %td.last=  project.reports.count
