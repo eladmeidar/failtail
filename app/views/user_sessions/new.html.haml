@@ -1,0 +1,15 @@
+- block 'Login' do
+  - form_for @user_session, :url => user_session_path, :html => {:class => 'form'} do |f|
+    .column.left
+      .group
+        = f.label :login, nil,  :class => 'title'
+        = f.text_field :login, :class => 'text'
+      .group
+        = f.label :password, nil, :class => 'title'
+        = f.password_field :password, :class => 'text'
+      .group
+        = f.check_box :remember_me, :class => 'checkbox'
+        = f.label :remember_me, nil, :class => 'checkbox'
+      .clear
+    .group.navform
+      = f.submit "Login", :class => 'button'

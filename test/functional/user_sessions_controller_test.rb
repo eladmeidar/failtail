@@ -49,7 +49,7 @@ class UserSessionsControllerTest < ActionController::TestCase
         end
         
         should_respond_with :success
-        should_render_template "user_sessions/new.html.erb"
+        should_render_template "user_sessions/new.html.haml"
         should_render_a_form
       end
       

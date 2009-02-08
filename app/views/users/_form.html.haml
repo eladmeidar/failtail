@@ -1,0 +1,18 @@
+- if @invitation
+  = hidden_field_tag "invitation", @invitation.code
+
+.group
+  = form.label :name, nil, :class => 'title'
+  = form.text_field :name, :class => 'text'
+.group
+  = form.label :email, nil, :class => 'title'
+  = form.text_field :email, :class => 'text'
+.group
+  = form.label :login, nil, :class => 'title'
+  = form.text_field :login, :class => 'text'
+.group
+  = form.label :password, form.object.new_record? ? nil : "Change password", :class => 'title'
+  = form.password_field :password, :class => 'text'
+.group
+  = form.label :password_confirmation, nil, :class => 'title'
+  = form.password_field :password_confirmation, :class => 'text'

@@ -1,0 +1,7 @@
+- block 'Register' do
+  - form_for @user, :url => account_path, :html => { :class => "form" } do |f|
+    .column.left
+      = render :partial => "form", :object => f
+    .clear
+    .group.navform
+      = f.submit "Register", :class => 'button'

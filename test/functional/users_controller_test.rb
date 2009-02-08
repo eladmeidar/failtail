@@ -6,27 +6,6 @@ class UsersControllerTest < ActionController::TestCase
     FAILTALE[:allow_registration] = true
   end
   
-  context "on GET to :show" do
-    context "when logged in" do
-      setup do
-        @user = Factory(:user)
-        set_session_for @user
-        get :show, :id => @user.id
-      end
-      
-      should_respond_with :success
-      should_render_template :show
-    end
-    context "when not logged in" do
-      setup do
-        @user = Factory(:user)
-        get :show, :id => @user.id
-      end
-      
-      should_redirect_to "home_url"
-    end
-  end
-  
   context "on GET to :new" do
     context "when logged in" do
       setup do
@@ -113,7 +92,7 @@ class UsersControllerTest < ActionController::TestCase
         end
       
         should_respond_with :success
-        should_render_template "users/edit.html.erb"
+        should_render_template "users/edit.html.haml"
         should_render_a_form
       end
       context "and sends valid data" do
