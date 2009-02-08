@@ -21,3 +21,11 @@
 
   </div>
 </div>
+
+<% actions do |link|
+  if error.closed
+    link.to 'Mark as not closed', error_path(error, :error => {:closed => '0'}), :method => :put
+  else
+    link.to 'Mark as closed', error_path(error, :error => {:closed => '1'}), :method => :put
+  end
+end %>

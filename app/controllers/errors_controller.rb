@@ -23,6 +23,21 @@ class ErrorsController < ApplicationController
     end
   end
   
+  def update
+    error.update_attributes! params[:error]
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.xml  { render :xml  => error }
+      format.json { render :json => error }
+    end
+  rescue ActiveRecord::RecordInvalid => e
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.xml  { render :xml  => e.record.errors, :status => :unprocessable_entity }
+      format.json { render :json => e.record.errors, :status => :unprocessable_entity }
+    end
+  end
+  
   private
   
   def errors
