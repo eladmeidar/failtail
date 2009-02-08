@@ -25,12 +25,8 @@ class ErrorsController < ApplicationController
   
   private
   
-  def project
-    @project ||= current_user.projects.find(params[:project_id])
-  end
-  
   def errors
-    @errors ||= project.reports.all
+    @errors ||= Error.all(:conditions => {:project_id => current_user.project_ids})
   end
   
   def error

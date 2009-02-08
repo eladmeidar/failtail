@@ -3,9 +3,9 @@
   <div class="secondary-navigation">
     <% menu_block do |link|
       occurence = error.last_occurence
-      link.to 'Summary', [project, error]
-      link.to 'Backtrace', [:backtrace, project, error, occurence]     if occurence.backtrace?
-      link.to 'Environment', [:environment, project, error, occurence] if occurence.properties?
+      link.to 'Summary', error
+      link.to 'Backtrace', [:backtrace, occurence]     if occurence.backtrace?
+      link.to 'Environment', [:environment, occurence] if occurence.properties?
     end %>
     <div class="clear"></div>
   </div>

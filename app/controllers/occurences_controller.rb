@@ -20,19 +20,15 @@ class OccurencesController < ApplicationController
   private
 
   def project
-    @project ||= current_user.projects.find(params[:project_id])
+    @project ||= error.project
   end
 
   def error
-    @error ||= project.reports.find(params[:error_id])
+    @error ||= occurence.error
   end
 
   def occurence
-    @occurence ||= error.occurences.find(params[:id])
-  end
-
-  def membership?
-    !project.nil?
+    @occurence ||= Occurence.find(params[:id])
   end
   
   def require_project_membership
