@@ -1,0 +1,18 @@
+#sidebar
+  = sidebar_message_block
+  = yield :sidebar_actions
+  - if sidebar_blocks[:projects]
+    .block
+      %h3 Projects
+      - menu_block(:class => 'navigation') do |link|
+        - @projects.each do |project|
+          - link.to project.name, project
+  
+  - if sidebar_blocks[:members]
+    .block
+      %h3 Members
+      - list @project.members, :class => 'navigation' do |member|
+        = link_to member.name, '#'
+      - if current_user.owner? @project
+        %ul.navigation
+          %li.first.last= link_to 'Add a member', [:new, @project, :membership]

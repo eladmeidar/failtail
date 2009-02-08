@@ -1,0 +1,22 @@
+#header
+  %h1= link_to 'Failtale', root_path
+  %h2 Tells you more about failing applications.
+  - if current_user
+    #user-navigation
+      - menu_block do |link|
+        - link.to('Invitations', new_invitation_path) if FAILTALE[:allow_invitations]
+        - link.to('Profile', edit_account_path)
+        - link.to('Settings', '#')
+        - link.to('Logout', user_session_path, :method => :delete)
+      .clear
+    #main-navigation
+      - menu_block do |link|
+        - link.to('Errors', root_path)
+        - link.to(@project.name, @project) { true } if @project and !@project.new_record?
+      .clear
+  - else
+    #main-navigation
+      - menu_block do |link|
+        - link.to('Login', new_user_session_path)
+        - link.to('Register', new_account_path) if FAILTALE[:allow_registration]
+      .clear

@@ -1,0 +1,17 @@
+!!! Strict
+%html{:xmlns=>"http://www.w3.org/1999/xhtml", :lang=>"en"}
+  %head
+    %meta{:'http-equiv'=>"Content-Type", :content=>"text/html; charset=utf-8"}
+    %title Failtale
+    = render_shared :assets
+  %body
+  
+  #container
+    = render_shared :header
+    #wrapper
+      #main= yield
+      = render_shared :sidebar
+      .clear
+    = render_shared :footer
+
+  = render_shared :google if FAILTALE[:google_analytics]
