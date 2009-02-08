@@ -1,11 +1,7 @@
 
-Given /^a user with login "(.+)" and password "(.+)"$/ do |login, password|
+Given /^a user with login "(.+)"(?: and password "(.+)")$/ do |login, password|
+  password ||= "password"
   @user = Factory(:user, :login => login, :password => password, :password_confirmation => password)
-end
-
-Given /^a user with login "(.+)"$/ do |login|
-  @user = Factory(:user, :login => login,
-    :password => "password", :password_confirmation => "password")
 end
 
 Given /^a user is logged in as "(.*)"$/ do |login|
