@@ -79,7 +79,7 @@ class Report
     if @error.nil?
       @occurence = nil
     elsif object.is_a? Hash
-      object = object.slice('name', 'description', 'backtrace', 'properties')
+      object = object.slice('name', 'description', 'backtrace', 'properties', "reporter")
       @occurence = @error.occurences.build(object)
     elsif object.is_a? Occurence
       @occurence = object

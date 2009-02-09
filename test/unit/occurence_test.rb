@@ -6,6 +6,7 @@ class OccurenceTest < ActiveSupport::TestCase
   should_require_attributes :name
   should_require_attributes :description
   should_require_attributes :properties
+  should_require_attributes :reporter
   
   should_belong_to :error
   

@@ -4,6 +4,7 @@ class Occurence < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :description
   validates_presence_of :properties
+  validates_presence_of :reporter
   
   validate do |error|
     msg = "properties must be a hash with strings for keys and values."
