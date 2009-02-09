@@ -10,4 +10,4 @@
 
 - actions do |link|
   - link.to 'Edit project', edit_project_path(project)
-  - link.to 'Close all errors', close_all_errors_project_path(project), :method => :put, :confirm => 'Are you sure?'
+  - link.to 'Close all errors', close_all_errors_project_path(project), :method => :put, :confirm => 'Are you sure?' if current_user.owner? project

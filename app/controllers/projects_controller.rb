@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   
   before_filter :require_user
   before_filter :require_membership, :only => :show
-  before_filter :require_ownership, :only => [:edit, :update, :destroy]
+  before_filter :require_ownership, :only => [:edit, :update, :destroy, :close_all_errors]
   
   def index
     projects
