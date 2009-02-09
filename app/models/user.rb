@@ -41,4 +41,9 @@ class User < ActiveRecord::Base
     end
   end
   
+  def gravatar_url(options={})
+    return nil unless self.email
+    @gravatar_url ||= Gravatar.url_for(self.email, options)
+  end
+  
 end

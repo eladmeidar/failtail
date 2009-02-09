@@ -12,6 +12,7 @@
     .block
       %h3 Members
       - list @project.members, :class => 'navigation' do |member|
+        = image_tag member.gravatar_url(:size => 24), :style => 'float:right; margin:5px 10px'
         = link_to member.name, '#'
       - if current_user.owner? @project
         %ul.navigation
