@@ -11,6 +11,9 @@ class Error < ActiveRecord::Base
   
   named_scope :with_hash, lambda { |h|
     { :conditions => { :hash_string => h } } }
+  named_scope :open, :conditions => { :closed => :false }
+  named_scope :owned_by, lambda { |user|
+    { :conditions => { :project_id => user.project_ids } } }
   
   delegate :name, :description, :to => :last_occurence
   delegate :properties, :properties?, :to => :last_occurence

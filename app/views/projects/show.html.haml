@@ -6,7 +6,7 @@
       %th.first Error
       %th       Last occurence
       %th.last  Count
-    = render :partial => project.reports.all
+    = render :partial => project.reports.open.all
 
 - actions do |link|
   - link.to 'Edit project', edit_project_path(project)

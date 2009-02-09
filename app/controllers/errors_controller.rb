@@ -41,7 +41,7 @@ class ErrorsController < ApplicationController
   private
   
   def errors
-    @errors ||= Error.all(:conditions => {:project_id => current_user.project_ids})
+    @errors ||= Error.open.owned_by(current_user).all
   end
   
   def error
