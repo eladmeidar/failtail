@@ -6,9 +6,6 @@ class ReportsController < ApplicationController
     report.save!
     response = { :success => 1 }
     status   = :created
-  rescue Report::ReportInvalid => e
-    response = { :success => 0 }
-    status   = :unprocessable_entity
   rescue ActiveRecord::RecordInvalid => e
     response = { :success => 0, :errors => e.record.errors }
     status   = :unprocessable_entity

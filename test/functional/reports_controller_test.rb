@@ -12,15 +12,15 @@ class ReportsControllerTest < ActionController::TestCase
           project = Factory(:project)
           error = Factory.attributes_for(:error, :project => project).
             slice(:hash_string).
-            stringify_keys
+            stringify_keys.with_indifferent_access
           occurence = Factory.attributes_for(:occurence, :error => error).
             slice(:name, :description, :backtrace, :properties, :reporter).
-            stringify_keys
+            stringify_keys.with_indifferent_access
           @report = {
-            'project' => { 'api_token' => project.api_token },
+            'project' => { 'api_token' => project.api_token }.with_indifferent_access,
             'error' => error,
             'occurence' => occurence
-          }
+          }.with_indifferent_access
         end
         
         context "with valid post data" do
@@ -68,7 +68,7 @@ class ReportsControllerTest < ActionController::TestCase
         
         context "with invalid occurence" do
           setup do
-            @report['occurence'] = @report['occurence'].except!('name')
+            @report[:occurence] = @report[:occurence].except!('name')
             post( :create,
                 { :report => @report, :format => extention }) 
           end
