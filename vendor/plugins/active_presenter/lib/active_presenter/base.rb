@@ -3,7 +3,7 @@ module ActivePresenter
   #
   class Base
     include ActiveSupport::Callbacks
-    define_callbacks :before_save, :after_save
+    define_callbacks :before_validation, :before_save, :after_save
     
     class_inheritable_accessor :presented
     self.presented = {}
@@ -36,8 +36,6 @@ module ActivePresenter
       attribute_name.to_s.gsub("#{presentable_type}_", "").humanize
     end
     
-    attr_accessor :errors
-    
     # Accepts arguments in two forms. For example, if you had a SignupPresenter that presented User, and Account, you could specify arguments in the following two forms:
     #
     #   1. SignupPresenter.new(:user_login => 'james', :user_password => 'swordfish', :user_password_confirmation => 'swordfish', :account_subdomain => 'giraffesoft')
@@ -54,7 +52,7 @@ module ActivePresenter
       args ||= {}
       
       presented.each do |type, klass|
-        send("#{type}=", args[type].is_a?(klass) ? args.delete(type) : klass.new)
+        send("#{type}=", args[type].is_a?(klass) ? args.delete(type) : klass.new(args.delete(type)))
       end
       
       self.attributes = args
@@ -87,13 +85,17 @@ module ActivePresenter
     # Returns boolean based on the validity of the presentables by calling valid? on each of them.
     #
     def valid?
-      presented.keys.each do |type|
-        presented_inst = send(type)
-        
-        merge_errors(presented_inst, type) unless presented_inst.valid?
+      errors.clear
+      if run_callbacks_with_halt(:before_validation)
+        presented.keys.each do |type|
+          presented_inst = send(type)
+
+          next unless save?(type, presented_inst)
+          merge_errors(presented_inst, type) unless presented_inst.valid?
+        end
+
+        errors.empty?
       end
-      
-      errors.empty?
     end
     
     # Save all of the presentables, wrapped in a transaction.
@@ -105,29 +107,39 @@ module ActivePresenter
       
       ActiveRecord::Base.transaction do
         if valid? && run_callbacks_with_halt(:before_save)
-          saved = presented_instances.map { |i| i.save(false) }.all?
+          saved = presented.keys.select {|key| save?(key, send(key))}.all? {|key| send(key).save}
           raise ActiveRecord::Rollback unless saved # TODO: Does this happen implicitly?
         end
+
+        run_callbacks_with_halt(:after_save) if saved
       end
-      
-      run_callbacks_with_halt(:after_save) if saved
       
       saved
     end
     
-    # Save all of the presentables, by calling each of their save! methods, wrapped in a transaction.
+    # Save all of the presentables wrapped in a transaction.
     #
     # Returns true on success, will raise otherwise.
     # 
     def save!
+      raise ActiveRecord::RecordInvalid.new(self) unless valid?
       raise ActiveRecord::RecordNotSaved unless run_callbacks_with_halt(:before_save)
       
       ActiveRecord::Base.transaction do
-        valid? # collect errors before potential exception raise
-        presented_instances.each { |i| i.save! }
+        presented.keys.select {|key| save?(key, send(key))}.each {|key| send(key).save!}
+
+        run_callbacks_with_halt(:after_save)
       end
-      
-      run_callbacks_with_halt(:after_save)
+
+      true
+    end
+    
+    def self.create(attrs={})
+      new(attrs).save
+    end
+    
+    def self.create!(attrs={})
+      new(attrs).save!
     end
     
     # Update attributes, and save the presentables
@@ -139,6 +151,21 @@ module ActivePresenter
       save
     end
     
+    # Should this presented instance be saved?  By default, this returns true
+    # Called from #save and #save!
+    #
+    # For
+    #  class SignupPresenter < ActivePresenter::Base
+    #    presents :account, :user
+    #  end
+    #
+    # #save? will be called twice:
+    #  save?(:account, #<Account:0x1234dead>)
+    #  save?(:user, #<User:0xdeadbeef>)
+    def save?(presented_key, presented_instance)
+      true
+    end
+
     # We define #id and #new_record? to play nice with form_for(@presenter) in Rails
     def id # :nodoc:
       nil
@@ -147,7 +174,7 @@ module ActivePresenter
     def new_record?
       true
     end
-    
+
     protected
       def presented_instances
         presented.keys.map { |key| send(key) }

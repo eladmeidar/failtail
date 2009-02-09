@@ -91,18 +91,18 @@ Expectations do
   end
 
   expect ActiveRecord::Base.to.receive(:transaction) do
-    s = SignupPresenter.new
+    s = SignupPresenter.new(:user_login => "da", :user_password => "seekrit")
     s.save!
   end
 
   expect User.any_instance.to.receive(:save!) do
-    s = SignupPresenter.new
+    s = SignupPresenter.new(:user_login => "da", :user_password => "seekrit")
     s.save!
   end
 
   expect Account.any_instance.to.receive(:save!) do
     User.any_instance.stubs(:save!)
-    s = SignupPresenter.new
+    s = SignupPresenter.new(:user_login => "da", :user_password => "seekrit")
     s.save!
   end
 
@@ -164,6 +164,17 @@ Expectations do
   expect NoMethodError do
     SignupPresenter.new({:i_dont_exist=>"blah"})
   end
+
+  # ActiveRecord::Base uses nil id to signify an unsaved model
+  expect nil do
+    SignupPresenter.new.id
+  end
+
+  expect nil do
+    returning(SignupPresenter.new(:user => User.new(hash_for_user))) do |presenter|
+      presenter.save!
+    end.id
+  end
   
   expect CantSavePresenter.new.not.to.be.save # it won't save because the filter chain will halt
   
@@ -185,4 +196,71 @@ Expectations do
   
   expect SamePrefixPresenter.new.to.be.respond_to?(:account_title)
   expect SamePrefixPresenter.new.to.be.respond_to?(:account_info_info)
+
+  expect [:before_validation, :before_save, :after_save] do
+    returning(CallbackOrderingPresenter.new) do |presenter|
+      presenter.save!
+    end.steps
+  end
+
+  expect [:before_validation, :before_save] do
+    returning(CallbackCantSavePresenter.new) do |presenter|
+      presenter.save
+    end.steps
+  end
+
+  expect [:before_validation, :before_save] do
+    returning(CallbackCantSavePresenter.new) do |presenter|
+      begin
+        presenter.save!
+      rescue ActiveRecord::RecordNotSaved
+        # NOP
+      end
+    end.steps
+  end
+
+  expect ActiveRecord::RecordNotSaved do
+    CallbackCantSavePresenter.new.save!
+  end
+
+  expect ActiveRecord::RecordInvalid do
+    CallbackCantValidatePresenter.new.save!
+  end
+
+  expect [:before_validation] do
+    returning(CallbackCantValidatePresenter.new) do |presenter|
+      begin
+        presenter.save!
+      rescue ActiveRecord::RecordInvalid
+        # NOP
+      end
+    end.steps
+  end
+
+  expect [:before_validation] do
+    returning(CallbackCantValidatePresenter.new) do |presenter|
+      presenter.save
+    end.steps
+  end
+
+  expect ActiveRecord::Errors.any_instance.to.receive(:clear) do
+    CallbackCantValidatePresenter.new.valid?
+  end
+
+  # this should act as ActiveRecord models do
+  expect NoMethodError do
+    SignupPresenter.new({:i_dont_exist=>"blah"})
+  end
+
+  expect false do
+    SignupNoNilPresenter.new.save
+  end
+
+  expect true do
+    SignupNoNilPresenter.new(:user => nil, :account => Account.new).save
+  end
+
+  expect true do
+    SignupNoNilPresenter.new(:user => nil, :account => Account.new).save!
+  end
 end
