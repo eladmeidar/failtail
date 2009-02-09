@@ -73,6 +73,24 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def close_all_errors
+    project.reports.open.all.each do |error|
+      error.closed = true
+      error.save!
+    end
+    respond_to do |format|
+      format.html { redirect_to project }
+      format.xml  { render :xml  => project }
+      format.json { render :json => project }
+    end
+  rescue ActiveRecord::RecordInvalid => e
+    respond_to do |format|
+      format.html { redirect_to project }
+      format.xml  { render :xml  => e.record.errors, :status => :unprocessable_entity }
+      format.json { render :json => e.record.errors, :status => :unprocessable_entity }
+    end
+  end
+  
   def destroy
     project.destroy
     respond_to do |format|
