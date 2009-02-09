@@ -16,9 +16,8 @@ class Report < ActivePresenter::Base
   end
   
   def find_error
-    if err = @project.reports.find_by_hash_string(@error.hash_string)
-      @error = err
-    end
+    err = @project.reports.find_by_hash_string(@error.hash_string)
+    @error = err if err
   end
   
   def link_error_to_project
