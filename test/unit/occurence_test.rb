@@ -10,6 +10,8 @@ class OccurenceTest < ActiveSupport::TestCase
   
   should_belong_to :error
   
+  should_have_index :error_id
+  
   context "Occurence" do
     setup do
       @msg = 'properties must be a hash with strings for keys and values.'

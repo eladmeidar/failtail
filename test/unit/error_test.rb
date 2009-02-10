@@ -8,6 +8,9 @@ class ErrorTest < ActiveSupport::TestCase
   should_belong_to :project
   should_have_many :occurences, :dependent => :destroy
   
+  should_have_index :project_id
+  should_have_index :closed
+  
   context "with other errors" do
     setup do
       Factory(:error)
