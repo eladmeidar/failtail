@@ -60,35 +60,33 @@ class Test::Unit::TestCase
   end
 end
 
-module Thoughtbot
-  module Shoulda
-    class Context
-      
-      attr_accessor :current_user
-      attr_accessor :current_user_proc
-      
-      def current_user_is_missing
-        current_user_is { false }
-      end
-      
-      def current_user_is(&blk)
-        self.current_user_proc = blk
-      end
-      
-      def run_parent_setup_blocks_with_authlogic(binding)
-        if self.current_user_proc and self.current_user.nil?
-          self.current_user = self.current_user_proc.bind(binding).call
-        end
-        unless self.parent.is_a? Context
-          test_unit_class.current_user = self.current_user
-          binding.send(:set_session_for, self.current_user) if self.current_user
-        else
-          self.parent.current_user = self.current_user
-        end
-        run_parent_setup_blocks_without_authlogic(binding)
-      end
-      alias_method_chain :run_parent_setup_blocks, :authlogic
-      
+module Shoulda
+  class Context
+    
+    attr_accessor :current_user
+    attr_accessor :current_user_proc
+    
+    def current_user_is_missing
+      current_user_is { false }
     end
+    
+    def current_user_is(&blk)
+      self.current_user_proc = blk
+    end
+    
+    def run_parent_setup_blocks_with_authlogic(binding)
+      if self.current_user_proc and self.current_user.nil?
+        self.current_user = self.current_user_proc.bind(binding).call
+      end
+      unless self.parent.is_a? Context
+        test_unit_class.current_user = self.current_user
+        binding.send(:set_session_for, self.current_user) if self.current_user
+      else
+        self.parent.current_user = self.current_user
+      end
+      run_parent_setup_blocks_without_authlogic(binding)
+    end
+    alias_method_chain :run_parent_setup_blocks, :authlogic
+    
   end
 end

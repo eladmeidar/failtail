@@ -2,11 +2,11 @@ require 'test_helper'
 
 class OccurenceTest < ActiveSupport::TestCase
   
-  should_require_attributes :error
-  should_require_attributes :name
-  should_require_attributes :description
-  should_require_attributes :properties
-  should_require_attributes :reporter
+  should_validate_presence_of :error
+  should_validate_presence_of :name
+  should_validate_presence_of :description
+  should_validate_presence_of :properties
+  should_validate_presence_of :reporter
   
   should_belong_to :error
   

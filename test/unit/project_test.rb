@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
   
-  should_require_attributes :name
+  should_validate_presence_of :name
   
   should_have_many :memberships, :dependent => :destroy
   should_have_many :members, :through => :memberships
@@ -13,7 +13,7 @@ class ProjectTest < ActiveSupport::TestCase
       Factory(:project)
     end
 
-    should_require_unique_attributes :api_token
+    should_validate_uniqueness_of :api_token
   end
   
   should "create membership for owner" do

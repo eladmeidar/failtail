@@ -2,9 +2,9 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   
-  should_require_attributes :name
-  should_require_attributes :login
-  should_require_attributes :email
+  should_validate_presence_of :name
+  should_validate_presence_of :login
+  should_validate_presence_of :email
   
   should_ensure_length_at_least :name, 2
   should_ensure_length_at_least :login, 2
@@ -17,8 +17,8 @@ class UserTest < ActiveSupport::TestCase
       Factory(:user)
     end
     
-    should_require_unique_attributes :login
-    should_require_unique_attributes :email
+    should_validate_uniqueness_of :login
+    should_validate_uniqueness_of :email
   end
   
 end
