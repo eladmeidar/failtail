@@ -11,8 +11,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_uniqueness_of :email
   
-  has_many :owned_projects, :dependent => :destroy,
-    :class_name => "Project", :foreign_key => "owner_id"
   has_many :memberships, :dependent => :destroy
   has_many :projects, :through => :memberships
   
