@@ -34,9 +34,9 @@ class User < ActiveRecord::Base
   def member?(record)
     case record
     when Membership then record.user_id == self.id
-    when Project    then owner?(memberships.first(:conditions => { :project_id => record.id }))
-    when Error      then owner?(record.project)
-    when Occurence  then owner?(record.error)
+    when Project    then member?(memberships.first(:conditions => { :project_id => record.id }))
+    when Error      then member?(record.project)
+    when Occurence  then member?(record.error)
     else false
     end
   end
