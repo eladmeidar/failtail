@@ -11,7 +11,7 @@ class NotifierTest < ActionMailer::TestCase
     should_have_subject 'You received a Failtale invitation!'
     should_have_to_recipient { @invitation.email }
     should_have_from 'donotreply@failtale.be'
-    should_match_body('invitation url') { "http://www.failtale.be/users/new?invitation=#{@invitation.code}" }
+    should_match_body('invitation url') { "http://www.failtale.be/account/new?invitation=#{@invitation.code}" }
   end
   
 end
