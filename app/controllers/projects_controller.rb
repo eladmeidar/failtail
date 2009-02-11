@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   
-  helper_method :projects, :project
+  helper_method :projects, :project, :open_errors
   
   before_filter :require_user
   before_filter :require_membership, :only => :show
@@ -112,6 +112,10 @@ class ProjectsController < ApplicationController
     else
       @project ||= current_user.projects.find(params[:id])
     end
+  end
+  
+  def open_errors
+    @open_errors ||= project.reports.open.all
   end
   
 end

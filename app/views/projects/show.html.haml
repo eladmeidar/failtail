@@ -6,7 +6,11 @@
       %th.first Error
       %th       Last occurence
       %th.last  Count
-    = render :partial => project.reports.open.all
+    - unless open_errors.empty?
+      = render :partial => open_errors
+    - else
+      %tr
+        %td{:colspan=>3} There are no open errors.
 
 - actions do |link|
   - link.to 'Edit project', edit_project_path(project)
