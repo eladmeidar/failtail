@@ -5,13 +5,13 @@
     %title Failtale
     = render_shared :assets
   %body
-  
-  #container
-    = render_shared :header
-    #wrapper
-      #main= yield
-      = render_shared :sidebar
-      .clear
-    = render_shared :footer
-
-  = render_shared :google if FAILTALE[:google_analytics]
+    
+    #container
+      = render_shared :header
+      #wrapper
+        #main= yield
+        = render_shared :sidebar
+        .clear
+      = render_shared :footer
+    
+    = render_shared :google if FAILTALE[:google_analytics]

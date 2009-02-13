@@ -38,3 +38,6 @@
           %li.mr-henry
             %a{ :href => "http://www.mrhenry.be", :title => "Mr. Henry" }
               Mr. Henry
+    
+    = render_shared :google if FAILTALE[:google_analytics]
+    
