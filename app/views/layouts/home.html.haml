@@ -1,0 +1,40 @@
+!!! Strict
+%html{:xmlns=>"http://www.w3.org/1999/xhtml", :lang=>"en"}
+  %head
+    %meta{:'http-equiv'=>"Content-Type", :content=>"text/html; charset=utf-8"}
+    %title Failtale
+    = render_shared :assets
+  %body#home
+  
+    #wrapper
+      #container
+  
+        %h1
+          Failtale
+          %sup Beta
+          \- Telling you more about failing applications.
+      
+        %ul.features
+          %li.restfull-api RESTful API
+          %li.open-source Open Source &amp; Free
+          %li.platform-agnostic Platform Agnostic
+          %li.and-more And More ...
+          %li.request-invitation
+            %a{ :href => "mailto:failtale@mrhenry.be?subject=I%20would%20love%20to%20get%20an%20invitation%20for%20this%20sexy%20developer%20toy!", :title => "Request invitation" }
+              Request Invitation
+        
+        %hr
+        
+        %ul.links
+          %li.updates
+            %a{ :href => "http://twitter.com/failtale", :title => "Updates" }
+              Updates
+          %li.report-a-bug
+            %a{ :href => "http://mrhenry.lighthouseapp.com/projects/24526-failtale/overview", :title => "Report a bug" }
+              Report a bug
+          %li.source-code
+            %a{ :href => "http://github.com/mrhenry/failtale", :title => "Source code" }
+              Source code
+          %li.mr-henry
+            %a{ :href => "http://www.mrhenry.be", :title => "Mr. Henry" }
+              Mr. Henry

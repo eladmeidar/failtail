@@ -27,4 +27,14 @@ $(document).ready(function() {
       })
     });
   });
+  
+  $("#home .links a").mouseover(function(){
+      $(this).stop();
+      $(this).animate( { opacity: 1 }, 200 );
+  });
+  $("#home .links a").mouseout(function(){
+      $(this).stop();
+      $(this).animate( { opacity: 0.5 }, 200);
+  });
+  
 });
