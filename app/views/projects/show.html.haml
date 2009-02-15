@@ -1,5 +1,7 @@
 - sidebar_blocks[:members] = true
-- block project.name do
+- block project.name do |link|
+  - link.to 'Open', project
+  - link.to 'Closed', [:closed, project]
   %p= project.api_token
   %table.table
     %tr

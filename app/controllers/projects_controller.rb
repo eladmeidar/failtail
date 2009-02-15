@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
   
-  helper_method :projects, :project, :open_errors
+  helper_method :projects, :project, :open_errors, :closed_errors
   
   before_filter :require_user
-  before_filter :require_membership, :only => :show
+  before_filter :require_membership, :only => [:show, :closed]
   before_filter :require_ownership, :only => [:edit, :update, :destroy, :close_all_errors]
   
   def index
@@ -18,7 +18,16 @@ class ProjectsController < ApplicationController
   def show
     project
     respond_to do |format|
-      format.html # render index.html.erb
+      format.html # render show.html.erb
+      format.xml  { render :xml  => project }
+      format.json { render :json => project }
+    end
+  end
+  
+  def closed
+    project
+    respond_to do |format|
+      format.html # render closed.html.erb
       format.xml  { render :xml  => project }
       format.json { render :json => project }
     end
@@ -116,6 +125,10 @@ class ProjectsController < ApplicationController
   
   def open_errors
     @open_errors ||= project.reports.open.all
+  end
+  
+  def closed_errors
+    @closed_errors ||= project.reports.closed.all
   end
   
 end

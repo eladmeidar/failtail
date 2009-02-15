@@ -11,7 +11,8 @@ class Error < ActiveRecord::Base
   
   named_scope :with_hash, lambda { |h|
     { :conditions => { :hash_string => h } } }
-  named_scope :open, :conditions => { :closed => :false }
+  named_scope :open,   :conditions => [ "errors.closed = ?", false ]
+  named_scope :closed, :conditions => [ "errors.closed = ?", true  ]
   named_scope :owned_by, lambda { |user|
     { :conditions => { :project_id => user.project_ids } } }
   
