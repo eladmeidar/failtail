@@ -112,7 +112,7 @@ class ProjectsController < ApplicationController
   private
   
   def projects
-    @projects ||= current_user.projects.all
+    @projects ||= current_user.projects.paginate :page => params[:page]
   end
   
   def project
@@ -124,11 +124,11 @@ class ProjectsController < ApplicationController
   end
   
   def open_errors
-    @open_errors ||= project.reports.open.all
+    @open_errors ||= project.reports.open.paginate :page => params[:page]
   end
   
   def closed_errors
-    @closed_errors ||= project.reports.closed.all
+    @closed_errors ||= project.reports.closed.paginate :page => params[:page]
   end
   
 end

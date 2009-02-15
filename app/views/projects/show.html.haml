@@ -13,6 +13,8 @@
     - else
       %tr
         %td{:colspan=>3} There are no open errors.
+  = will_paginate(open_errors)
+  %br
 
 - actions do |link|
   - link.to 'Edit project', edit_project_path(project)

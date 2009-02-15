@@ -16,8 +16,10 @@
     %tr
       %th.first.last{:colspan=>'2'} Occurences
     
-    =render :partial => error.occurences.all
-
+    =render :partial => occurences
+  = will_paginate occurences
+  %br
+  
 - actions do |link|
   - if error.closed
     - link.to 'Mark as not closed', error_path(error, :error => {:closed => '0'}), :method => :put

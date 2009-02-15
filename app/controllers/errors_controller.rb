@@ -1,6 +1,6 @@
 class ErrorsController < ApplicationController
   
-  helper_method :errors, :error, :project
+  helper_method :errors, :error, :project, :occurences
   
   before_filter :require_user
   before_filter :require_membership, :except => [:index]
@@ -46,6 +46,10 @@ class ErrorsController < ApplicationController
   
   def error
     @error ||= Error.find(params[:id])
+  end
+  
+  def occurences
+    @occurences ||= error.occurences.paginate :page => params[:page]
   end
   
   def require_membership

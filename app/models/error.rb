@@ -1,5 +1,7 @@
 class Error < ActiveRecord::Base
   
+  def self.per_page ; 20 ; end
+  
   validates_presence_of :project_id
   validates_presence_of :hash_string
   
