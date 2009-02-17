@@ -7,6 +7,7 @@ h1. Errors API
       hash_string: 8976531AFBCE...
     occurence:
       name: MethodNotFound at /some/path.rb:45
+      reporter: rails
       description: an optional description
       backtrace: "..."
       properties:
