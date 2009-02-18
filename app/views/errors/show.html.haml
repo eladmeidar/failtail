@@ -7,6 +7,8 @@
   
   %p= error.description
   
+  = render_reporter error.last_occurence
+  
   - if error.backtrace?
     %h3 Backtrace
     %pre=h error.backtrace.split("\n")[0..5].join("\n")
