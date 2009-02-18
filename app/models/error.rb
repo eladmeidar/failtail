@@ -9,7 +9,7 @@ class Error < ActiveRecord::Base
   
   belongs_to :project, :counter_cache => true
   has_many :occurences, :dependent => :destroy, :order => 'updated_at DESC'
-  has_one :last_occurence, :class_name => "Occurence", :order => 'id ASC'
+  has_one :last_occurence, :class_name => "Occurence", :order => 'id DESC'
   
   named_scope :with_hash, lambda { |h|
     { :conditions => { :hash_string => h } } }
