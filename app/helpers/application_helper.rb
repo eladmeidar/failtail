@@ -16,9 +16,9 @@ module ApplicationHelper
   def render_reporter(occurence)
     reporter = Reporter.find(occurence.reporter)
     return '' if reporter.nil?
-    render reporter.template_path,
+    render :file => reporter.template_path, :locals => {
       :occurence  => occurence,
-      :properties => occurence.properties
+      :properties => occurence.properties }
   end
   
   class MenuBlockBuilder
