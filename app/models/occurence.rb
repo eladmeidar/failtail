@@ -28,4 +28,8 @@ class Occurence < ActiveRecord::Base
   
   belongs_to :error, :counter_cache => true
   
+  def first?
+    self.error.occurences.count == 1
+  end
+  
 end
