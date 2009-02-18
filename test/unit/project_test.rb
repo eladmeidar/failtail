@@ -7,6 +7,7 @@ class ProjectTest < ActiveSupport::TestCase
   should_have_many :memberships, :dependent => :destroy
   should_have_many :members, :through => :memberships
   should_have_many :reports, :dependent => :destroy
+  should_have_many :service_settings, :dependent => :destroy
   
   context "with other projects" do
     setup do

@@ -7,6 +7,7 @@ class Project < ActiveRecord::Base
   
   has_many :memberships, :dependent => :destroy
   has_many :members, :through => :memberships, :source => :user
+  has_many :service_settings, :dependent => :destroy, :as => :service_owner
   
   # we can't user 'errors' here as it would conflict with AR's error handeling
   has_many :reports, :dependent => :destroy, :order => 'updated_at DESC',

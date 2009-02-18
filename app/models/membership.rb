@@ -8,6 +8,7 @@ class Membership < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :project
+  has_many :service_settings, :dependent => :destroy, :as => :service_owner
   
   attr_accessor :email
   before_validation :lookup_user_by_email
