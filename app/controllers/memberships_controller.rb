@@ -8,6 +8,29 @@ class MembershipsController < ApplicationController
     @membership = project.memberships.build
   end
   
+  def edit
+    allowed_services = Service::Base.enabled_services.dup
+    @service_settings = membership.service_settings.all
+    
+    @service_settings = @service_settings.collect do |service_setting|
+      type_name = service_setting.service_type
+      if allowed_services.include? type_name
+        allowed_services.delete(type_name)
+        service_setting
+      else
+        service_setting.destroy
+      end
+    end.compact
+    
+    allowed_services.each do |type_name|
+      @service_settings.push(ServiceSetting.new(
+        :service_owner => membership,
+        :service_type  => type_name,
+        :properties    => {}
+      ))
+    end
+  end
+  
   def create
     @membership = project.memberships.build(params[:membership])
     @membership.save!

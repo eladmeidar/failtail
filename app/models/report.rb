@@ -35,23 +35,15 @@ class Report < ActivePresenter::Base
   
   def deliver_notifications_to_services
     find_service_settings.each do |service_setting|
+      next unless service_setting.enabled
+      next if service_setting.new_errors_only and !@occurence.first?
       service_type = service_setting.service_type
       owner_type   = service_setting.service_owner.class.to_s.tableize.to_sym
-      if enabled_services.include? service_type
+      if Service::Base.enabled_services.include? service_type
         service_class = "services/#{service_type}_service".classify.constantize
         if service_class.locations.include? owner_type
           service_class.report(@occurence, service_setting)
         end
-      end
-    end
-  end
-  
-  def enabled_services
-    @enabled_services ||= begin
-      if FAILTALE[:services]
-        FAILTALE[:services].collect(&:to_s)
-      else
-        ['mail']
       end
     end
   end

@@ -18,4 +18,6 @@ ActionController::Routing::Routes.draw do |map|
   map.home 'home', :controller => 'pages', :action => 'home'
   map.root :controller => 'projects', :action => 'index'
   
+  map.resources :service_settings
+  
 end

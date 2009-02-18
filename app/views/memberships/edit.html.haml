@@ -1,0 +1,21 @@
+- @service_settings.each do |service_setting|
+  - block "#{service_setting.service_type}_service".underscore.humanize do
+
+    - form_for service_setting, :html => { :class => "form" } do |f|
+      = f.hidden_field :service_owner_type
+      = f.hidden_field :service_owner_id
+      = f.hidden_field :service_type
+      
+      .group
+        = f.check_box :enabled, :class => 'checkbox'
+        = f.label :enabled, 'Enabled', :class => 'checkbox'
+      
+      .group
+        = f.check_box :new_errors_only, :class => 'checkbox'
+        = f.label :new_errors_only, 'Only for new errors', :class => 'checkbox'
+      
+      - f.fields_for 'properties', service_setting.properties do |g|
+        = render :partial => "/services/#{service_setting.service_type}", :locals => { :settings => service_setting, :form => g }
+      .clear
+      .group.navform
+        = f.submit "Save", :class => 'button'

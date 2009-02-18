@@ -10,6 +10,7 @@ class ServiceSettingTest < ActiveSupport::TestCase
   should_have_db_column :service_owner_type, :type => "string"
   should_have_db_column :service_type,       :type => "string"
   should_have_db_column :new_errors_only,    :type => "boolean", :default => false
+  should_have_db_column :enabled,            :type => "boolean", :default => false
   should_have_db_column :properties,         :type => "text"
   
   should_validate_presence_of :service_owner_id
