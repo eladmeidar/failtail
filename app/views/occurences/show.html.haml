@@ -7,6 +7,8 @@
   
   %p= occurence.description
   
+  = render_reporter occurence
+  
   - if occurence.backtrace?
     %h3 Backtrace
     %pre= occurence.backtrace.split("\n")[0..5].join("\n")

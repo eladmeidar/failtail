@@ -13,6 +13,13 @@ module ApplicationHelper
     render options
   end
   
+  def render_reporter(occurence)
+    reporter = Reporter.find(occurence.reporter)
+    render reporter.template_path,
+      :occurence  => occurence,
+      :properties => occurence.properties
+  end
+  
   class MenuBlockBuilder
     def initialize(template, split=false)
       @template = template

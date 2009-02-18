@@ -1,0 +1,8 @@
+%table.table
+  %tr
+    %th.first Property
+    %th.last Value
+  %tr
+    - url = "http://#{properties['HTTP_HOST']}/#{properties['REQUEST_PATH'] || properties['PATH_INFO']}"
+    %td URL
+    %td= link_to url, url
