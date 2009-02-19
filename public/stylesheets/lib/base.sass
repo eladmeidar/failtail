@@ -1,273 +1,118 @@
-
-\*
-  :margin 0
-  :padding 0
-
-.clear
-  :clear both
-
-h1
-  +block-margin-normal
-  :font
-    :size 22px
-    :weight normal
-h2
-  +block-margin-normal
-  :font
-    :size 22px
-    :weight normal
-h3
-  +block-margin-small
-  :font
-    :size 18px
-    :weight normal
-h4
-  +block-margin-small
-  :font
-    :size 16px
-    :weight normal
-
-hr
-  :height 1px
-  :border 0
-
-p
-  +block-margin-normal
-
-a img
-  :border none
-
 body
+  +reset-margin-padding
+  :text-align center
+  :background url('../images/backgrounds/header.png') repeat-x
+  :background-color= !body_bg
+  :color= !content_text
   :font
-    :size 12px
-    :family sans-serif
+    :size= !content_text_size
+    :family helvetica, arial, sans-serif
+  
+  #wrapper
+    :background url('../images/backgrounds/header-grad.png') top center no-repeat
 
 #container
-  :min-width 960px
-
-#header
-  +container-padding
+  :width 1055px
+  :margin 0 auto
+  :text-align left
   :position relative
-  :padding-top 1px
   
-  h1
-    :padding 10px 0
-    :font-size 30px
-    
-    a:link, a:active, a:hover, a:visited
-      :text-decoration none
-      :margin-bottom 0
-      :line-height 1em
-  
-  h2
-    :position absolute
-    :top 31px
-    :left 130px
-    :font
-      :size 14px
-      :weight normal
-    :margin 0
-    :color #fff
-
-#main
-  :width 70%
-  :float left
-
-.actions-bar
-  :padding 10px 1px
-  
-  .actions
-    :float left
-  
-  .pagination
+  #profile
     :float right
-    :padding 1px 0
-
-#sidebar
-  :width 25%
-  :float right
+    :color= !profile_text
+    :font-size= !content_text_size - 2px
+    :text-transform uppercase
+    +bold-links
+    :margin
+      :top   7px
+      :right 30px
   
-  h3
-    :padding 10px 15px
-    :margin 0
-    :font-size 13px
-  
-  .block
-    :margin-bottom 20px
-    :padding-bottom 10px
+  #header
+    :top 28px
+    :margin
+      :bottom 28px
+    :height 265px
+    :position relative
     
-    .content
-      :padding 0 15px
+    *
+      :text-indent -50000px
+      +reset-margin-padding
     
-    .sidebar-block
-      :padding 10px
-  
-  ul.navigation
-    li
-      a:link, a:visited
-        :display block
-        :padding 10px 15px
-  
-  .notice
-    :padding 10px
-
-#wrapper
-  +container-padding
-  :padding-top 20px
-
-#main
-  
-  .block
-    :margin-bottom 20px
+    h1
+      :top= (44px - 28px)
+      :right 10px
+      a
+        :top 0px
+        :right  0px
+        :background url('../images/backgrounds/header-content.png') top center no-repeat
+      &, a
+        :position absolute
+        :width 257px
+        :height 99px
     
-    .content
-      :padding 0 15px
-
-  .main
-    p.first
-      :margin-top 0
-
-#user-navigation
-  :position absolute
-  :top 0px
-  :right 20px
-
-=horizontal-navigation
-  ul
-    +reset-list
+    h2
+      :height 0
+      :width 0
+  
+  #breadcrumb
+    :position absolute
+    :top 148px
+    :left 164px
     
-    li
-      :float left
+    ul
+      +reset-margin-padding
+      :list-style none
+      :padding-right 11px
+      :background url('../images/breadcrumb/orange-shadow.png') top right no-repeat
+      :height 42px
       
-      a:link, a:visited, a:hover, a:active
-        :text-decoration none
-
-#user-navigation
-  +horizontal-navigation
-  ul li
-    :padding 5px 10px
-#main-navigation
-  +horizontal-navigation
-  ul li
-    :margin-right 5px
-  ul li a
-    :font-size 15px
-    :display block
-    :padding 8px 15px
-.secondary-navigation
-  +horizontal-navigation
-  :font-size 13px
-  :border-bottom-width 10px
-  :border-bottom-style solid
-  ul li a
-    :display block
-    :padding 10px 15px
-
-#sidebar ul.navigation
-  +reset-list
-
-
-#footer
-  +container-padding
-  :padding-bottom 20px
-
-/ pagination
-
-=pagination-item
-  :padding 2px 5px
-  :margin-right 5px
-  :display block
-  :float left
-
-.pagination
-  a
-    +pagination-item
-    :text-decoration none
-    :border-width 1px
-    :border-style solid
-  span
-    +pagination-item
-    &.current
-      :font-weight  bold
-      :border-width 1px
-      :border-style solid
-
-/ tables
-
-.table
-  :width 100%
-  :border-collapse collapse
-  :margin-bottom 15px
-  
-  th
-    :padding 10px
-    :font-weight bold
-    :text-align left
-  .checkbox
-    :margin-left 10px
-  td
-    :padding 10px
-
-/ forms
-
-input.checkbox
-  :margin 0
-  :padding 0
-
-.form
-  .group
-    :margin-bottom 15px
-  .column
-    :width 48%
-    &.left
-      :float left
-    &.right
-      :float right
-
-  label.title, input.text, textarea
-    :font-size 1.2em
-    :padding 1px 0
-    :margin 0
-
-  input.checkbox, input.radio
-    :margin-right 5px
-
-  label.checkbox, label.radio
-    :line-height 1.5em
-
-  label.title
-    :display block
-    :padding-bottom 2px
-    :font-weight bold
-
-  input.text, textarea.textarea
-    :width 100%
-    :border-width 1px
-    :border-style solid
-
-/ lists
-
-ul.list
-  :margin 0
-  :padding 0
-  :list-style-type none
-  
-  li
-    :clear left
-    :padding-bottom 5px
-    
-    .left
-      :float left
-
-      .avatar
-        :width 50px
-        :height 50px
-
-    .item
-      :margin-left 80px
-
-      .avatar
+      li
         :float left
-        :margin 0 5px 5px 0
-        :width 30px
-        :height 30px
+        :padding 7px 12px
+        :padding-right 0px
+        :padding-left 31px
+        :font-size 24px
+        :line-height 24xp
+        
+        a, a:hover, a:visited, a:active
+          :color #ffffff
+          :text-decoration none
+      
+      li.first
+        :background-color= !blue_dark
+        :padding 7px 12px
+        :padding-right 0px
+      
+      li.last
+        :padding-right 12px
+      
+      li.first + li + li, li.first + li + li + li + li
+        :background url('../images/breadcrumb/light-to-dark-blue.png') top left no-repeat
+        :background-color= !blue_dark
+        
+      li + li, li + li + li +li
+        :background url('../images/breadcrumb/dark-to-light-blue.png') top left no-repeat
+        :background-color= !blue_light
+      
+      
+      li.first.last
+        :background url('../images/breadcrumb/dark-to-light-blue.png') top left no-repeat
+        :background-color= !blue_light
+      
+      li.first + li.last
+        :background url('../images/breadcrumb/dark-blue-to-orange.png') top left no-repeat
+        :background-color= !orange
+      
+      li.first + li + li.last
+        :background url('../images/breadcrumb/light-blue-to-orange.png') top left no-repeat
+        :background-color= !orange
+        
+      li.first + li + li + li.last
+        :background url('../images/breadcrumb/dark-blue-to-orange.png') top left no-repeat
+        :background-color= !orange
+        
+      li.first + li + li + li + li.last
+        :background url('../images/breadcrumb/light-blue-to-orange.png') top left no-repeat
+        :background-color= !orange
+        
+        
