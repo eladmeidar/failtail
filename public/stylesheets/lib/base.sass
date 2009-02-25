@@ -53,6 +53,35 @@ body
     h2
       :height 0
       :width 0
+    
+  #content
+    
+    table
+      :border-collapse collapse
+      :width 634px
+      :line-height 1em
+      
+      th
+        :text-transform uppercase
+      
+      td
+        :padding 5px
+      
+      tr + tr + tr
+        :border-top 1px solid #ecefe6
+      
+      td.select, th.select
+        :width 16px
+      
+      td.label
+        :width 47px
+      
+      td + td
+        :background-color #ffffff
+      
+      td
+        +links
+  
   
   #breadcrumb
     :position absolute
@@ -114,5 +143,4 @@ body
       li.first + li + li + li + li.last
         :background url('../images/breadcrumb/light-blue-to-orange.png') top left no-repeat
         :background-color= !orange
-        
-        
+      

@@ -1,11 +1,12 @@
 - sidebar_blocks[:projects] = true
-- block 'Projects' do
-  %table.table
-    %tr
-      %th.first Name
-      %th       Last error
-      %th.last  Count
-    = render :partial => projects
+
+%table
+  %tr
+    %th 
+    %th label
+    %th project
+    %th Count
+  = render :partial => projects
 
 - actions do |link|
   - link.to 'New project', new_project_path
