@@ -10,7 +10,7 @@ class Notifier < ActionMailer::Base
   end
   
   def occurence_report(user, occurence, sent_at = Time.now)
-    subject    "[#{occurence.error.project.name}] An error occured"
+    subject    "[#{occurence.error.project.name}] An error occured (@#{@occurence.error_id})"
     recipients user.email
     from       'donotreply@failtale.be'
     sent_on    sent_at
