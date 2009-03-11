@@ -64,14 +64,15 @@ body
       th
         :text-transform uppercase
       
-      td
+      td, th
         :padding 5px
       
       tr + tr + tr
         :border-top 1px solid #ecefe6
       
       td.select, th.select
-        :width 16px
+        :width 154px
+        :text-align right
       
       td.label
         :width 47px
@@ -81,6 +82,35 @@ body
       
       td
         +links
+      
+      td.count
+        :text-align center
+        :width 75px
+        
+      td.count > div
+        :background url('../images/count/left.png') top left no-repeat
+        :display inline-block
+        :padding-left 8px
+        
+      td.count > div > div
+        :background url('../images/count/right.png') top right no-repeat
+        :display inline-block
+        :padding-right 8px
+        
+      td.count > div > div > div
+        :background url('../images/count/middle.png') top right
+        :height 12px
+        :display inline-block
+        :color #fff
+        :padding
+          :top 4px
+          :bottom 3px
+          :left 3px
+          :right 3px
+        :line-height 12px
+        :font
+          :size 12px
+          :weight bold
   
   
   #breadcrumb
