@@ -9,7 +9,7 @@
       %th       Last occurence
       %th.last  Count
     - unless open_errors.empty?
-      = render :partial => open_errors
+      = render open_errors
     - else
       %tr
         %td{:colspan=>3} There are no open errors.
