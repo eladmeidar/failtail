@@ -10,19 +10,15 @@ class Project < ActiveRecord::Base
   has_many :service_settings, :dependent => :destroy, :as => :service_owner
   
   # we can't user 'errors' here as it would conflict with AR's error handeling
-  has_many :reports, :dependent => :destroy, :order => 'updated_at DESC',
+  has_many :reports, :dependent => :destroy,
     :class_name => "Error", :foreign_key => "project_id", :include => :last_occurence
+  
+  default_scope :order => 'name ASC'
   
   named_scope :with_api_token, lambda { |t|
     { :conditions => { :api_token => t } } }
   
   before_validation :generate_api_token
-  
-  before_create { |r| r.instance_variable_set('@fresh', true) }
-  
-  def fresh?
-    @fresh == true
-  end
   
   private
   

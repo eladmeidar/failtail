@@ -8,8 +8,10 @@ class Error < ActiveRecord::Base
   validates_uniqueness_of :hash_string, :scope => :project_id
   
   belongs_to :project, :counter_cache => true
-  has_many :occurences, :dependent => :destroy, :order => 'updated_at DESC'
+  has_many :occurences, :dependent => :destroy
   has_one :last_occurence, :class_name => "Occurence", :order => 'id DESC'
+  
+  default_scope :order => 'updated_at DESC'
   
   named_scope :with_hash, lambda { |h|
     { :conditions => { :hash_string => h } } }

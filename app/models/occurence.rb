@@ -28,6 +28,8 @@ class Occurence < ActiveRecord::Base
   
   belongs_to :error, :counter_cache => true
   
+  default_scope :order => 'updated_at DESC'
+  
   after_create do |r|
     r.error.update_attributes(:updated_at => DateTime.now)
     r.error.project.update_attributes(:updated_at => DateTime.now)

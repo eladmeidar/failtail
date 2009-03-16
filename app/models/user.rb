@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :projects, :through => :memberships
   
+  default_scope :order => 'name ASC'
+  
   def owner?(record, aggregate=false)
     case record
     when Membership
