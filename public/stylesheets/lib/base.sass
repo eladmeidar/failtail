@@ -173,4 +173,39 @@ body
       li.first + li + li + li + li.last
         :background url('../images/breadcrumb/light-blue-to-orange.png') top left no-repeat
         :background-color= !orange
+        
+  #footer
+    :padding 50px 0
+  
+    ul.links
+      :margin 0
+      :list-style none
       
+    ul.links li
+      :float left
+      :margin 0 2px 0 0
+    
+    ul.links a
+      :display block
+      :margin 0
+      :height 14px
+      :background url(/images/backgrounds/sprite-buttons.gif) no-repeat 0 0
+      :text-indent -8888px
+      +opacity50
+      
+      
+    ul.links .updates a
+      :background-position -150px 0
+      :width 49px
+      
+    ul.links .report-a-bug a
+      :background-position -150px -25px
+      :width 74px
+    
+    ul.links .mr-henry a
+      :background-position -150px -75px
+      :width 56px
+      
+    ul.links .source-code a
+      :background-position -150px -50px
+      :width 73px

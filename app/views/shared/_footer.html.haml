@@ -1,8 +1,15 @@
-.left
-  = link_to 'Updates', "http://twitter.com/failtale"
-  = link_to 'Report a bug', "http://mrhenry.lighthouseapp.com/projects/24526-failtale/overview"
-  = link_to 'Source Code', "http://github.com/mrhenry/failtale"
-  
-.right
-  Copyright & 2009
-  = link_to 'Mr. Henry',"http://www.mrhenry.be"
+%ul.links.clearfix
+  %li.updates
+    %a{ :href => "http://twitter.com/failtale", :title => "Updates" }
+      Updates
+  %li.report-a-bug
+    %a{ :href => "http://mrhenry.lighthouseapp.com/projects/24526-failtale/overview", :title => "Report a bug" }
+      Report a bug
+  %li.source-code
+    %a{ :href => "http://github.com/mrhenry/failtale", :title => "Source code" }
+      Source code
+  %li.mr-henry
+    %a{ :href => "http://www.mrhenry.be", :title => "Mr. Henry" }
+      Mr. Henry
+
+= render_shared :google if FAILTALE[:google_analytics]
