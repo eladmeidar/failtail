@@ -25,19 +25,20 @@
         
         %hr
         
-        %ul.links
-          %li.updates
-            %a{ :href => "http://twitter.com/failtale", :title => "Updates" }
-              Updates
-          %li.report-a-bug
-            %a{ :href => "http://mrhenry.lighthouseapp.com/projects/24526-failtale/overview", :title => "Report a bug" }
-              Report a bug
-          %li.source-code
-            %a{ :href => "http://github.com/mrhenry/failtale", :title => "Source code" }
-              Source code
-          %li.mr-henry
-            %a{ :href => "http://www.mrhenry.be", :title => "Mr. Henry" }
-              Mr. Henry
+        #footer
+          %ul.links
+            %li.updates
+              %a{ :href => "http://twitter.com/failtale", :title => "Updates" }
+                Updates
+            %li.report-a-bug
+              %a{ :href => "http://mrhenry.lighthouseapp.com/projects/24526-failtale/overview", :title => "Report a bug" }
+                Report a bug
+            %li.source-code
+              %a{ :href => "http://github.com/mrhenry/failtale", :title => "Source code" }
+                Source code
+            %li.mr-henry
+              %a{ :href => "http://www.mrhenry.be", :title => "Mr. Henry" }
+                Mr. Henry
     
     = render_shared :google if FAILTALE[:google_analytics]
     
