@@ -4,12 +4,17 @@ body
   :background url('../images/backgrounds/header.png') repeat-x
   :background-color= !body_bg
   :color= !content_text
+  :line-height= !content_line_height
   :font
     :size= !content_text_size
     :family helvetica, arial, sans-serif
   
   #wrapper
     :background url('../images/backgrounds/header-grad.png') top center no-repeat
+    
+  h4
+    :font-size 18px
+    :font-weight normal
 
 #container
   :width 1055px
@@ -55,17 +60,25 @@ body
       :width 0
     
   #content
+    :float left
+    :width 745px
     
     table
       :border-collapse collapse
-      :width 634px
+      :width 750px
       :line-height 1em
       
       th
         :text-transform uppercase
+        :font-weight bold
+        :font-size 10px
+      
+      th span
+        :border-bottom 1px solid
+        :border-color= !grey_light
       
       td, th
-        :padding 5px
+        :padding 8px
       
       tr + tr + tr
         :border-top 1px solid #ecefe6
@@ -73,9 +86,37 @@ body
       td.select, th.select
         :width 154px
         :text-align right
+        :color #a5a7a2
+        :font-size 10px
       
+      th.label
+        :text-align center
+        
       td.label
         :width 47px
+        :text-align center
+        :vertical-align middle
+        
+        span
+          :display block
+          :padding 2px
+          :width 37px
+          :font-size 9px
+          :color #FFF
+          :text-transform uppercase
+          +border-radius-3
+          
+        .rails
+          :background-color #aedca0
+          
+        .flex
+          :background-color #866ec2
+          
+        .php
+          :background-color #00aed3
+          
+        .flash
+          :background-color #ee3124
       
       td + td
         :background-color #ffffff
@@ -83,7 +124,7 @@ body
       td
         +links
       
-      td.count
+      td.count, th.count
         :text-align center
         :width 75px
         
@@ -127,11 +168,11 @@ body
       
       li
         :float left
-        :padding 7px 12px
+        :padding 0 12px
         :padding-right 0px
         :padding-left 31px
         :font-size 24px
-        :line-height 24xp
+        :line-height 42px
         
         a, a:hover, a:visited, a:active
           :color #ffffff
@@ -139,7 +180,6 @@ body
       
       li.first
         :background-color= !blue_dark
-        :padding 7px 12px
         :padding-right 0px
       
       li.last
@@ -173,12 +213,18 @@ body
       li.first + li + li + li + li.last
         :background url('../images/breadcrumb/light-blue-to-orange.png') top left no-repeat
         :background-color= !orange
-        
+       
+  #sidebar
+    :float right
+    :width 260px
+    
+   
   #footer
+    :clear both
     :padding 50px 0
   
     ul.links
-      :margin 0
+      :margin 0 0 0 170px
       :list-style none
       
     ul.links li
@@ -209,3 +255,39 @@ body
     ul.links .source-code a
       :background-position -150px -50px
       :width 73px
+      
+#new_user_session
+  :margin 0 0 0 170px
+  
+  .group
+    :clear both
+    
+  label
+    :display block
+    :float left
+    :width 150px
+    :font-size 18px
+    :line-height 45px
+    
+  input[type=text], input.text
+    :float left
+    :width 250px
+    :padding 8px
+    :font-size 18px
+    :font-style italic
+    :border 1px solid
+    :border-color= !grey_light
+    +border-radius-3
+    
+  input[type=checkbox], input.checkbox
+    :float left
+    :margin 13px 10px 0 150px
+    
+  #user_session_submit
+    :margin 0 0 0 150px
+    :width 129px
+    :height 36px
+    :background url(/images/general/btn-login.gif)
+    :border none
+    :text-indent -8888px
+    :cursor pointer

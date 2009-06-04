@@ -2,9 +2,12 @@
   %tr
     %th.select
       = check_box_tag '__ig'
-    %th label
-    %th error
-    %th count
+    %th.label
+      %span label
+    %th 
+      %span error
+    %th.count 
+      %span count
   - unless open_errors.empty?
     = render open_errors
   - else
