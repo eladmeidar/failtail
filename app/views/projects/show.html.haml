@@ -1,7 +1,7 @@
 %table
   %tr
     %th.select
-      = check_box_tag '__ig'
+      = check_box_tag 'selectAll'
     %th.label
       %span label
     %th 
@@ -12,6 +12,7 @@
     = render open_errors
   - else
     %tr
-      %td{:colspan=>4} There are no open errors.
+      %td
+      %td{:colspan=>3} There are no open errors.
 
 = will_paginate(open_errors)

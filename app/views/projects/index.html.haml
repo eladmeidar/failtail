@@ -1,12 +1,11 @@
-- sidebar_blocks[:projects] = true
+- sidebar_blocks[:projects] = false
 
 %table
   %tr
-    %th 
-    %th label
+    %th.select date 
     %th project
-    %th Count
+    %th.count Count
   = render projects
 
 - actions do |link|
-  - link.to 'New project', new_project_path
+  - link.to('New project', new_project_path,{:class => "button newProject"})

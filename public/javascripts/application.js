@@ -8,5 +8,10 @@ $(document).ready(function() {
       $(this).stop();
       $(this).animate( { opacity: 0.5 }, 200);
   });
-  
+  $('#selectAll').click(
+	function()
+  	{
+      $("td input[type='checkbox']").attr('checked', $('#selectAll').is(':checked'));
+	}
+  )
 });

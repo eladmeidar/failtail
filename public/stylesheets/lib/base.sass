@@ -16,6 +16,14 @@ body
     :font-size 18px
     :font-weight normal
 
+  pre,code
+    :background-color #fff
+    :font-family 'Bitstream Vera Sans Mono','Courier',monospace
+    :clear both
+    :font-size .9em
+    :overflow auto
+    :padding 8px
+
 #container
   :width 1055px
   :margin 0 auto
@@ -36,7 +44,7 @@ body
     :top 28px
     :margin
       :bottom 28px
-    :height 265px
+    :height 210px
     :position relative
     
     *
@@ -63,10 +71,72 @@ body
     :float left
     :width 745px
     
+    div.block
+      h2,h3,p,div.pagination,form.form
+        :margin 0 0 5px 176px
+      pre,code
+        :margin 0 0 5px 170px
+        :width 564px
+      h2
+        :font-weight bold
+        :font-size 1.2em
+      h3
+        :font-weight bold
+        :font-size 1em
+
+    form.userForm
+      div.group
+        :background #fff none
+        :padding 8px
+        :border-top 1px solid #ECEFE6
+      label
+        :display inline-block
+        :width 150px
+      input
+        :width 390px
+        :border 1px solid #ECEFE6
+        :background= !grey_light2
+        :padding 3px
+      input.button
+        :width auto
+      div.navform
+        :padding-right 10px
+        :text-align right
+      div.fieldWithErrors
+        :display inline-block
+
+    div.secondary-navigation
+      :margin 0 0 30px 0
+      :padding 0 0 0 176px
+
+      ul
+        :overflow auto
+        li
+          :display block
+          :float left
+          :line-height 2.2em
+          :margin 0 .5em 0 0
+          a
+            :font-size 1.65em
+            :text-decoration none
+            :font-family Helvetica,Arial,sans-serif
+            :font-weight bold
+            :color= !orange
+          a:hover
+            :color= !grey_light
+        li.active
+          a
+            :color= !grey_light
+          a.other
+            :color= !orange
+          a.other:hover
+            :color= !grey_light
+
     table
       :border-collapse collapse
       :width 750px
       :line-height 1em
+      :margin 0 0 10px 0
       
       th
         :text-transform uppercase
@@ -99,7 +169,7 @@ body
         
         span
           :display block
-          :padding 2px
+          :padding 4px 2px 2px 2px
           :width 37px
           :font-size 9px
           :color #FFF
@@ -124,6 +194,9 @@ body
       td
         +links
       
+      td.project
+        :font-size 1.4em
+
       td.count, th.count
         :text-align center
         :width 75px
@@ -152,7 +225,11 @@ body
         :font
           :size 12px
           :weight bold
-  
+
+    div.pagination
+      :font-size 1em
+      a
+        :color= !orange
   
   #breadcrumb
     :position absolute
@@ -162,62 +239,82 @@ body
     ul
       +reset-margin-padding
       :list-style none
-      :padding-right 11px
+      :padding-right 10px
       :background url('../images/breadcrumb/orange-shadow.png') top right no-repeat
       :height 42px
       
       li
         :float left
+        
+      li a
+        :display block
         :padding 0 12px
         :padding-right 0px
         :padding-left 31px
         :font-size 24px
         :line-height 42px
-        
-        a, a:hover, a:visited, a:active
-          :color #ffffff
-          :text-decoration none
+        :background url('../images/breadcrumb/dark-to-light-blue.png') top left no-repeat
+        :background-color= !blue_light
+        :color #ffffff
+        :text-decoration none
       
-      li.first
+      li.first a
+        :background transparent none
         :background-color= !blue_dark
         :padding-right 0px
+        :padding-left 10px
       
-      li.last
+      li.last a
         :padding-right 12px
-      
-      li.first + li + li, li.first + li + li + li + li
+
+      li a.open
         :background url('../images/breadcrumb/light-to-dark-blue.png') top left no-repeat
         :background-color= !blue_dark
-        
-      li + li, li + li + li +li
-        :background url('../images/breadcrumb/dark-to-light-blue.png') top left no-repeat
-        :background-color= !blue_light
       
-      
-      li.first.last
-        :background url('../images/breadcrumb/dark-to-light-blue.png') top left no-repeat
-        :background-color= !blue_light
-      
-      li.first + li.last
-        :background url('../images/breadcrumb/dark-blue-to-orange.png') top left no-repeat
-        :background-color= !orange
-      
-      li.first + li + li.last
+      li a.action
         :background url('../images/breadcrumb/light-blue-to-orange.png') top left no-repeat
         :background-color= !orange
-        
-      li.first + li + li + li.last
+      
+      li a.action2
         :background url('../images/breadcrumb/dark-blue-to-orange.png') top left no-repeat
         :background-color= !orange
-        
-      li.first + li + li + li + li.last
-        :background url('../images/breadcrumb/light-blue-to-orange.png') top left no-repeat
-        :background-color= !orange
-       
+          
   #sidebar
     :float right
     :width 260px
     
+    h3
+      :font-size 18px
+      :font-weight normal
+      :margin 0 0 10px 0
+
+    ul.navigation
+      :margin 0 0 20px 0
+      li
+        a.button
+          :display block
+          :width 210px
+          :height 36px
+          :text-indent -9999px
+          :background transparent url(../images/sprite_buttons.png) no-repeat 0 0
+        a.newProject
+          :background-position -630px 0
+        a.newProject:hover
+          :background-position -630px -36px
+        a.markClosed
+          :background-position -840px 0
+        a.markClosed:hover
+          :background-position -840px -36px
+        a.markNotClosed
+          :background-position -1050px 0
+        a.markNotClosed:hover
+          :background-position -1050px -36px
+
+    #message_block
+      :margin 58px 0 0 0
+      ul.error
+        li
+          :color #ff0000
    
   #footer
     :clear both

@@ -1,15 +1,15 @@
 
 - block occurence.name do |link|
-  - link.to 'Summary', occurence
-  - link.to 'Backtrace', [:backtrace, occurence]     if occurence.backtrace?
-  - link.to 'Environment', [:environment, occurence] if occurence.properties?
-  - link.to "#{error.occurences.count} other occurences", error if error.occurences.count > 1
+  - link.to 'Summary /', occurence
+  - link.to 'Backtrace /', [:backtrace, occurence]     if occurence.backtrace?
+  - link.to 'Environment /', [:environment, occurence] if occurence.properties?
+  - link.to ("#{error.occurences.count} other occurences", error, :class => "other"){true} if error.occurences.count > 1
   
   - if occurence.backtrace?
     %pre=h occurence.backtrace
 
 - actions do |link|
   - if error.closed
-    - link.to 'Mark as not closed', error_path(error, :error => {:closed => '0'}), :method => :put
+    - link.to ('Mark as not closed', error_path(error, :error => {:closed => '0'}), :method => :put, :class => "button markNotClosed")
   - else
-    - link.to 'Mark as closed', error_path(error, :error => {:closed => '1'}), :method => :put
+    - link.to ('Mark as closed', error_path(error, :error => {:closed => '1'}), :method => :put, :class => "button markClosed")
