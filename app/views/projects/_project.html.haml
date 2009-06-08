@@ -1,4 +1,7 @@
 %tr
-  %td.first= link_to h(truncate(project.name, :length => 100)), project
-  %td=       project.updated_at.to_formatted_s(:short)
-  %td.last=  project.reports.count
+  %td.select= project.updated_at.to_formatted_s(:short)
+  %td.project=       link_to h(truncate(project.name, :length => 100)), project
+  %td.count
+    %div
+      %div
+        %div=  project.reports.count

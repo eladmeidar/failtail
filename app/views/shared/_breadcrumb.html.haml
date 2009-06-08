@@ -1,0 +1,10 @@
+- menu_block do |link|
+  - link.to('Errors', root_path)
+  - @error = @occurence.error if @occurence and !@error
+  - @project = @error.project if @error and !@project
+  - link.to(@project.name, @project) { true } if @project and !@project.new_record?
+  - link.to("Open",@error,:class => "open") {true} if @project and @error
+  - link.to(@error.id, @error) {true} if @error
+  - link.to(params[:action],"#",:class => "action") {true} if params[:action]=="backtrace" or params[:action]=="environment"
+  - link.to("summary","#",:class => "action") {true} if params[:action]=="show" and @error
+  - link.to("edit my account",{:action => "edit"},:class => "action2") {true} if params[:action]=="edit" and !@error and !@project

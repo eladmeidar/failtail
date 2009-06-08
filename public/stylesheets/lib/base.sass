@@ -1,273 +1,390 @@
-
-\*
-  :margin 0
-  :padding 0
-
-.clear
-  :clear both
-
-h1
-  +block-margin-normal
-  :font
-    :size 22px
-    :weight normal
-h2
-  +block-margin-normal
-  :font
-    :size 22px
-    :weight normal
-h3
-  +block-margin-small
-  :font
-    :size 18px
-    :weight normal
-h4
-  +block-margin-small
-  :font
-    :size 16px
-    :weight normal
-
-hr
-  :height 1px
-  :border 0
-
-p
-  +block-margin-normal
-
-a img
-  :border none
-
 body
+  +reset-margin-padding
+  :text-align center
+  :background url('../images/backgrounds/header.png') repeat-x
+  :background-color= !body_bg
+  :color= !content_text
+  :line-height= !content_line_height
   :font
-    :size 12px
-    :family sans-serif
+    :size= !content_text_size
+    :family helvetica, arial, sans-serif
+  
+  #wrapper
+    :background url('../images/backgrounds/header-grad.png') top center no-repeat
+    
+  h4
+    :font-size 18px
+    :font-weight normal
+
+  pre,code
+    :background-color #fff
+    :font-family 'Bitstream Vera Sans Mono','Courier',monospace
+    :clear both
+    :font-size .9em
+    :overflow auto
+    :padding 8px
 
 #container
-  :min-width 960px
-
-#header
-  +container-padding
+  :width 1055px
+  :margin 0 auto
+  :text-align left
   :position relative
-  :padding-top 1px
   
-  h1
-    :padding 10px 0
-    :font-size 30px
-    
-    a:link, a:active, a:hover, a:visited
-      :text-decoration none
-      :margin-bottom 0
-      :line-height 1em
-  
-  h2
-    :position absolute
-    :top 31px
-    :left 130px
-    :font
-      :size 14px
-      :weight normal
-    :margin 0
-    :color #fff
-
-#main
-  :width 70%
-  :float left
-
-.actions-bar
-  :padding 10px 1px
-  
-  .actions
-    :float left
-  
-  .pagination
+  #profile
     :float right
-    :padding 1px 0
-
-#sidebar
-  :width 25%
-  :float right
+    :color= !profile_text
+    :font-size= !content_text_size - 2px
+    :text-transform uppercase
+    +bold-links
+    :margin
+      :top   7px
+      :right 30px
   
-  h3
-    :padding 10px 15px
-    :margin 0
-    :font-size 13px
-  
-  .block
-    :margin-bottom 20px
-    :padding-bottom 10px
+  #header
+    :top 28px
+    :margin
+      :bottom 28px
+    :height 210px
+    :position relative
     
-    .content
-      :padding 0 15px
+    *
+      :text-indent -50000px
+      +reset-margin-padding
     
-    .sidebar-block
-      :padding 10px
-  
-  ul.navigation
-    li
-      a:link, a:visited
-        :display block
-        :padding 10px 15px
-  
-  .notice
-    :padding 10px
-
-#wrapper
-  +container-padding
-  :padding-top 20px
-
-#main
-  
-  .block
-    :margin-bottom 20px
+    h1
+      :top= (44px - 28px)
+      :right 10px
+      a
+        :top 0px
+        :right  0px
+        :background url('../images/backgrounds/header-content.png') top center no-repeat
+      &, a
+        :position absolute
+        :width 257px
+        :height 99px
     
-    .content
-      :padding 0 15px
-
-  .main
-    p.first
-      :margin-top 0
-
-#user-navigation
-  :position absolute
-  :top 0px
-  :right 20px
-
-=horizontal-navigation
-  ul
-    +reset-list
+    h2
+      :height 0
+      :width 0
     
-    li
-      :float left
+  #content
+    :float left
+    :width 745px
+    
+    div.block
+      h2,h3,p,div.pagination,form.form
+        :margin 0 0 5px 176px
+      pre,code
+        :margin 0 0 5px 170px
+        :width 564px
+      h2
+        :font-weight bold
+        :font-size 1.2em
+      h3
+        :font-weight bold
+        :font-size 1em
+
+    form.userForm
+      div.group
+        :background #fff none
+        :padding 8px
+        :border-top 1px solid #ECEFE6
+      label
+        :display inline-block
+        :width 150px
+      input
+        :width 390px
+        :border 1px solid #ECEFE6
+        :background= !grey_light2
+        :padding 3px
+      input.button
+        :width auto
+      div.navform
+        :padding-right 10px
+        :text-align right
+      div.fieldWithErrors
+        :display inline-block
+
+    div.secondary-navigation
+      :margin 0 0 30px 0
+      :padding 0 0 0 176px
+
+      ul
+        :overflow auto
+        li
+          :display block
+          :float left
+          :line-height 2.2em
+          :margin 0 .5em 0 0
+          a
+            :font-size 1.65em
+            :text-decoration none
+            :font-family Helvetica,Arial,sans-serif
+            :font-weight bold
+            :color= !orange
+          a:hover
+            :color= !grey_light
+        li.active
+          a
+            :color= !grey_light
+          a.other
+            :color= !orange
+          a.other:hover
+            :color= !grey_light
+
+    table
+      :border-collapse collapse
+      :width 750px
+      :line-height 1em
+      :margin 0 0 10px 0
       
-      a:link, a:visited, a:hover, a:active
-        :text-decoration none
+      th
+        :text-transform uppercase
+        :font-weight bold
+        :font-size 10px
+      
+      th span
+        :border-bottom 1px solid
+        :border-color= !grey_light
+      
+      td, th
+        :padding 8px
+      
+      tr + tr + tr
+        :border-top 1px solid #ecefe6
+      
+      td.select, th.select
+        :width 154px
+        :text-align right
+        :color #a5a7a2
+        :font-size 10px
+      
+      th.label
+        :text-align center
+        
+      td.label
+        :width 47px
+        :text-align center
+        :vertical-align middle
+        
+        span
+          :display block
+          :padding 4px 2px 2px 2px
+          :width 37px
+          :font-size 9px
+          :color #FFF
+          :text-transform uppercase
+          +border-radius-3
+          
+        .rails
+          :background-color #aedca0
+          
+        .flex
+          :background-color #866ec2
+          
+        .php
+          :background-color #00aed3
+          
+        .flash
+          :background-color #ee3124
+      
+      td + td
+        :background-color #ffffff
+      
+      td
+        +links
+      
+      td.project
+        :font-size 1.4em
 
-#user-navigation
-  +horizontal-navigation
-  ul li
-    :padding 5px 10px
-#main-navigation
-  +horizontal-navigation
-  ul li
-    :margin-right 5px
-  ul li a
-    :font-size 15px
-    :display block
-    :padding 8px 15px
-.secondary-navigation
-  +horizontal-navigation
-  :font-size 13px
-  :border-bottom-width 10px
-  :border-bottom-style solid
-  ul li a
-    :display block
-    :padding 10px 15px
+      td.count, th.count
+        :text-align center
+        :width 75px
+        
+      td.count > div
+        :background url('../images/count/left.png') top left no-repeat
+        :display inline-block
+        :padding-left 8px
+        
+      td.count > div > div
+        :background url('../images/count/right.png') top right no-repeat
+        :display inline-block
+        :padding-right 8px
+        
+      td.count > div > div > div
+        :background url('../images/count/middle.png') top right
+        :height 12px
+        :display inline-block
+        :color #fff
+        :padding
+          :top 4px
+          :bottom 3px
+          :left 3px
+          :right 3px
+        :line-height 12px
+        :font
+          :size 12px
+          :weight bold
 
-#sidebar ul.navigation
-  +reset-list
-
-
-#footer
-  +container-padding
-  :padding-bottom 20px
-
-/ pagination
-
-=pagination-item
-  :padding 2px 5px
-  :margin-right 5px
-  :display block
-  :float left
-
-.pagination
-  a
-    +pagination-item
-    :text-decoration none
-    :border-width 1px
-    :border-style solid
-  span
-    +pagination-item
-    &.current
-      :font-weight  bold
-      :border-width 1px
-      :border-style solid
-
-/ tables
-
-.table
-  :width 100%
-  :border-collapse collapse
-  :margin-bottom 15px
+    div.pagination
+      :font-size 1em
+      a
+        :color= !orange
   
-  th
-    :padding 10px
-    :font-weight bold
-    :text-align left
-  .checkbox
-    :margin-left 10px
-  td
-    :padding 10px
-
-/ forms
-
-input.checkbox
-  :margin 0
-  :padding 0
-
-.form
-  .group
-    :margin-bottom 15px
-  .column
-    :width 48%
-    &.left
-      :float left
-    &.right
-      :float right
-
-  label.title, input.text, textarea
-    :font-size 1.2em
-    :padding 1px 0
-    :margin 0
-
-  input.checkbox, input.radio
-    :margin-right 5px
-
-  label.checkbox, label.radio
-    :line-height 1.5em
-
-  label.title
-    :display block
-    :padding-bottom 2px
-    :font-weight bold
-
-  input.text, textarea.textarea
-    :width 100%
-    :border-width 1px
-    :border-style solid
-
-/ lists
-
-ul.list
-  :margin 0
-  :padding 0
-  :list-style-type none
-  
-  li
-    :clear left
-    :padding-bottom 5px
+  #breadcrumb
+    :position absolute
+    :top 148px
+    :left 164px
     
-    .left
-      :float left
-
-      .avatar
-        :width 50px
-        :height 50px
-
-    .item
-      :margin-left 80px
-
-      .avatar
+    ul
+      +reset-margin-padding
+      :list-style none
+      :padding-right 10px
+      :background url('../images/breadcrumb/orange-shadow.png') top right no-repeat
+      :height 42px
+      
+      li
         :float left
-        :margin 0 5px 5px 0
-        :width 30px
-        :height 30px
+        
+      li a
+        :display block
+        :padding 0 12px
+        :padding-right 0px
+        :padding-left 31px
+        :font-size 24px
+        :line-height 42px
+        :background url('../images/breadcrumb/dark-to-light-blue.png') top left no-repeat
+        :background-color= !blue_light
+        :color #ffffff
+        :text-decoration none
+      
+      li.first a
+        :background transparent none
+        :background-color= !blue_dark
+        :padding-right 0px
+        :padding-left 10px
+      
+      li.last a
+        :padding-right 12px
+
+      li a.open
+        :background url('../images/breadcrumb/light-to-dark-blue.png') top left no-repeat
+        :background-color= !blue_dark
+      
+      li a.action
+        :background url('../images/breadcrumb/light-blue-to-orange.png') top left no-repeat
+        :background-color= !orange
+      
+      li a.action2
+        :background url('../images/breadcrumb/dark-blue-to-orange.png') top left no-repeat
+        :background-color= !orange
+          
+  #sidebar
+    :float right
+    :width 260px
+    
+    h3
+      :font-size 18px
+      :font-weight normal
+      :margin 0 0 10px 0
+
+    ul.navigation
+      :margin 0 0 20px 0
+      li
+        a.button
+          :display block
+          :width 210px
+          :height 36px
+          :text-indent -9999px
+          :background transparent url(../images/sprite_buttons.png) no-repeat 0 0
+        a.newProject
+          :background-position -630px 0
+        a.newProject:hover
+          :background-position -630px -36px
+        a.markClosed
+          :background-position -840px 0
+        a.markClosed:hover
+          :background-position -840px -36px
+        a.markNotClosed
+          :background-position -1050px 0
+        a.markNotClosed:hover
+          :background-position -1050px -36px
+
+    #message_block
+      :margin 58px 0 0 0
+      ul.error
+        li
+          :color #ff0000
+   
+  #footer
+    :clear both
+    :padding 50px 0
+  
+    ul.links
+      :margin 0 0 0 170px
+      :list-style none
+      
+    ul.links li
+      :float left
+      :margin 0 2px 0 0
+    
+    ul.links a
+      :display block
+      :margin 0
+      :height 14px
+      :background url(/images/backgrounds/sprite-buttons.gif) no-repeat 0 0
+      :text-indent -8888px
+      +opacity50
+      
+      
+    ul.links .updates a
+      :background-position -150px 0
+      :width 49px
+      
+    ul.links .report-a-bug a
+      :background-position -150px -25px
+      :width 74px
+    
+    ul.links .mr-henry a
+      :background-position -150px -75px
+      :width 56px
+      
+    ul.links .source-code a
+      :background-position -150px -50px
+      :width 73px
+      
+#new_user_session
+  :margin 0 0 0 170px
+  
+  .group
+    :clear both
+    
+  label
+    :display block
+    :float left
+    :width 150px
+    :font-size 18px
+    :line-height 45px
+    
+  input[type=text], input.text
+    :float left
+    :width 250px
+    :padding 8px
+    :font-size 18px
+    :font-style italic
+    :border 1px solid
+    :border-color= !grey_light
+    +border-radius-3
+    
+  input[type=checkbox], input.checkbox
+    :float left
+    :margin 13px 10px 0 150px
+    
+  #user_session_submit
+    :margin 0 0 0 150px
+    :width 129px
+    :height 36px
+    :background url(/images/general/btn-login.gif)
+    :border none
+    :text-indent -8888px
+    :cursor pointer

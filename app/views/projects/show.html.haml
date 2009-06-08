@@ -1,22 +1,18 @@
-- sidebar_blocks[:members] = true
-- block project.name do |link|
-  - link.to 'Open', project
-  - link.to 'Closed', [:closed, project]
-  %p= project.api_token
-  %table.table
+%table
+  %tr
+    %th.select
+      = check_box_tag 'selectAll'
+    %th.label
+      %span label
+    %th 
+      %span error
+    %th.count 
+      %span count
+  - unless open_errors.empty?
+    = render open_errors
+  - else
     %tr
-      %th.first Error
-      %th       Last occurence
-      %th.last  Count
-    - unless open_errors.empty?
-      = render open_errors
-    - else
-      %tr
-        %td{:colspan=>3} There are no open errors.
-  = will_paginate(open_errors)
-  %br
+      %td
+      %td{:colspan=>3} There are no open errors.
 
-- actions do |link|
-  - link.to 'Edit project', edit_project_path(project)
-  - link.to 'Edit membership', edit_membership_path(project.memberships.first(:conditions => {:user_id => current_user.id}))
-  - link.to 'Close all errors', close_all_errors_project_path(project), :method => :put, :confirm => 'Are you sure?' if current_user.owner? project
+= will_paginate(open_errors)

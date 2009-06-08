@@ -6,12 +6,13 @@
     = render_shared :assets
   %body
     
-    #container
-      = render_shared :header
-      #wrapper
-        #main= yield
-        = render_shared :sidebar
-        .clear
-      = render_shared :footer
+    #wrapper
+      #container
+        #profile=    render_shared :user_menu if current_user
+        #header=     render_shared :header
+        #breadcrumb= render_shared :breadcrumb
+        #content=    yield
+        #sidebar=    render_shared :sidebar
+        #footer=     render_shared :footer
     
     = render_shared :google if FAILTALE[:google_analytics]

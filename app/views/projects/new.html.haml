@@ -1,5 +1,5 @@
 - block 'Create a new project' do
-  - form_for project, :html => {:class=>'form'} do |f|
+  - form_for project, :html => {:class=>'form userForm'} do |f|
     = render :partial => f
     .group.navform
       = f.submit 'Create', :class => 'button'

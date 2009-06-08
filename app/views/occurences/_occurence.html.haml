@@ -1,5 +1,6 @@
 %tr
+  %td.select
+    = occurence.updated_at.to_formatted_s(:short)
   %td.first
     = link_to h(occurence.name), occurence
-  %td
-    = occurence.updated_at.to_formatted_s(:short)
+  

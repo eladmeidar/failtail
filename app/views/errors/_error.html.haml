@@ -1,7 +1,15 @@
 %tr
-  %td.first
-    = link_to h(truncate(error.name, :length => 100)), error
+  %td.select
+    = error.last_occurence.created_at.to_s :short
+    = hidden_field_tag "errors[#{error.id}]", "0"
+    = check_box_tag "errors[#{error.id}]"
+  %td.label
+    %span{:class => error.last_occurence.reporter}
+      = error.last_occurence.reporter
   %td
-    = error.updated_at.to_formatted_s(:short)
-  %td.last
-    = error.occurences.count
+    = link_to h(truncate(error.name, :length => 100)), error
+  %td.count
+    %div
+      %div
+        %div
+          = error.occurences.size
