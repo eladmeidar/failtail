@@ -1,5 +1,5 @@
 - block 'Register' do
-  - form_for @user, :url => account_path, :html => { :class => "form" } do |f|
+  - form_for @user, :url => account_path, :html => { :class => "form userForm" } do |f|
     .column.left
       = render :partial => "form", :object => f
     .clear
