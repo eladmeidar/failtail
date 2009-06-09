@@ -19,7 +19,7 @@ class Admin::UsersController < ApplicationController
   end
   
   def new
-    @user = User.build(params[:user])
+    @user = User.new(params[:user])
     respond_to do |format|
       format.html # render index.html.erb
       format.xml  { render :xml  => user }

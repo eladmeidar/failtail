@@ -1,3 +1,6 @@
 HELLO
 = link_to current_user.name, edit_account_path
 = link_to 'Logout', user_session_path, :method => :delete
+- if current_user.admin?
+  = link_to 'users', admin_users_path
+  = link_to 'invitation requests', admin_invitation_requests_path

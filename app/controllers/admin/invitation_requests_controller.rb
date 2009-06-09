@@ -14,42 +14,8 @@ class Admin::InvitationRequestsController < ApplicationController
     end
   end
   
-  def new
-    @invitation_request = InvitationRequest.build(params[:invitation_request])
-    respond_to do |format|
-      format.html # render index.html.erb
-      format.xml  { render :xml  => invitation_request }
-      format.json { render :json => invitation_request }
-    end
-  end
-  
-  def edit
-    invitation_request
-    respond_to do |format|
-      format.html # render index.html.erb
-      format.xml  { render :xml  => invitation_request }
-      format.json { render :json => invitation_request }
-    end
-  end
-  
-  def create
-    @invitation_request = InvitationRequest.create!(params[:invitation_request])
-    respond_to do |format|
-      format.html { redirect_to [:invitation_request, invitation_request] }
-      format.xml  { render :xml  => invitation_request, :status => :created }
-      format.json { render :json => invitation_request, :status => :created }
-    end
-  rescue ActiveRecord::RecordInvalid => e
-    @invitation_request = e.record
-    respond_to do |format|
-      format.html { render :action => 'new' }
-      format.xml  { render :xml  => e.record.errors, :status => :unprocessable_entity }
-      format.json { render :json => e.record.errors, :status => :unprocessable_entity }
-    end
-  end
-  
   def update
-    invitation_request.update_attributes! params[:invitation_request]
+    invitation_request.send_invitation
     respond_to do |format|
       format.html { redirect_to [:admin, invitation_request] }
       format.xml  { render :xml  => invitation_request }

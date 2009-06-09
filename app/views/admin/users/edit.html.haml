@@ -1,8 +1,10 @@
 - block 'Edit this user' do
-  - form_for [:admin, user], :html => {:class=>'form'} do |f|
-    = render :partial => f
+  - form_for [:admin, user], :html => {:class=>'form userForm'} do |f|
+    .column.left
+      = render :partial => "form", :object => f
+    .clear
     .group.navform
-      = f.submit 'Save', :class => 'button'
+      = f.submit "Update", :class => 'button'
 
 - actions do |link|
-  - link.to 'Delete this user', admin_user_path(path), :method => :delete
+  - link.to 'Delete this user', admin_user_path(user), :method => :delete
