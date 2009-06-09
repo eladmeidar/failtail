@@ -1,5 +1,5 @@
 - block 'Edit this user' do
-  - form_for [:admin, user], :html => {:class=>'form'} do |f|
+  - form_for [:admin, user], :html => {:class=>'form userForm'} do |f|
     .column.left
       = render :partial => "form", :object => f
     .clear

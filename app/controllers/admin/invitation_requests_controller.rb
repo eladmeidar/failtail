@@ -15,7 +15,7 @@ class Admin::InvitationRequestsController < ApplicationController
   end
   
   def new
-    @invitation_request = InvitationRequest.build(params[:invitation_request])
+    @invitation_request = InvitationRequest.new(params[:invitation_request])
     respond_to do |format|
       format.html # render index.html.erb
       format.xml  { render :xml  => invitation_request }
