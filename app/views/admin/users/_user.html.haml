@@ -1,0 +1,4 @@
+%tr
+  %td.select= user.login
+  %td.user=   link_to h(truncate(user.name, :length => 100)), [:admin, user]
+  %td= mail_to user.email, user.email

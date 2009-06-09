@@ -1,0 +1,8 @@
+- block 'Edit this user' do
+  - form_for [:admin, user], :html => {:class=>'form'} do |f|
+    = render :partial => f
+    .group.navform
+      = f.submit 'Save', :class => 'button'
+
+- actions do |link|
+  - link.to 'Delete this user', admin_user_path(path), :method => :delete
