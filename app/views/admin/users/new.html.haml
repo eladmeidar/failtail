@@ -1,5 +1,7 @@
 - block 'Create a new user' do
   - form_for [:admin, user], :html => {:class=>'form userForm'} do |f|
-    = render :partial => f
+    .column.left
+      = render :partial => "form", :object => f
+    .clear
     .group.navform
-      = f.submit 'Create', :class => 'button'
+      = f.submit "Create", :class => 'button'
