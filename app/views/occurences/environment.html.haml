@@ -6,7 +6,7 @@
   - link.to ("#{error.occurences.count} other occurences", error, :class => "other"){true} if error.occurences.count > 1
   
   - if occurence.properties?
-    %table.table
+    %table.table.environment
       %tr
         %th.select Property
         %th Value
