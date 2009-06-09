@@ -3,6 +3,6 @@
     %th.select Property
     %th.last Value
   %tr
-    - url = "http://#{properties['HTTP_HOST']}/#{properties['REQUEST_PATH'] || properties['PATH_INFO']}"
+    - url = "http://#{properties['HTTP_HOST']}#{properties['REQUEST_PATH'] || properties['PATH_INFO']}"
     %td.select URL
     %td= link_to url, url
