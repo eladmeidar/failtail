@@ -39,11 +39,13 @@ body#home{background:#fff url(/images/splash/bg.png) repeat-x center top;font-si
 #home #container{background:#f6f7f3;margin:20px 50px 0 30px;padding:22px;}
 #home #contentBlock{background:#ecefe6 none;height:251px;padding:22px 22px 22px 440px;font-size:1.2em;line-height:1.4em;}
 	#home #contentBlock p{margin:0 0 20px 0;}
+	#home #contentBlock a{text-decoration:underline;color:#333;}
+	
 #home #content5{padding:40px 0 0 0;text-align:center;}
  #home #content5 input{text-align:center;}
 	
 #home .features{width:425px;float:left;}
-#home .features li a{color:#F3A012,display:block;height: 59px; background: url(/images/splash/sprite_features.png) no-repeat 0 0; text-indent: -8885px; }
+#home .features li a{display:block;height: 59px; background: url(/images/splash/sprite_features.png) no-repeat 0 0; text-indent: -8885px; }
 #home .features .restfull-api a         { background-position: 0 -5px; }
 #home .features .restfull-api a.active{background-position: -454px -5px;}
 #home .features .open-source a          { background-position: 0 -64px; }
