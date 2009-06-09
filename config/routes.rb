@@ -1,8 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   
   map.namespace :admin do |admin|
-    map.resources :users
-    map.resources :invitation_requests
+    admin.resources :users
+    admin.resources :invitation_requests
   end
   
   map.resource :user_session, :only => [:new, :show, :create, :destroy]
