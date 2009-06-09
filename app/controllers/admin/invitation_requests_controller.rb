@@ -17,7 +17,7 @@ class Admin::InvitationRequestsController < ApplicationController
   def update
     invitation_request.create_invitation
     respond_to do |format|
-      format.html { redirect_to [:admin, invitation_request] }
+      format.html { redirect_to admin_invitation_requests_path }
       format.xml  { render :xml  => invitation_request }
       format.json { render :json => invitation_request }
     end
