@@ -7,38 +7,126 @@
   %body#home
   
     #wrapper
-      #container
-  
+      #header.clearfix
+        %ul.clearfix
+          %li.login
+            %a{ :href => "#", :title => "Login" }
+              Login
+          %li.request
+            %a{ :href => "#", :title => "Request invitation", :rel => "content5" }
+              Request invitation
+
         %h1
-          Failtale
-          %sup Beta
-          \- Telling you more about failing applications.
-      
+          %a{ :href => "/", :title => "Failtale (beta) - Telling you more about failing applications." }
+            Failtale
+            %sup Beta
+            \- Telling you more about failing applications.
+        
+        - numbers=("%07d" % Occurence.count).split(//)
+        %div.counter-holder.clearfix
+          %div.counter
+            %span
+              = numbers[0]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span.dot
+              \.
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[1]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[2]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[3]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span.dot
+              \.
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[4]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[5]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[6]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+
+
+      #container
         %ul.features
-          %li.restfull-api RESTful API
-          %li.open-source Open Source &amp; Free
-          %li.platform-agnostic Platform Agnostic
-          %li.and-more And More ...
+          %li.restfull-api
+            %a.active{:href => "#", :title =>"RESTful API", :rel => "content1"}
+              RESTful API
+          %li.open-source
+            %a{:href => "#", :title =>"Open Source &amp; Free", :rel => "content2"}
+              Open Source &amp; Free
+          %li.platform-agnostic
+            %a{:href => "#", :title =>"Platform Agnostic", :rel => "content3"}
+              Platform Agnostic
+          %li.and-more
+            %a{:href => "#", :title =>"And More ...", :rel => "content4"}
+              And More ...
           %li.request-invitation
-            %a{ :href => "mailto:failtale@mrhenry.be?subject=I%20would%20love%20to%20get%20an%20invitation%20for%20this%20sexy%20developer%20toy!", :title => "Request invitation" }
+            %a{ :href => "#", :title => "Request invitation", :rel => "content5" }
               Request Invitation
-        
-        %hr
-        
-        #footer
-          %ul.links
-            %li.updates
-              %a{ :href => "http://twitter.com/failtale", :title => "Updates" }
-                Updates
-            %li.report-a-bug
-              %a{ :href => "http://mrhenry.lighthouseapp.com/projects/24526-failtale/overview", :title => "Report a bug" }
-                Report a bug
-            %li.source-code
-              %a{ :href => "http://github.com/mrhenry/failtale", :title => "Source code" }
-                Source code
-            %li.mr-henry
-              %a{ :href => "http://www.mrhenry.be", :title => "Mr. Henry" }
-                Mr. Henry
+
+        #contentBlock
+          #content1.contentItem
+            %p
+              Alice replied eagerly, for she was always ready to talk about her pet: 'Dinah's our cat. And she's such a capital one for catching mice you can't think! And oh, I wish you could see her after the birds! Why, she'll eat a little bird as soon as look at it!'
+            %p
+              This speech caused a remarkable sensation among the party. Some of the birds hurried off at once: one old Magpie began wrapping itself up very carefully, remarking, 'I really must be getting home; the night-air doesn't suit my throat!' and a Canary called out in a trembling voice to its children, 'Come
+
+          #content2.contentItem{:style => "display:none;"}
+            %p
+              Content2
+          #content3.contentItem{:style => "display:none;"}
+            %p
+              Content3
+          #content4.contentItem{:style => "display:none;"}
+            %p
+              Content4
+          #content5.contentItem{:style => "display:none;"}
+            %p
+              Request your invitation
+            - form_for InvitationRequest.new, :html => {:class => 'emailForm'} do |f|
+              %p
+                = f.text_field :email, :class => 'text long', :value => 'Email'
+                %span.valid{:style => "display:none;"}
+                %span.invalid{:style => "display:none;"}
+              %p
+                = f.submit "Request invitation", :class => 'button request'
+
+      #login{:style => "display:none;"}
+        - form_for UserSession.new, :url => user_session_path, :html => {:class => 'form'} do |f|
+          %p
+            = f.text_field :login, :class => 'text', :value => 'Login'
+            = f.password_field :password, :class => 'text', :value => 'Password'
+            = f.submit "Login", :class => 'button'
+          %p.remember
+            = f.check_box :remember_me, :class => 'checkbox'
+            = f.label :remember_me, nil, :class => 'checkbox'
+          
+
+      %ul#shots
+        %li
+          %img{:src => "/images/splash/screen1.jpg", :alt => "Failtale screenshot"}
+        %li
+          %img{:src => "/images/splash/screen2.jpg", :alt => "Failtale screenshot"}
+        %li
+          %img{:src => "/images/splash/screen1.jpg", :alt => "Failtale screenshot"}
+      
+      %a.forkMe{:href => "http://github.com/mrhenry/failtale/", :title => "Fork me on GitHub"}
+        Fork me on GitHub
+
+      #footer
+        %p
+          a
+          %a{:href => "http://www.mrhenry.be", :title => "Mr. Henry"}
+            %img{:src => "/images/splash/logo_mrhenry.png", :title => "Mr. Henry", :alt => "Mr. Henry"}
+          webapplication, with love &copy; 2009
     
     = render_shared :google if FAILTALE[:google_analytics]
     
