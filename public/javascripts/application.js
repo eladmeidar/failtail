@@ -27,7 +27,7 @@ email.add(Validate.Email);*/
 	}
   )
 
-  $("ul.features a,#header ul li.request a").each(function(){
+  $("ul.features a,#header ul li.request a, a.toTab").each(function(){
 	$(this).attr("href","javascript:;");
   });
 
@@ -49,7 +49,9 @@ email.add(Validate.Email);*/
 	
     }
   );
-
+  $("a.toTab").click(function(){
+    switchContent(this);	
+  });
   $("#header ul li.request a").click(function(){
 	switchContent(this);
     $.scrollTo( $("#container"), 1500,{easing:'easeOutQuad'});	
@@ -72,8 +74,6 @@ email.add(Validate.Email);*/
 	return false;
   });
 });
-
-
 
 function switchContent(sender){
 	var contentBlock = $(sender).attr("rel");
