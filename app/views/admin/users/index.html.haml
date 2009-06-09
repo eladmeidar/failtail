@@ -1,0 +1,9 @@
+%table
+  %tr
+    %th.select login 
+    %th name
+    %th email
+  = render users
+
+- actions do |link|
+  - link.to('New user', new_admin_user_path,{:class => "button newProject"})

@@ -1,16 +1,10 @@
-class InvitationRequest
-  attr_accessor :email
+class InvitationRequest < ActiveRecord::Base
+  validates_presence_of :email
+  validates_uniqueness_of :email
   
-  def new_record?
-    true
-  end
-  
-  def initialize(params={})
-    @email = params.delete(:email)
-  end
-
-  def save
-    Notifier.deliver_invitation_request(@email)
-    true
+  def create_invitation
+    if Invitation.create(:email => self.email)
+      self.destroy
+    end
   end
 end
