@@ -1,0 +1,6 @@
+%tr
+  %td.select
+  %td.invitation= h(invitation_request.email)
+  %td
+    = link_to 'approve', [:admin, invitation_request], :method => :put
+    = link_to 'deny',    [:admin, invitation_request], :method => :delete
