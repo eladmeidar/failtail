@@ -92,13 +92,13 @@ body
       label
         :display inline-block
         :width 150px
-      input
+      input.text
         :width 390px
-        :border 1px solid #ECEFE6
+        :border 1px solid rgb(220,220,220)
+        :border-right 1px solid rgb(235,235,235)
+        :border-bottom 1px solid rgb(235,235,235)
         :background= !grey_light2
         :padding 3px
-      input.button
-        :width auto
       div.navform
         :padding-right 10px
         :text-align right
@@ -296,22 +296,7 @@ body
       li
         a.button
           :display block
-          :width 210px
-          :height 36px
-          :text-indent -9999px
-          :background transparent url(../images/sprite_buttons.png) no-repeat 0 0
-        a.newProject
-          :background-position -630px 0
-        a.newProject:hover
-          :background-position -630px -36px
-        a.markClosed
-          :background-position -840px 0
-        a.markClosed:hover
-          :background-position -840px -36px
-        a.markNotClosed
-          :background-position -1050px 0
-        a.markNotClosed:hover
-          :background-position -1050px -36px
+          :width 170px
 
     #message_block
       :margin 58px 0 0 0
@@ -391,3 +376,38 @@ body
     :border none
     :text-indent -8888px
     :cursor pointer
+
+.button
+  :display inline-block
+  :padding 8px 20px
+  :font-size 14px
+  :color rgb(255,255,255)
+  :text-shadow 1px 1px 0px rgb(158,123,61)
+  :font-family Helvetica, Arial, sans-serif
+  :font-weight bold
+  :text-decoration none
+  :background rgb(242,153,0) url(/images/backgrounds/bg-button.png) no-repeat right center
+  :border-top 1px solid rgb(246,184,77)
+  :border-right 1px solid rgb(253,247,215)
+  :border-bottom 1px solid rgb(255,255,255)
+  :border-left 1px solid rgb(246,184,77)
+  :text-align center
+  :cursor pointer
+  +border-radius-5
+
+.button:hover, button.hover
+  :background-image url(/images/backgrounds/bg-button-hover.png)
+  
+.delete
+  :background-color rgb(255, 0, 0)
+  :background-image url(/images/backgrounds/bg-button-delete.png)
+  :background-position left center
+  :border-top-color rgb(255, 79, 79)
+  :border-right-color rgb(255, 239, 239)
+  :border-bottom-color rgb(255, 239, 239)
+  :border-left-color rgb(255, 79, 79)
+  :text-shadow 1px 1px 0px rgb(175, 54, 54)
+
+.delete:hover
+  :background-image url(/images/backgrounds/bg-button-delete-hover.png)
+  

@@ -16,3 +16,7 @@
       %td{:colspan=>3} There are no open errors.
 
 = will_paginate(open_errors)
+
+- if current_user.owner?(project)
+  - actions do |link|
+    - link.to('Manage project', edit_project_path,{:class => "button"})
