@@ -102,4 +102,16 @@ module ApplicationHelper
     concat(%{</div></div>})
   end
   
+  def block2(title=nil, &block)
+    concat(%{<div class="block">})
+    concat(%{<h2 class="title">#{h(title)}</h2>}) if title
+    concat(%{<div class="content">})
+    if block.arity == 1
+      concat(content)
+    else
+      block.call
+    end
+    concat(%{</div></div>})
+  end
+  
 end

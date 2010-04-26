@@ -1,8 +1,6 @@
-- block error.name do |link|
+- block2 error.name do
+
   - occurence = error.last_occurence
-  - link.to 'Summary /', error
-  - link.to 'Backtrace /', [:backtrace, occurence]     if occurence.backtrace?
-  - link.to 'Environment', [:environment, occurence] if occurence.properties?
   
   %p= error.description
   
