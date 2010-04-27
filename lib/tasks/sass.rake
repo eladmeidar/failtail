@@ -1,6 +1,4 @@
-namespace :sass do
-  desc 'Updates stylesheets if necessary from their Sass templates.'
-  task :update => :environment do
-    Sass::Plugin.update_stylesheets
-  end
+task :compile do
+  rails_root = File.expand_path("../../..", __FILE__)
+  sh "sass #{rails_root}/app/styles/sass/application.sass > #{rails_root}/public/stylesheets/application.css" 
 end
