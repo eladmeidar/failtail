@@ -21,6 +21,8 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
   
+  map.users '/users', :controller => 'users', :action => 'index'
+  
   map.home 'home', :controller => 'pages', :action => 'home'
   map.root :controller => 'projects', :action => 'index'
   

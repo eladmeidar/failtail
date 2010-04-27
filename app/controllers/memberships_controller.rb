@@ -53,7 +53,7 @@ class MembershipsController < ApplicationController
     redirect_to project
   end
   
-  private
+private
   
   def project
     @project ||= current_user.projects.find(params[:project_id])

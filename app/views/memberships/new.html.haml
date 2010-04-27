@@ -1,5 +1,7 @@
+- sidebar_blocks[:members] = true
+
 - block 'Add a user as a member of this project' do
-  - form_for [@project, @membership], :html => { :class => "form" } do |f|
+  - form_for [@project, @membership], :html => { :class => "form userForm" } do |f|
     .column.left
       = render :partial => "form", :object => f
     .clear

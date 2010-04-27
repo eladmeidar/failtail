@@ -29,8 +29,8 @@
                   = member.name
                 %span.email
                   = member.email
-            %li.clearfix.last
-              add new user
+            %li.clearfix.last.add-member
+              = link_to 'Add a member', [:new, @project, :membership]
           - else
             %li.clearfix
               = image_tag member.gravatar_url(:size => 40)
@@ -39,6 +39,3 @@
                   = member.name
                 %span.email
                   = member.email
-  - if current_user.owner? @project
-    %ul.navigation
-      %li.first.last= link_to 'Add a member', [:new, @project, :membership]

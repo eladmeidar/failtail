@@ -1,4 +1,5 @@
 - sidebar_blocks[:members]  = true
+- sidebar_blocks[:api_key]  = true
 
 %table
   %tr
@@ -16,6 +17,27 @@
     %tr
       %td
       %td{:colspan=>3} There are no open errors.
+
+- if open_errors.empty?
+  %div.block.inner
+    %h2
+      = "Get started"
+    %p
+      = "Create a new project and your API key will be generated."
+      %br/
+      = "Take a look at following libraries (examples available):"
+    %h3
+      = "Available libraries"
+    %ul
+      %li
+        = link_to "Flash Platform library", "http://github.com/mrhenry/failtale-as3"
+      %li
+        = link_to "Ruby (On Rails) library", "http://github.com/mrhenry/failtale-reporter"
+      %li
+        %em
+          = "More libraries coming soon"
+    %p
+      = "If you have an idea for a library or you made one yourself, send us an email at #{mail_to('failtale@mrhenry.be')}"
 
 = will_paginate(open_errors)
 

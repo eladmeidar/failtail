@@ -83,6 +83,8 @@ body
       h3
         :font-weight bold
         :font-size 1em
+      em
+        :font-style italic
 
     form.userForm
       div.group
@@ -152,6 +154,7 @@ body
       
       td, th
         :padding 8px
+        :word-wrap break-word
       
       tr + tr + tr
         :border-top 1px solid #ecefe6
@@ -161,6 +164,7 @@ body
         :text-align right
         :color #a5a7a2
         :font-size 10px
+        :text-transform uppercase
       
       th.label
         :text-align center
@@ -233,7 +237,34 @@ body
       :font-size 1em
       a
         :color= !orange
-  
+    
+    div.inner
+      :margin 30px 0
+      :padding 0 0 0 170px
+      h2,h3,p,div.pagination,form.form
+        :margin 0 0 10px 0
+      ul
+        :list-style disc
+        :margin 0 0 20px 0
+        :padding 0
+        :font-size 14px
+        :line-height 22px
+      p
+        :margin 0 0 20px 0
+      a
+        :color= !orange
+      
+    .api-key
+      strong
+        :display block
+        :padding 10px
+        :font-size 20px
+        :color= !grey_light
+        :background-color rgb(224, 227, 217)
+        :text-shadow 1px 1px 0px rgb(255,255,255)
+        +border-radius-5
+      
+    
   #breadcrumb
     :position absolute
     :top 148px
@@ -296,7 +327,10 @@ body
       :font-size 18px
       :font-weight normal
       :margin 0 0 10px 0
-
+      
+    .block
+      :margin-bottom 30px
+      
     ul.navigation
       :margin 0 0 20px 0
       li
@@ -306,9 +340,12 @@ body
 
     #message_block
       :margin 58px 0 0 0
+      :padding 0 0 20px 0
       ul.error
+        :background rgb(255, 159, 159) url(/images/icons/exclamation.png) no-repeat 10px 10px
+        :padding 10px 10px 10px 35px
         li
-          :color #ff0000
+          :color rgb(191, 47, 47)
     .members
       ul
         :margin 0
@@ -333,6 +370,17 @@ body
           :border-top none
         li.last
           :border-bottom none
+        li.add-member
+          a
+            :display block
+            :padding 0 0 0 50px
+            :line-height 40px
+            :color= !orange
+            :font-weight bold
+            :background url(/images/general/img-add-user.gif) no-repeat 0 0
+          a:hover
+            :text-decoration none
+      
    
   #footer
     :clear both

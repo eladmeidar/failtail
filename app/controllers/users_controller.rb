@@ -4,6 +4,14 @@ class UsersController < ApplicationController
   before_filter :only_if_registration_allowed, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   
+  def index
+    term  = params[:term]
+    @users = User.find_by_sql("SELECT name, email FROM users WHERE email LIKE '%#{term}%'")
+    if request.xhr?
+      render :json => { :users => @users }
+    end
+  end
+  
   def new
     @user = User.new
   end
@@ -32,6 +40,8 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
+  
   
   private
   

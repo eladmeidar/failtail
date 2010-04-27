@@ -9,8 +9,8 @@ $(document).ready(function() {
   };
 
   /*var email = new LiveValidation('invitation_request_email');
-email.add(Validate.Presence);
-email.add(Validate.Email);*/
+  email.add(Validate.Presence);
+  email.add(Validate.Email);*/
 
   $("#footer .links a").mouseover(function(){
       $(this).stop();
@@ -73,7 +73,32 @@ email.add(Validate.Email);*/
 	}
 	return false;
   });
-});
+  
+  /* 
+   * Autocomplete members
+   */
+   $('#membership_email').autocomplete({
+       source: function(req, add){
+                //pass request to server
+    			$.getJSON("/users", req, function(data) {
+      				//create array for response objects
+    				var suggestions = [];
+    				//process response
+    				$.each(data.users, function(i, val){
+    				    suggestions.push(val.user.email);
+    			    });
+    			    //pass array to callback
+    			    if (suggestions.length == 0) {
+    			        suggestions.push('No users found');
+    			    }
+    			    add(suggestions);
+    		    });
+        },
+        minLength: 2
+  });
+  
+}); // End DOM ready
+
 
 function switchContent(sender){
 	var contentBlock = $(sender).attr("rel");
@@ -89,6 +114,7 @@ function switchContent(sender){
       currentContent = contentBlock;
    }
 }
+
 function validateEmail(address) {
    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
    if(reg.test(address) == false) {
@@ -96,3 +122,4 @@ function validateEmail(address) {
    }
    return true;
 }
+

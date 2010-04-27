@@ -6,5 +6,11 @@
     .group.navform
       = f.submit 'Save', :class => 'button'
 
+%div.block.inner.api-key
+  %h2
+    = "API key"
+  %strong
+    = @project.api_token
+
 - actions do |link|
   - link.to 'Delete this project', project_path(project), :class => 'button delete', :method => :delete, :confirm => "Are you sure?"
