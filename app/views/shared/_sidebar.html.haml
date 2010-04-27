@@ -8,11 +8,37 @@
         - link.to project.name, project
 
 - if sidebar_blocks[:members]
-  .block
+  .block.members
     %h3 Members
-    - list @project.members, :class => 'navigation' do |member|
-      = image_tag member.gravatar_url(:size => 24), :style => 'float:right; margin:5px 10px'
-      = link_to member.name, '#'
-    - if current_user.owner? @project
-      %ul.navigation
-        %li.first.last= link_to 'Add a member', [:new, @project, :membership]
+    - unless @project.members.nil?
+      %ul
+        - @project.members.each_with_index do |member, idx|
+          - if idx == 0
+            %li.clearfix.first
+              = image_tag member.gravatar_url(:size => 40)
+              %span.info
+                %strong.name
+                  = member.name
+                %span.email
+                  = member.email
+          - elsif idx == (@project.members.length - 1)
+            %li.clearfix
+              = image_tag member.gravatar_url(:size => 40)
+              %span.info
+                %strong.name
+                  = member.name
+                %span.email
+                  = member.email
+            %li.clearfix.last
+              add new user
+          - else
+            %li.clearfix
+              = image_tag member.gravatar_url(:size => 40)
+              %span.info
+                %strong.name
+                  = member.name
+                %span.email
+                  = member.email
+  - if current_user.owner? @project
+    %ul.navigation
+      %li.first.last= link_to 'Add a member', [:new, @project, :membership]
