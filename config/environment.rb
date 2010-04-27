@@ -50,4 +50,3 @@ Rails::Initializer.run do |config|
   }
 end
 
-Sass::Plugin.options = {:style => :compressed}
