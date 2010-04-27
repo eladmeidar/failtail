@@ -174,9 +174,9 @@ end
 module Bundler
   ENV_LOADED   = true
   LOCKED_BY    = '0.9.24'
-  FINGERPRINT  = "cf47d9c1ef0c70a02c585f3c65691bdcfcfb0010"
+  FINGERPRINT  = "f5e8f156b6d1c95b4906b0b8e4419fb59a200659"
   HOME         = '/Users/yvesvanbroeckhoven/.bundle/ruby/1.8/bundler'
-  AUTOREQUIRES = {:default=>[["authlogic", false], ["cucumber", false], ["factory_girl", false], ["haml", false], ["railsgarden-message_block", false], ["shoulda", false], ["will_paginate", false]]}
+  AUTOREQUIRES = {:default=>[["authlogic", false], ["cucumber", false], ["factory_girl", false], ["haml", false], ["shoulda", false], ["will_paginate", false]]}
   SPECS        = [
         {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/activesupport-2.3.5.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib"], :name=>"activesupport"},
         {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/authlogic-2.1.3.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/authlogic-2.1.3/lib"], :name=>"authlogic"},
@@ -189,7 +189,6 @@ module Bundler
         {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/cucumber-0.6.4.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/cucumber-0.6.4/lib"], :name=>"cucumber"},
         {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/factory_girl-1.2.4.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/factory_girl-1.2.4/lib"], :name=>"factory_girl"},
         {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/haml-2.2.22.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/haml-2.2.22/lib"], :name=>"haml"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/railsgarden-message_block-0.1.0.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/railsgarden-message_block-0.1.0/lib"], :name=>"railsgarden-message_block"},
         {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/shoulda-2.10.3.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib"], :name=>"shoulda"},
         {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/will_paginate-2.3.12.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/will_paginate-2.3.12/lib"], :name=>"will_paginate"},
       ].map do |hash|

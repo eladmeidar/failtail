@@ -22,7 +22,6 @@ Rails::Initializer.run do |config|
   config.gem 'factory_girl'
   config.gem 'shoulda'
   config.gem "authlogic"
-  config.gem 'railsgarden-message_block'
   config.gem 'haml'
   config.gem 'will_paginate'
 
