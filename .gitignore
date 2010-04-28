@@ -8,5 +8,4 @@ doc/app
 coverage
 coverage.data
 config/deploy.*.rb
-public/stylesheets/*.css
 .DS_Store
