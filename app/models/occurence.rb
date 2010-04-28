@@ -2,7 +2,7 @@ class Occurence < ActiveRecord::Base
   
   def self.per_page ; 20 ; end
   
-  validates_presence_of :error
+  validates_presence_of :error, :class_name => '::Error'
   validates_presence_of :name
   validates_presence_of :description
   validates_presence_of :properties
