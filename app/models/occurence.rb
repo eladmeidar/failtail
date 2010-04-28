@@ -8,18 +8,27 @@ class Occurence < ActiveRecord::Base
   validates_presence_of :properties
   validates_presence_of :reporter
   
-  validate do |error|
+  validate do |occurrence|
     msg = "properties must be a hash with strings for keys and values."
-    if error.properties
-      if error.properties.is_a? Hash
-        error.properties.each do |k,v|
-          unless k.is_a?(String) and v.is_a?(String)
-            error.errors.add(:properties, msg)
+    props = occurrence.properties
+    if props
+      if Hash === props
+        props.each do |k,v|
+          unless String === k and String === v
+            occurrence.errors.add(:properties, msg)
             break
           end
         end
       else
-        error.errors.add(:properties, msg)
+        occurrence.errors.add(:properties, msg)
+      end
+    end
+  end
+  
+  validate do |occurrence|
+    if project = occurrence.project
+      if project.occurences.count(:conditions => ["occurences.created_at >= ?", 60.minutes.ago]}) > 900
+        occurrence.errors.add(:name, "To many api call in the last 60 minutes")
       end
     end
   end
@@ -27,12 +36,15 @@ class Occurence < ActiveRecord::Base
   serialize(:properties)
   
   belongs_to :error, :counter_cache => true, :class_name => '::Error'
+  has_one :project, :through => :error
   
-  default_scope :order => 'updated_at DESC'
+  default_scope :order => 'occurences.updated_at DESC'
   
-  after_create do |r|
-    r.error.update_attributes(:updated_at => DateTime.now)
-    r.error.project.update_attributes(:updated_at => DateTime.now)
+  after_create :touch_parents
+  
+  def touch_parents
+    self.error.update_attributes(:updated_at => DateTime.now)
+    self.project.update_attributes(:updated_at => DateTime.now)
   end
   
   def first?
