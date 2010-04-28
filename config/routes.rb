@@ -10,7 +10,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :invitations, :only => [:new, :create]
   map.resources :invitation_requests, :only => [:new, :create]
   
-  map.resource :reports, :only => :create
   map.resources :errors, :only => :index
   map.resources :projects, :shallow => true,
     :member => { :close_all_errors => :put, :closed => :get } do |projects|
@@ -21,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
   
+  map.reports '/reports.:format', :controller => 'reports', :action => :create
   map.users '/users', :controller => 'users', :action => 'index'
   
   map.home 'home', :controller => 'pages', :action => 'home'
