@@ -379,6 +379,8 @@ body {
         border-top: none; }
       #container #sidebar .members ul li.last {
         border-bottom: none; }
+      #container #sidebar .members ul li.owner {
+        background: url(/images/backgrounds/bg-owner-label.gif) no-repeat right center; }
       #container #sidebar .members ul li.add-member a {
         display: block;
         padding: 0 0 0 50px;
