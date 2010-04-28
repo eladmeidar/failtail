@@ -2,7 +2,7 @@
 - block occurence.name do |link|
   - link.to 'Summary /', occurence
   - link.to 'Backtrace /', [:backtrace, occurence]     if occurence.backtrace?
-  - link.to 'Environment /', [:environment, occurence] if occurence.properties?
+  - link.to 'Environment', [:environment, occurence] if occurence.properties?
   
   - if occurence.properties?
     %table.table.environment
