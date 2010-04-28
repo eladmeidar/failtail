@@ -99,13 +99,13 @@ class ProjectsController < ApplicationController
     project.api_token = nil
     project.save!
     respond_to do |format|
-      format.html { render :action => 'edit' }
+      format.html { redirect_to edit_project_path(project) }
       format.xml  { render :xml  => project }
       format.json { render :json => project }
     end
   rescue ActiveRecord::RecordInvalid => e
     respond_to do |format|
-      format.html { render :action => 'edit' }
+      format.html { redirect_to edit_project_path(project) }
       format.xml  { render :xml  => e.record.errors, :status => :unprocessable_entity }
       format.json { render :json => e.record.errors, :status => :unprocessable_entity }
     end
