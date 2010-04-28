@@ -9,3 +9,4 @@ coverage
 coverage.data
 config/deploy.*.rb
 .DS_Store
+.sass-cache

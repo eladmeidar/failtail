@@ -1,5 +1,9 @@
 class Report < ActivePresenter::Base
   
+  def self.human_name
+    "Report"
+  end
+  
   presents :project, :error, :occurence
   
   before_validation :find_project
