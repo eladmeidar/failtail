@@ -10,7 +10,7 @@
 - if sidebar_blocks[:members]
   .block.members
     %h3 Members
-    - unless @project.members.nil?
+    - unless @project.members.empty?
       %ul
         - @project.members.each_with_index do |member, idx|
           - if idx == 0
@@ -21,16 +21,6 @@
                   = member.name
                 %span.email
                   = member.email
-          - elsif idx == (@project.members.length - 1)
-            %li.clearfix
-              = image_tag member.gravatar_url(:size => 40)
-              %span.info
-                %strong.name
-                  = member.name
-                %span.email
-                  = member.email
-            %li.clearfix.last.add-member
-              = link_to 'Add a member', [:new, @project, :membership]
           - else
             %li.clearfix
               = image_tag member.gravatar_url(:size => 40)
@@ -39,3 +29,7 @@
                   = member.name
                 %span.email
                   = member.email
+    - if current_user.owner?(@project)
+      %ul
+        %li.clearfix.last.add-member
+          = link_to 'Add a member', [:new, @project, :membership]
