@@ -26,7 +26,7 @@ class Occurence < ActiveRecord::Base
   end
   
   validate do |occurrence|
-    if project = occurrence.project
+    if project = occurrence.error.try(:project)
       if project.occurences.count(:conditions => ["occurences.created_at >= ?", 60.minutes.ago]) > 900
         occurrence.errors.add(:name, "To many api call in the last 60 minutes")
       end
@@ -44,7 +44,7 @@ class Occurence < ActiveRecord::Base
   
   def touch_parents
     self.error.update_attributes(:updated_at => DateTime.now)
-    self.project.update_attributes(:updated_at => DateTime.now)
+    self.error.project.update_attributes(:updated_at => DateTime.now)
   end
   
   def first?
