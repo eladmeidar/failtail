@@ -95,6 +95,22 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def reset_api_key
+    project.api_token = nil
+    project.save!
+    respond_to do |format|
+      format.html { redirect_to project }
+      format.xml  { render :xml  => project }
+      format.json { render :json => project }
+    end
+  rescue ActiveRecord::RecordInvalid => e
+    respond_to do |format|
+      format.html { render :action => 'edit' }
+      format.xml  { render :xml  => e.record.errors, :status => :unprocessable_entity }
+      format.json { render :json => e.record.errors, :status => :unprocessable_entity }
+    end
+  end
+  
   def close_all_errors
     project.reports.open.all.each do |error|
       error.closed = true

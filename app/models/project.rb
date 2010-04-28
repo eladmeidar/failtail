@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
   
   before_validation :generate_api_token
   
-  private
+private
   
   def generate_api_token
     self.api_token ||= Digest::SHA1.hexdigest("--#{self.name}--#{DateTime.new}--")
