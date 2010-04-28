@@ -25,7 +25,7 @@ class Project < ActiveRecord::Base
 private
   
   def generate_api_token
-    self.api_token ||= Digest::SHA1.hexdigest("--#{self.name}--#{DateTime.new}--")
+    self.api_token ||= Digest::SHA1.hexdigest("--#{self.name}--#{Time.now}--#{rand(1<<100)}--")
   end
   
 end

@@ -99,7 +99,7 @@ class ProjectsController < ApplicationController
     project.api_token = nil
     project.save!
     respond_to do |format|
-      format.html { redirect_to project }
+      format.html { render :action => 'edit' }
       format.xml  { render :xml  => project }
       format.json { render :json => project }
     end
