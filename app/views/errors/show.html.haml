@@ -11,12 +11,14 @@
     %pre=h error.backtrace.split("\n")[0..5].join("\n")
     %br
   
+  %br
+  %h3 Occurences
+  %br
+  = will_paginate occurences
+  
   %table.table
-    %tr
-      %th.first
-      %th.last Occurences
-    
     =render occurences
+    
   = will_paginate occurences
   %br
   
