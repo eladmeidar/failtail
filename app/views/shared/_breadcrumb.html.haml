@@ -1,5 +1,8 @@
 - menu_block do |link|
-  - link.to('Projects', root_path)
+  - if @user or @users
+    - link.to('Users', admin_users_path)
+  - else
+    - link.to('Projects', root_path)
   - @error = @occurence.error if @occurence and !@error
   - @project = @error.project if @error and !@project
   - link.to(@project.name, @project,:class => "action2") { true } if @project and !@project.new_record?
