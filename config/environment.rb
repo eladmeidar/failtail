@@ -20,5 +20,13 @@ Rails::Initializer.run do |config|
     :session_key => '_errors_session',
     :secret      => '729bdf4f8affcc1dc4cd4e5d8b7c6b8fc91e5341e8a486d5203ed62679e60f0b324f707a36b60c04deb17aa4308e51ebecb440fc92bbb929cc72d87b434d8c8e'
   }
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address  => ENV['SMTP_HOST'],
+    :port  => 25,
+    :user_name  => ENV['SMTP_USER'],
+    :password  => ENV['SMTP_PASS'],
+    :authentication  => :login
+  }
 end
-
