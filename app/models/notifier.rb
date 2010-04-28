@@ -11,7 +11,7 @@ class Notifier < ActionMailer::Base
   
   def invitation_request(email, sent_at = Time.now)
     subject    'A new Failtale invitation!'
-    recipients 'failtale@mrhenry.be'
+    recipients 'robot@failtale.be'
     from       'robot@failtale.be'
     sent_on    sent_at
     
