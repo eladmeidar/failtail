@@ -5,7 +5,10 @@
     = check_box_tag "errors[#{error.id}]"
   %td.label
     %span{:class => error.last_occurence.reporter}
-      = error.last_occurence.reporter
+      - unless error.last_occurence.reporter == 'javascript'
+        = error.last_occurence.reporter
+      - else
+        = 'js'
   %td
     = link_to h(truncate(error.name, :length => 100)), error
   %td.count
