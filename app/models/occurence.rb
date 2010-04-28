@@ -27,7 +27,7 @@ class Occurence < ActiveRecord::Base
   
   validate do |occurrence|
     if project = occurrence.project
-      if project.occurences.count(:conditions => ["occurences.created_at >= ?", 60.minutes.ago]}) > 900
+      if project.occurences.count(:conditions => ["occurences.created_at >= ?", 60.minutes.ago]) > 900
         occurrence.errors.add(:name, "To many api call in the last 60 minutes")
       end
     end
