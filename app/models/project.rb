@@ -11,7 +11,9 @@ class Project < ActiveRecord::Base
   
   # we can't user 'errors' here as it would conflict with AR's error handeling
   has_many :reports, :dependent => :destroy,
-    :class_name => "::Error", :foreign_key => "project_id", :include => :last_occurence
+    :class_name  => "::Error",
+    :foreign_key => "project_id",
+    :include     => :last_occurence
   
   default_scope :order => 'name ASC'
   
