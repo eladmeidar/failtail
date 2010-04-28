@@ -26,4 +26,5 @@
     = "If you have an idea for a library or you made one yourself, send us an email at #{mail_to('failtale@mrhenry.be')}"
 
 - actions do |link|
-  - link.to('New project', new_project_path,{:class => "button"})
+  - if current_user.can_create_one_more_project?
+    - link.to('New project', new_project_path,{:class => "button"})
