@@ -13,22 +13,16 @@
     - unless @project.members.empty?
       %ul
         - @project.members.each_with_index do |member, idx|
-          - if idx == 0
-            %li.clearfix.first
-              = image_tag member.gravatar_url(:size => 40)
-              %span.info
-                %strong.name
-                  = member.name
-                %span.email
-                  = member.email
-          - else
-            %li.clearfix
-              = image_tag member.gravatar_url(:size => 40)
-              %span.info
-                %strong.name
-                  = member.name
-                %span.email
-                  = member.email
+          - Rails.logger.debug('==========================')
+          -Rails.logger.debug(member.owner?(@project).inspect)
+          -Rails.logger.debug('==========================')
+          %li{:class => %{clearfix #{css_class('first', idx, 0)} #{css_class('last', idx, (@project.members.length - 1))} #{css_class('owner', member.owner?(@project), true)}} }
+            = image_tag member.gravatar_url(:size => 40)
+            %span.info
+              %strong.name
+                = member.name
+              %span.email
+                = member.email
     - if current_user.owner?(@project)
       %ul
         %li.clearfix.last.add-member

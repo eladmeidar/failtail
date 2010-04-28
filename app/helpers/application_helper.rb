@@ -114,4 +114,28 @@ module ApplicationHelper
     concat(%{</div></div>})
   end
   
+  def css_class_first(value=nil, check=nil)
+    unless value.nil? or check.nil?
+      if value == check
+        %{first}
+      end
+    end
+  end
+  
+  def css_class_last(value=nil, check=nil)
+    unless value.nil? or check.nil?
+      if value == check
+        %{last}
+      end
+    end
+  end
+  
+  def css_class(class_name='', value=nil, check=nil)
+    unless value.nil? or check.nil?
+      if value == check
+        %{#{class_name}}
+      end
+    end
+  end
+  
 end
