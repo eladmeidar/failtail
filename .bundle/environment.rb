@@ -174,24 +174,31 @@ end
 module Bundler
   ENV_LOADED   = true
   LOCKED_BY    = '0.9.24'
-  FINGERPRINT  = "cf47d9c1ef0c70a02c585f3c65691bdcfcfb0010"
-  HOME         = '/Users/yvesvanbroeckhoven/.bundle/ruby/1.8/bundler'
-  AUTOREQUIRES = {:default=>[["authlogic", false], ["cucumber", false], ["factory_girl", false], ["haml", false], ["railsgarden-message_block", false], ["shoulda", false], ["will_paginate", false]]}
+  FINGERPRINT  = "9d708398f069b74ada9257dfbae6ad575254bea5"
+  HOME         = '/Users/Simon/.rvm/gems/ruby-1.8.7-p249/bundler'
+  AUTOREQUIRES = {:default=>[["authlogic", false], ["cucumber", false], ["factory_girl", false], ["haml", false], ["rails", false], ["railsgarden-message_block", false], ["shoulda", false], ["will_paginate", false]]}
   SPECS        = [
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/activesupport-2.3.5.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib"], :name=>"activesupport"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/authlogic-2.1.3.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/authlogic-2.1.3/lib"], :name=>"authlogic"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/builder-2.1.2.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/builder-2.1.2/lib"], :name=>"builder"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/diff-lcs-1.1.2.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/diff-lcs-1.1.2/lib"], :name=>"diff-lcs"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/json_pure-1.2.4.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/json_pure-1.2.4/lib"], :name=>"json_pure"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/polyglot-0.3.1.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/polyglot-0.3.1/lib"], :name=>"polyglot"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/term-ansicolor-1.0.5.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/term-ansicolor-1.0.5/lib"], :name=>"term-ansicolor"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/treetop-1.4.5.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/treetop-1.4.5/lib"], :name=>"treetop"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/cucumber-0.6.4.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/cucumber-0.6.4/lib"], :name=>"cucumber"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/factory_girl-1.2.4.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/factory_girl-1.2.4/lib"], :name=>"factory_girl"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/haml-2.2.22.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/haml-2.2.22/lib"], :name=>"haml"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/railsgarden-message_block-0.1.0.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/railsgarden-message_block-0.1.0/lib"], :name=>"railsgarden-message_block"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/shoulda-2.10.3.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib"], :name=>"shoulda"},
-        {:loaded_from=>"/opt/local/lib/ruby/gems/1.8/specifications/will_paginate-2.3.12.gemspec", :load_paths=>["/opt/local/lib/ruby/gems/1.8/gems/will_paginate-2.3.12/lib"], :name=>"will_paginate"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/rake-0.8.7/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/rake-0.8.7.gemspec", :name=>"rake"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/activesupport-2.3.5/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/activesupport-2.3.5.gemspec", :name=>"activesupport"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/rack-1.0.1/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/rack-1.0.1.gemspec", :name=>"rack"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/actionpack-2.3.5/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/actionpack-2.3.5.gemspec", :name=>"actionpack"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/actionmailer-2.3.5/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/actionmailer-2.3.5.gemspec", :name=>"actionmailer"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/activerecord-2.3.5/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/activerecord-2.3.5.gemspec", :name=>"activerecord"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/activeresource-2.3.5/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/activeresource-2.3.5.gemspec", :name=>"activeresource"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/authlogic-2.1.3/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/authlogic-2.1.3.gemspec", :name=>"authlogic"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/builder-2.1.2/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/builder-2.1.2.gemspec", :name=>"builder"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/diff-lcs-1.1.2/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/diff-lcs-1.1.2.gemspec", :name=>"diff-lcs"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/json_pure-1.4.2/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/json_pure-1.4.2.gemspec", :name=>"json_pure"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/polyglot-0.3.1/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/polyglot-0.3.1.gemspec", :name=>"polyglot"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/term-ansicolor-1.0.5/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/term-ansicolor-1.0.5.gemspec", :name=>"term-ansicolor"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/treetop-1.4.5/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/treetop-1.4.5.gemspec", :name=>"treetop"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/cucumber-0.6.4/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/cucumber-0.6.4.gemspec", :name=>"cucumber"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/factory_girl-1.2.4/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/factory_girl-1.2.4.gemspec", :name=>"factory_girl"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/haml-2.2.22/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/haml-2.2.22.gemspec", :name=>"haml"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/rails-2.3.5/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/rails-2.3.5.gemspec", :name=>"rails"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/railsgarden-message_block-0.1.0/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/railsgarden-message_block-0.1.0.gemspec", :name=>"railsgarden-message_block"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/shoulda-2.10.3/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/shoulda-2.10.3.gemspec", :name=>"shoulda"},
+        {:load_paths=>["/Users/Simon/.rvm/gems/ruby-1.8.7-p249/gems/will_paginate-2.3.12/lib"], :loaded_from=>"/Users/Simon/.rvm/gems/ruby-1.8.7-p249/specifications/will_paginate-2.3.12.gemspec", :name=>"will_paginate"},
       ].map do |hash|
     if hash[:virtual_spec]
       spec = eval(hash[:virtual_spec], TOPLEVEL_BINDING, "<virtual spec for '#{hash[:name]}'>")

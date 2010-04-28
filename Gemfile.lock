@@ -1,35 +1,51 @@
 --- 
 dependencies: 
+  rails: 
+    group: 
+    - :default
+    version: = 2.3.5
   authlogic: 
     group: 
     - :default
-    version: ">= 0"
+    version: = 2.1.3
   haml: 
     group: 
     - :default
-    version: ">= 0"
+    version: = 2.2.22
   shoulda: 
     group: 
     - :default
-    version: ">= 0"
+    version: = 2.10.3
   will_paginate: 
     group: 
     - :default
-    version: ">= 0"
+    version: = 2.3.12
   factory_girl: 
     group: 
     - :default
-    version: ">= 0"
+    version: = 1.2.4
   cucumber: 
     group: 
     - :default
-    version: ">= 0"
+    version: = 0.6.4
   railsgarden-message_block: 
     group: 
     - :default
-    version: ">= 0"
+    version: = 0.1.0
 specs: 
+- rake: 
+    version: 0.8.7
 - activesupport: 
+    version: 2.3.5
+- rack: 
+    version: 1.0.1
+- actionpack: 
+    version: 2.3.5
+- actionmailer: 
+    version: 2.3.5
+- activerecord: 
+    version: 2.3.5
+- activeresource: 
     version: 2.3.5
 - authlogic: 
     version: 2.1.3
@@ -38,7 +54,7 @@ specs:
 - diff-lcs: 
     version: 1.1.2
 - json_pure: 
-    version: 1.2.4
+    version: 1.4.2
 - polyglot: 
     version: 0.3.1
 - term-ansicolor: 
@@ -51,13 +67,15 @@ specs:
     version: 1.2.4
 - haml: 
     version: 2.2.22
+- rails: 
+    version: 2.3.5
 - railsgarden-message_block: 
     version: 0.1.0
 - shoulda: 
     version: 2.10.3
 - will_paginate: 
     version: 2.3.12
-hash: cf47d9c1ef0c70a02c585f3c65691bdcfcfb0010
+hash: 9d708398f069b74ada9257dfbae6ad575254bea5
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
