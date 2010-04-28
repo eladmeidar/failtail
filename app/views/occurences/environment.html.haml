@@ -2,17 +2,17 @@
 - block occurence.name do |link|
   - link.to 'Summary /', occurence
   - link.to 'Backtrace /', [:backtrace, occurence]     if occurence.backtrace?
-  - link.to 'Environment /', [:environment, occurence] if occurence.properties?
+  - link.to 'Environment', [:environment, occurence] if occurence.properties?
   
   - if occurence.properties?
     %table.table.environment
       %tr
         %th.select Property
         %th Value
-      - occurence.properties.each do |name, value|
+      - occurence.properties.keys.sort.each do |name|
         %tr
-          %td.select=name
-          %td=value
+          %td.select= name
+          %td=        occurence.properties[name]
 
 - actions do |link|
   - if error.closed
