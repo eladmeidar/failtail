@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
         record.user_id == self.id
       end
     when Project    then owner?(memberships.first(:conditions => {:project_id => record.id}), true)
-    when Error      then owner?(record.project, true)
+    when ::Error    then owner?(record.project, true)
     when Occurence  then owner?(record.error, true)
     else false
     end
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
     case record
     when Membership then record.user_id == self.id
     when Project    then member?(memberships.first(:conditions => { :project_id => record.id }))
-    when Error      then member?(record.project)
+    when ::Error    then member?(record.project)
     when Occurence  then member?(record.error)
     else false
     end
