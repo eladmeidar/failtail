@@ -9,6 +9,7 @@
   
     #wrapper
       #header.clearfix
+        
         %ul.clearfix
           %li.login
             %a{ :href => "#", :title => "Login" }
@@ -16,6 +17,11 @@
           %li.request
             %a{ :href => "#", :title => "Request invitation", :rel => "content5" }
               Request invitation
+          %li.invites-counter
+            Only 
+            %strong
+              = invites_left(50)
+            invites left, so hurry!
 
         %h1
           %a{ :href => "/", :title => "Failtale (beta) - Telling you more about failing applications." }
@@ -94,7 +100,12 @@
             
           #content3.contentItem{:style => "display:none;"}
             %p
-              Failtale is build to be extendable so it can support more than just Rails or Ruby. We are currently working on a Actionscript 3 reporter and a PHP reporter is on the way too.
+              Failtale is build to be extendable so it can support more than just Rails or Ruby. We have already a reporter for 
+              %a{:href => 'http://github.com/mrhenry/failtale-reporter' }Rails or Ruby
+              &
+              %a{:href => 'http://github.com/mrhenry/failtale-as3'}Actionscript 3.
+            %p
+              They contain examples so you can easily adopt them into your projects.
             
           #content4.contentItem{:style => "display:none;"}
             %p

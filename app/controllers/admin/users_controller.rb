@@ -39,7 +39,7 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.create!(params[:user])
     respond_to do |format|
-      format.html { redirect_to [:user, user] }
+      format.html { redirect_to [:admin, user] }
       format.xml  { render :xml  => user, :status => :created }
       format.json { render :json => user, :status => :created }
     end

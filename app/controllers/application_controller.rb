@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # :secret => '0519e5d7e335e0698bdda6e1a0eb7b37'
   
   filter_parameter_logging :password, :password_confirmation
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :invites_left
   helper_method :sidebar_blocks
   
   private
@@ -83,6 +83,14 @@ class ApplicationController < ActionController::Base
   
   def sidebar_blocks
     @sidebar_blocks ||= {}
+  end
+  
+  def invites_left(total=nil)
+    unless total.nil?
+      users = User.find(:all)
+      admins = users.select { |x| x.admin }
+      %{#{ total - users.length + admins.length }}
+    end
   end
   
 end
