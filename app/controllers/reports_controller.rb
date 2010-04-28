@@ -21,6 +21,9 @@ class ReportsController < ApplicationController
   private
   
   def report
+    if String === params[:report]
+      params[:report] = JSON.parse(Base64.decode64(params[:report]))
+    end
     @report ||= Report.new(params[:report])
   end
   
