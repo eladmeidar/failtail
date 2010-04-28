@@ -100,6 +100,13 @@ body {
     #container #profile a, #container #profile a:hover, #container #profile a:visited, #container #profile a:active {
       color: inherit;
       font-weight: bold; }
+    #container #profile .greeting {
+      float: left;
+      padding: 0 10px 0 0; }
+    #container #profile .actions {
+      float: left; }
+      #container #profile .actions a {
+        padding-left: 5px; }
   #container #header {
     top: 28px;
     margin-bottom: 28px;
@@ -403,7 +410,7 @@ body {
       list-style: none; }
     #container #footer ul.links li {
       float: left;
-      margin: 0 2px 0 0; }
+      margin: 0 5px 0 0; }
     #container #footer ul.links a {
       display: block;
       margin: 0;
