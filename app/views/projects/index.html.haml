@@ -1,29 +1,29 @@
 %table
   %tr
-    %th.select date 
-    %th project
-    %th.count Count
+    %th.select  date 
+    %th         project
+    %th.count   Count
   = render projects
   
 %div.block.inner
-  %h2
-    = "Get started"
+  %h2 Get started
   %p
-    = "Create a new project and your API key will be generated."
+    Create a new project and your API key will be generated.
     %br/
-    = "Take a look at following libraries (examples available):"
-  %h3
-    = "Available libraries"
+    Take a look at following libraries (examples available):
+  %h3 Available libraries
   %ul
     %li
       = link_to "Flash Platform library", "http://github.com/mrhenry/failtale-as3"
     %li
       = link_to "Ruby (On Rails) library", "http://github.com/mrhenry/failtale-reporter"
     %li
-      %em
-        = "More libraries coming soon"
+      %em More libraries coming soon
   %p
-    = "If you have an idea for a library or you made one yourself, send us an email at #{mail_to('failtale@mrhenry.be')}"
+    If you have an idea for a library or you made one yourself,
+    send us an email at 
+    = mail_to('failtale@mrhenry.be')
 
 - actions do |link|
-  - link.to('New project', new_project_path,{:class => "button"})
+  - if current_user.can_create_one_more_project?
+    - link.to('New project', new_project_path,{:class => "button"})

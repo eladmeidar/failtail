@@ -34,6 +34,12 @@ class ProjectsController < ApplicationController
   end
   
   def new
+    unless current_user.can_create_one_more_project?
+      flash[:notice] = "You cannot create more projects."
+      render :action => 'new'
+      return
+    end
+    
     @project = current_user.projects.build(params[:project])
     respond_to do |format|
       format.html # render index.html.erb
@@ -52,12 +58,19 @@ class ProjectsController < ApplicationController
   end
   
   def create
+    unless current_user.can_create_one_more_project?
+      flash[:notice] = "You cannot create more projects."
+      render :action => 'new'
+      return
+    end
+    
     @project = current_user.projects.create!(params[:project])
     respond_to do |format|
       format.html { redirect_to project }
       format.xml  { render :xml  => project, :status => :created }
       format.json { render :json => project, :status => :created }
     end
+    
   rescue ActiveRecord::RecordInvalid => e
     @project = e.record
     respond_to do |format|
@@ -77,6 +90,22 @@ class ProjectsController < ApplicationController
   rescue ActiveRecord::RecordInvalid => e
     respond_to do |format|
       format.html { render :action => 'edit' }
+      format.xml  { render :xml  => e.record.errors, :status => :unprocessable_entity }
+      format.json { render :json => e.record.errors, :status => :unprocessable_entity }
+    end
+  end
+  
+  def reset_api_key
+    project.api_token = nil
+    project.save!
+    respond_to do |format|
+      format.html { redirect_to edit_project_path(project) }
+      format.xml  { render :xml  => project }
+      format.json { render :json => project }
+    end
+  rescue ActiveRecord::RecordInvalid => e
+    respond_to do |format|
+      format.html { redirect_to edit_project_path(project) }
       format.xml  { render :xml  => e.record.errors, :status => :unprocessable_entity }
       format.json { render :json => e.record.errors, :status => :unprocessable_entity }
     end

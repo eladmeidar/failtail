@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   
   has_many :memberships, :dependent => :destroy
   has_many :projects, :through => :memberships
+  has_many :owned_projects, :through => :memberships, :conditions => { 'memberships.role' => 'owner' }
   
   default_scope :order => 'name ASC'
   
@@ -44,6 +45,10 @@ class User < ActiveRecord::Base
   def gravatar_url(options={})
     return nil unless self.email
     @gravatar_url ||= Gravatar.url_for(self.email, options)
+  end
+  
+  def can_create_one_more_project?
+    self.admin or self.owned_projects.size < 3
   end
   
 end

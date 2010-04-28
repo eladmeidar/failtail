@@ -12,8 +12,8 @@ class Project < ActiveRecord::Base
   # we can't user 'errors' here as it would conflict with AR's error handeling
   has_many :reports, :dependent => :destroy,
     :class_name  => "::Error",
-    :foreign_key => "project_id",
-    :include     => :last_occurence
+    :foreign_key => "project_id"
+  has_many :occurences, :through => :reports
   
   default_scope :order => 'name ASC'
   
@@ -22,10 +22,10 @@ class Project < ActiveRecord::Base
   
   before_validation :generate_api_token
   
-  private
+private
   
   def generate_api_token
-    self.api_token ||= Digest::SHA1.hexdigest("--#{self.name}--#{DateTime.new}--")
+    self.api_token ||= Digest::SHA1.hexdigest("--#{self.name}--#{Time.now}--#{rand(1<<100)}--")
   end
   
 end

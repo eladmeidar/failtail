@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :errors, :only => :index
   map.resources :projects, :shallow => true,
-    :member => { :close_all_errors => :put, :closed => :get } do |projects|
+    :member => { :close_all_errors => :put, :closed => :get, :reset_api_key => :get } do |projects|
     projects.resources :memberships, :only => [:new, :create, :edit, :update, :destroy]
     projects.resources :errors, :shallow => true, :only => [:show, :update] do |errors|
       errors.resources :occurences, :only => [:show],
