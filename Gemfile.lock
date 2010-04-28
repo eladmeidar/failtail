@@ -24,6 +24,10 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
+  railsgarden-message_block: 
+    group: 
+    - :default
+    version: ">= 0"
 specs: 
 - activesupport: 
     version: 2.3.5
@@ -47,11 +51,13 @@ specs:
     version: 1.2.4
 - haml: 
     version: 2.2.22
+- railsgarden-message_block: 
+    version: 0.1.0
 - shoulda: 
     version: 2.10.3
 - will_paginate: 
     version: 2.3.12
-hash: f5e8f156b6d1c95b4906b0b8e4419fb59a200659
+hash: cf47d9c1ef0c70a02c585f3c65691bdcfcfb0010
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
