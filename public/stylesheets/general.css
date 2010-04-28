@@ -29,15 +29,17 @@ body#home{background:#fff url(/images/splash/bg.png) repeat-x center top;font-si
 #home a:hover{color:#ccc;}
 #home #wrapper    {width:1010px;margin:0 auto;}
 
-#home #header{padding:0 0 0 350px;}
+#home #header{padding:0 0 0 350px; position: relative; }
 	#home #header h1{width:518px;height:135px;margin:36px 0 0 0;clear:both;}
 	#home #header h1 a{display:block;width:518px;height:135px;background:transparent url(/images/splash/logo.png) no-repeat 0 0;text-indent:-9999px;}
 	
 	#home #header ul{height:44px;}
 		#home #header ul li{font-size:1.5em;height:24px;padding:20px 20px 0 20px;float:right;border-right:1px solid #daddd5;}
+	    #home #header .invites-counter { color: #B2B5AE; font-size: 15px; font-style: italic; }
+	    #home #header strong    { color: rgb(123, 123, 121); }
 		
 #home #container{background:#f6f7f3;margin:20px 50px 0 30px;padding:22px;}
-#home #contentBlock{background:#ecefe6 none;height:251px;padding:22px 22px 22px 440px;font-size:1.2em;line-height:1.4em;}
+#home #contentBlock{background:#ecefe6 none;height:251px;padding:22px 22px 22px 440px;font-size:1.2em;line-height:1.4em; }
 	#home #contentBlock p{margin:0 0 20px 0;}
 	#home #contentBlock a{text-decoration:underline;color:#333;}
 	
