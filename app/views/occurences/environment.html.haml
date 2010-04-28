@@ -9,10 +9,10 @@
       %tr
         %th.select Property
         %th Value
-      - occurence.properties.each do |name, value|
+      - occurence.properties.keys.sort.each do |name|
         %tr
-          %td.select=name
-          %td=value
+          %td.select= name
+          %td=        occurence.properties[name]
 
 - actions do |link|
   - if error.closed
