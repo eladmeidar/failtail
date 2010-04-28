@@ -1,5 +1,7 @@
 body
   +reset-margin-padding
+  :width 100%
+  :display table
   :text-align center
   :background url('../images/backgrounds/header.png') repeat-x
   :background-color= !body_bg
@@ -11,6 +13,7 @@ body
   
   #wrapper
     :background url('../images/backgrounds/header-grad.png') top center no-repeat
+    :display table-cell
     
   h4
     :font-size 18px
@@ -39,6 +42,16 @@ body
     :margin
       :top   7px
       :right 30px
+    
+    .greeting
+      :float left
+      :padding 0 15px 0 0
+    
+    .actions
+      :float left
+      
+      a
+        :padding-left 5px
   
   #header
     :top 28px
@@ -398,7 +411,7 @@ body
       
     ul.links li
       :float left
-      :margin 0 2px 0 0
+      :margin 0 5px 0 0
     
     ul.links a
       :display block
@@ -424,6 +437,10 @@ body
     ul.links .source-code a
       :background-position -150px -50px
       :width 73px
+    
+    ul.links .twitter a
+      :background-position -150px -100px
+      :width 121px
       
 #new_user_session
   :margin 0 0 0 170px

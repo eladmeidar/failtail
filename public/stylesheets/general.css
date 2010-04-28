@@ -63,7 +63,7 @@ body#home{background:#fff url(/images/splash/bg.png) repeat-x center top;font-si
 	#home ul#shots li{display:inline;margin:0 5px;}
 	
 
-#home #login{position:absolute;top:0;margin-left:381px;padding:10px 10px 0px 10px;background:transparent url(/images/splash/bg_login.png) repeat 0 0;border:1px solid #dee1da;border-top:none;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
+#home #login{position:absolute;top:0;margin-left:410px;padding:10px 10px 0px 10px;background:transparent url(/images/splash/bg_login.png) repeat 0 0;border:1px solid #dee1da;border-top:none;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
  #home #login p{margin:0 0 10px 0;}
  #home #login p.remember{color:#999;text-align:right;font-style:italic;padding-right:34px;}
  #home input{margin:0 0 0 10px;vertical-align:middle;}
