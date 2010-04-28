@@ -77,25 +77,25 @@ $(document).ready(function() {
   /* 
    * Autocomplete members
    */
-   $('#membership_email').autocomplete({
-       source: function(req, add){
-                //pass request to server
-    			$.getJSON("/users", req, function(data) {
-      				//create array for response objects
-    				var suggestions = [];
-    				//process response
-    				$.each(data.users, function(i, val){
-    				    suggestions.push(val.user.email);
-    			    });
-    			    //pass array to callback
-    			    if (suggestions.length == 0) {
-    			        suggestions.push('No users found');
-    			    }
-    			    add(suggestions);
-    		    });
-        },
-        minLength: 2
-  });
+   //$('#membership_email').autocomplete({
+   //    source: function(req, add){
+   //             //pass request to server
+   // 			$.getJSON("/users", req, function(data) {
+   //   				//create array for response objects
+   // 				var suggestions = [];
+   // 				//process response
+   // 				$.each(data.users, function(i, val){
+   // 				    suggestions.push(val.user.email);
+   // 			    });
+   // 			    //pass array to callback
+   // 			    if (suggestions.length == 0) {
+   // 			        suggestions.push('No users found');
+   // 			    }
+   // 			    add(suggestions);
+   // 		    });
+   //     },
+   //     minLength: 2
+   // });
   
 }); // End DOM ready
 

@@ -116,7 +116,7 @@ body {
       #container #header h1, #container #header h1 a {
         position: absolute;
         width: 257px;
-        height: 99px; }
+        height: 116px; }
     #container #header h2 {
       height: 0;
       width: 0; }
@@ -228,6 +228,8 @@ body {
           background-color: #00aed3; }
         #container #content table td.label .flash {
           background-color: #ee3124; }
+        #container #content table td.label .javascript {
+          background-color: rgb(255,122,225); }
       #container #content table td + td {
         background-color: #ffffff; }
       #container #content table td a, #container #content table td a:hover, #container #content table td a:visited, #container #content table td a:active {
