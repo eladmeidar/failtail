@@ -33,7 +33,7 @@
           = image_tag comment.user.gravatar_url(:size => 40)
           %span.info
             %strong.user
-              = comment.name
+              = comment.user.name
             %strong.date
               = comment.created_at.to_s(:short)
             %span.email
