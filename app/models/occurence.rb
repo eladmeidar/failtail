@@ -35,8 +35,14 @@ class Occurence < ActiveRecord::Base
 
   serialize(:properties)
 
-  belongs_to :error, :counter_cache => true, :class_name => '::Error'
-  has_one :project, :through => :error
+  belongs_to :error,
+    :counter_cache => true,
+    :class_name    => '::Error'
+  has_one :project,
+    :through       => :error
+  has_many :comments,
+    :through       => :error,
+    :order         => 'comments.created_at ASC'
 
   default_scope :order => 'occurences.updated_at DESC'
 

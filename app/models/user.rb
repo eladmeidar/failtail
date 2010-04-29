@@ -11,12 +11,17 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_uniqueness_of :email
 
-  has_many :memberships, :dependent => :destroy
-  has_many :projects, :through => :memberships
+  has_many :memberships,
+    :dependent  => :destroy
+  has_many :projects,
+    :through    => :memberships
   has_many :owned_projects,
     :through    => :memberships,
     :source     => :project,
     :conditions => { 'memberships.role' => 'owner' }
+  has_many :comments,
+    :dependent  => :destroy,
+    :order      => 'comments.created_at ASC'
 
   default_scope :order => 'name ASC'
 

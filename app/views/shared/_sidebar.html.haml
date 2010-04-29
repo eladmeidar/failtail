@@ -11,16 +11,34 @@
   .block.members
     %h3 Members
     %ul
-      - unless @project.members.empty?
-        - @project.members.each_with_index do |member, idx|
-          %li{:class => %{clearfix #{css_class('first', idx, 0)} #{css_class('last', idx, (@project.members.length - 1))} #{css_class('owner', member.owner?(@project), true)}} }
-            = image_tag member.gravatar_url(:size => 40)
-            %span.info
-              %strong.name
-                = member.name
-              %span.email
-                = member.email
+      - @project.members.each_with_index do |member, idx|
+        %li{:class => %{clearfix #{css_class('first', idx, 0)} #{css_class('last', idx, (@project.members.length - 1))} #{css_class('owner', member.owner?(@project), true)}} }
+          = image_tag member.gravatar_url(:size => 40)
+          %span.info
+            %strong.name
+              = member.name
+            %span.email
+              = member.email
 
       - if current_user.owner?(@project)
         %li.clearfix.last.add-member
           = link_to 'Add a member', [:new, @project, :membership]
+
+- if sidebar_blocks[:comments]
+  .block.comments
+    %h3 Comments
+    %ul
+      - @error.comments.each_with_index do |comment, idx|
+        %li{:class => %{clearfix #{css_class('first', idx, 0)} #{css_class('last', idx, (@project.members.length - 1))} #{css_class('me', comment.user.id == current_user.id, true)}} }
+          = image_tag comment.user.gravatar_url(:size => 40)
+          %span.info
+            %strong.user
+              = comment.name
+            %strong.date
+              = comment.created_at.to_s(:short)
+            %span.email
+              = comment.body
+      %ul.form
+        - form_for Comment.new(:error_id => @error.id) do |f|
+          = f.text_area :body
+          = f.submit

@@ -7,9 +7,16 @@ class Error < ActiveRecord::Base
 
   validates_uniqueness_of :hash_string, :scope => :project_id
 
-  belongs_to :project, :counter_cache => true
-  has_many :occurences, :dependent => :destroy
-  has_one :last_occurence, :class_name => "Occurence", :order => 'id DESC'
+  belongs_to :project,
+    :counter_cache => true
+  has_many :occurences,
+    :dependent  => :destroy
+  has_one :last_occurence,
+    :class_name => "Occurence",
+    :order      => 'id DESC'
+  has_many :comments,
+    :dependent  => :destroy,
+    :order      => 'comments.created_at ASC'
 
   default_scope :order => 'updated_at DESC'
 
