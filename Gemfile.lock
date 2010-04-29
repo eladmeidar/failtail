@@ -1,29 +1,33 @@
 --- 
 dependencies: 
+  campaigning: 
+    group: 
+    - :default
+    version: = 0.15.0
   rails: 
     group: 
     - :default
     version: = 2.3.5
-  authlogic: 
-    group: 
-    - :default
-    version: = 2.1.3
   haml: 
     group: 
     - :default
     version: = 2.2.22
+  authlogic: 
+    group: 
+    - :default
+    version: = 2.1.3
   shoulda: 
     group: 
     - :default
     version: = 2.10.3
-  will_paginate: 
-    group: 
-    - :default
-    version: = 2.3.12
   factory_girl: 
     group: 
     - :default
     version: = 1.2.4
+  will_paginate: 
+    group: 
+    - :default
+    version: = 2.3.12
   cucumber: 
     group: 
     - :default
@@ -51,6 +55,12 @@ specs:
     version: 2.1.3
 - builder: 
     version: 2.1.2
+- httpclient: 
+    version: 2.1.5.2
+- soap4r: 
+    version: 1.5.8
+- campaigning: 
+    version: 0.15.0
 - diff-lcs: 
     version: 1.1.2
 - json_pure: 
@@ -75,7 +85,7 @@ specs:
     version: 2.10.3
 - will_paginate: 
     version: 2.3.12
-hash: 9d708398f069b74ada9257dfbae6ad575254bea5
+hash: 376865f408f9aeb719fc4f8c270c05f216344616
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
