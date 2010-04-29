@@ -12,7 +12,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :invites_left
   helper_method :sidebar_blocks
 
-  private
+  unless ActionController::Base.consider_all_requests_local
+    rescue_from Exception,                           :with => :render_error
+    rescue_from ActiveRecord::RecordNotFound,        :with => :render_not_found
+    rescue_from ActionController::RoutingError,      :with => :render_not_found
+    rescue_from ActionController::UnknownController, :with => :render_not_found
+    rescue_from ActionController::UnknownAction,     :with => :render_not_found
+  end
+
+private
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
@@ -93,11 +101,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def render_optional_error_file(status_code)
-    status = interpret_status(status_code)
-    render :template => "/errors/#{status[0,3]}.html.haml",
-           :status => status,
-           :layout => 'error.html.erb'
+  def render_not_found(exception)
+    Rails.logger.info exception
+    render :template => "/error_pages/404.html.haml",
+           :status => 404,
+           :layout => 'error.html.haml'
+  end
+
+  def render_error(exception)
+    Rails.logger.error exception
+    render :template => "/error_pages/500.html.haml",
+           :status => 404,
+           :layout => 'error.html.haml'
   end
 
 end
