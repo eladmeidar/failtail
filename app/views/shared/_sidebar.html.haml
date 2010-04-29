@@ -39,6 +39,6 @@
             %span.email
               = comment.body
       %ul.form
-        - form_for Comment.new(:error_id => @error.id) do |f|
+        - form_for [@error, Comment.new] do |f|
           = f.text_area :body
           = f.submit
