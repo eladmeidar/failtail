@@ -30,7 +30,7 @@ class Notifier < ActionMailer::Base
   def password_reset_instructions(user, sent_at = Time.now)
     subject     "Failtale password reset instructions"
     recipients  user.email
-    from        'yves@mrhenry.be'
+    from        'robot@failtale.be'
     sent_on     sent_at
     
     body        :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
