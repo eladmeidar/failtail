@@ -1,11 +1,23 @@
 - breadcrumb_root
 
 - menu_block do |link|
-  - link.to(@breadcrumb_root[:text], @breadcrumb_root[:link])
-  - @error = @occurence.error if @occurence and !@error
-  - @project = @error.project if @error and !@project
-  - link.to(@project.name, @project,:class => "action2") { true } if @project and !@project.new_record?
-  - link.to(@error.id, @error,:class => "open") {true} if @error
-  - link.to(@occurence.id, @occurence,:class => "action2") {true} if @occurence
-  
-  - link.to("edit my account",{:action => "edit"},:class => "action2") {true} if params[:action]=="edit" and !@error and !@project
+  - if @breadcrumb_root
+    - link.to(@breadcrumb_root[:text], @breadcrumb_root[:link])
+
+  - @error   ||= (@occurence.error if @occurence)
+  - @project ||= (@error.project   if @error)
+
+  - if @project and !@project.new_record?
+    - link.to(@project.name, @project,:class => "action2") { true }
+
+    - if @error
+      - link.to(@error.id, @error,:class => "open") {true}
+
+      - if @occurence
+        - link.to(@occurence.id, @occurence,:class => "action2") {true}
+
+  - if @user and request.path.starts_with?('/admin')
+    - link.to(@user.name, admin_user_path(@user), :class => "action2")
+
+  - elsif @user
+    - link.to("edit my account",{:action => "edit"}, :class => "action2") {true}

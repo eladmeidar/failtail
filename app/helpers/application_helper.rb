@@ -137,7 +137,7 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def abbreviation(value=nil)
     unless value.nil?
       abbreviation = value
@@ -148,19 +148,18 @@ module ApplicationHelper
       return abbreviation
     end
   end
-  
+
   def breadcrumb_root
-    unless @breadcrumb_root
-      if @user or @users
-        @breadcrumb_root = { :text => 'Users', :link => admin_users_path }
-      elsif @project or @projects
-        @breadcrumb_root = { :text => 'Projects', :link => root_path }
-      elsif @user_session
-        @breadcrumb_root = { :text => 'Login', :link => new_user_session_path }
-      else
-        @breadcrumb_root = { :text => 'Home', :link => root_path }
-      end
+    return @breadcrumb_root if @breadcrumb_root
+    if @user or @users and request.path.starts_with?('/admin')
+      @breadcrumb_root = { :text => 'Users', :link => admin_users_path }
+    elsif @project or @projects
+      @breadcrumb_root = { :text => 'Projects', :link => root_path }
+    elsif @user_session
+      @breadcrumb_root = { :text => 'Login', :link => new_user_session_path }
+    else
+      @breadcrumb_root = { :text => 'Home', :link => root_path }
     end
   end
-  
+
 end
