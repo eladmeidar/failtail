@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :user_session,
     :except => [:index, :edit, :update]
+ map.resources :password_resets
   map.resource :account,
     :controller => 'users',
     :except => [:index, :show, :destroy]

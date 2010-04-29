@@ -65,7 +65,9 @@ body#home{background:#fff url(/images/splash/bg.png) repeat-x center top;font-si
 
 #home #login{position:absolute;top:0;margin-left:410px;padding:10px 10px 0px 10px;background:transparent url(/images/splash/bg_login.png) repeat 0 0;border:1px solid #dee1da;border-top:none;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
  #home #login p{margin:0 0 10px 0;}
- #home #login p.remember{color:#999;text-align:right;font-style:italic;padding-right:34px;}
+ #home #login p.remember{float: right; color:#999;text-align:right;font-style:italic;padding-right:34px;}
+ #home #login p.forgot-password { float: right;  text-align:right;font-style:italic; }
+ #home #login p.forgot-passwora a { color:#999; }
  #home input{margin:0 0 0 10px;vertical-align:middle;}
  #home input.text{-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;-moz-border-radius-topleft:3px;-moz-border-radius-topright:3px;border:1px solid #B2B5AE;font-size:18px;font-style:italic;padding:8px;width:150px;}
  #home input.long{width:300px;margin:0;}

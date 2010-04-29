@@ -1,8 +1,7 @@
+- breadcrumb_root
+
 - menu_block do |link|
-  - if @user or @users
-    - link.to('Users', admin_users_path)
-  - else
-    - link.to('Projects', root_path)
+  - link.to(@breadcrumb_root[:text], @breadcrumb_root[:link])
   - @error = @occurence.error if @occurence and !@error
   - @project = @error.project if @error and !@project
   - link.to(@project.name, @project,:class => "action2") { true } if @project and !@project.new_record?

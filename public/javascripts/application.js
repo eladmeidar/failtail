@@ -114,5 +114,12 @@ $(document).ready(function() {
     }
     return false;
   });
+  
+   /*
+    * Clearfield
+    */
+    $('.clear-field').clearField();
+  
+}); // End DOM ready
 
 }); // End DOM ready
