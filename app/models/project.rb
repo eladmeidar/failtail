@@ -5,15 +5,22 @@ class Project < ActiveRecord::Base
   
   validates_uniqueness_of :api_token
   
-  has_many :memberships, :dependent => :destroy
-  has_many :members, :through => :memberships, :source => :user
-  has_many :service_settings, :dependent => :destroy, :as => :service_owner
+  has_many :memberships,
+    :dependent => :destroy
+  has_many :members,
+    :through   => :memberships,
+    :source    => :user
+  has_many :service_settings,
+    :dependent => :destroy,
+    :as => :service_owner
   
   # we can't user 'errors' here as it would conflict with AR's error handeling
-  has_many :reports, :dependent => :destroy,
+  has_many :reports,
+    :dependent   => :destroy,
     :class_name  => "::Error",
     :foreign_key => "project_id"
-  has_many :occurences, :through => :reports
+  has_many :occurences,
+    :through     => :reports
   
   default_scope :order => 'name ASC'
   
