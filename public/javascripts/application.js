@@ -114,10 +114,16 @@ $(document).ready(function() {
     }
     return false;
   });
-  
+
    /*
     * Clearfield
     */
-    $('.clear-field').clearField();
-  
+  $('.clear-field').clearField();
+
+  $('table td.project a, table.errors a').each(function(){
+    var a   = $(this),
+        row = a.parent('td');
+    $(row).click(function(){ a.click(); });
+  })
+
 }); // End DOM ready
