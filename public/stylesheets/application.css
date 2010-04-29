@@ -206,7 +206,7 @@ body {
       #container #content table td, #container #content table th {
         padding: 8px;
         word-wrap: break-word; }
-      #container #content table tr + tr + tr {
+      #container #content table tr +tr {
         border-top: 1px solid #ecefe6; }
       #container #content table td.select, #container #content table th.select {
         width: 154px;

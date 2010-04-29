@@ -76,7 +76,7 @@ body#home{background:#fff url(/images/splash/bg.png) repeat-x center top;font-si
  .invalid{display:block;color:#ff0000;margin:15px 0 0 0;padding:0 0 0 5px;}
  .valid{display:block;color:#008800;margin:15px 0 0 0;padding:0 0 0 5px;}
 
-#home #subscribe{position:absolute;top:0;margin-left:334px;padding:10px 10px 0px 10px;background:transparent url(/images/splash/bg_login.png) repeat 0 0;border:1px solid #dee1da;border-top:none;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
+#home #subscribe{position:absolute;top:0;margin-left:339px;padding:10px 10px 0px 10px;background:transparent url(/images/splash/bg_login.png) repeat 0 0;border:1px solid #dee1da;border-top:none;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
  #home #subscribe p{margin:0 0 10px 0;}
 
 .forkMe{display:block;position:absolute;top:0;left:0;width:149px;height:149px;background:transparent url(/images/splash/forkme.png) no-repeat 0 0;text-indent:-9999px;}
