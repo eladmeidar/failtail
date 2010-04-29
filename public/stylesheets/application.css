@@ -227,6 +227,7 @@ body {
           font-size: 9px;
           color: #FFF;
           text-transform: uppercase;
+          background-color: rgb(143, 143, 134);
           border-radius: 3px;
           -moz-border-radius: 3px;
           -webkit-border-radius: 3px; }
@@ -238,6 +239,8 @@ body {
           background-color: #00aed3; }
         #container #content table td.label .flash {
           background-color: #ee3124; }
+        #container #content table td.label .air {
+          background-color: rgb(110, 149, 194); }
         #container #content table td.label .javascript {
           background-color: rgb(255,122,225); }
       #container #content table td + td {
