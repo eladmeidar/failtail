@@ -128,8 +128,14 @@ body {
         width: 257px;
         height: 116px; }
     #container #header h2 {
-      height: 0;
-      width: 0; }
+      position: absolute;
+      top: 0;
+      left: 0; }
+      #container #header h2 a {
+        display: block;
+        height: 160px;
+        width: 160px;
+        text-indent: -8888px; }
   #container #content {
     float: left;
     width: 745px; }
