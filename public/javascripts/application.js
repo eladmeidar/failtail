@@ -120,10 +120,10 @@ $(document).ready(function() {
     */
   $('.clear-field').clearField();
 
-  $('table td.project a, table.errors a').each(function(){
+  $('table.projects a, table.errors a, table.occurrences a').each(function(){
     var a   = $(this),
         row = a.parent('td');
-    $(row).click(function(){ a.click(); });
+    $(row).click(function(){ window.location.href = a.attr('href'); });
   })
 
 }); // End DOM ready

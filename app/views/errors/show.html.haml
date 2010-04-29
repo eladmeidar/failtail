@@ -3,27 +3,27 @@
 - block2 error.name do
 
   - occurence = error.last_occurence
-  
+
   %p= error.description
-  
+
   = render_reporter error.last_occurence
-  
+
   - if error.backtrace?
     %h3 Backtrace
     %pre=h error.backtrace.split("\n")[0..5].join("\n")
     %br
-  
+
   %br
   %h3 Occurences
   %br
   = will_paginate occurences
-  
-  %table.table
+
+  %table.table.occurrences
     =render occurences
-    
+
   = will_paginate occurences
   %br
-  
+
 - actions do |link|
   - if error.closed
     - link.to ('Open error again', error_path(error, :error => {:closed => '0'}), :method => :put, :class => "button")
