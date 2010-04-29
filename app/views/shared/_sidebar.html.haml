@@ -36,7 +36,7 @@
               = comment.user.name
             %strong.date
               = comment.created_at.to_s(:short)
-            %span.email
+            %span.body
               = comment.body
       %li.form
         - form_for [@error, Comment.new] do |f|
