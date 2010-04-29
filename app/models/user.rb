@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     Notifier.deliver_password_reset_instructions(self)
   end
-  
+
 private
 
   def manage_newsletter_subscription
@@ -80,13 +80,13 @@ private
 
   def subscribe_to_newsletter
     subscriber = Campaigning::Subscriber.new(self.email, self.name)
-    subscriber.add_and_resubscribe!(CAMPAIGN_MONITOR_LIST_ID)
+    subscriber.add_and_resubscribe!(CAMPAIGN_MONITOR_LIST_ID) rescue nil
     true
   end
 
   def unsubscribe_from_newsletter
     subscriber = Campaigning::Subscriber.new(self.email)
-    subscriber.unsubscribe!(CAMPAIGN_MONITOR_LIST_ID)
+    subscriber.unsubscribe!(CAMPAIGN_MONITOR_LIST_ID) rescue nil
     true
   end
 
