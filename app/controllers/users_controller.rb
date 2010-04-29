@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  
+
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :only_if_registration_allowed, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
-  
+
   def index
     term  = params[:term]
     @users = User.find_by_sql("SELECT name, email FROM users WHERE email LIKE '%#{term}%'")
@@ -11,11 +11,11 @@ class UsersController < ApplicationController
       render :json => { :users => @users }
     end
   end
-  
+
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(params[:user])
     if @user.save
@@ -26,11 +26,11 @@ class UsersController < ApplicationController
       render :action => :new
     end
   end
-  
+
   def edit
     @user = @current_user
   end
-  
+
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
@@ -40,11 +40,9 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
-  
-  
-  
-  private
-  
+
+private
+
   def only_if_registration_allowed
     unless FAILTALE[:allow_registration]
       if FAILTALE[:allow_invitations] and !params[:invitation].blank?
@@ -59,5 +57,5 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
 end

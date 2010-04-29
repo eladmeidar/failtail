@@ -7,23 +7,31 @@ class ApplicationController < ActionController::Base
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '0519e5d7e335e0698bdda6e1a0eb7b37'
-  
+
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user, :invites_left
   helper_method :sidebar_blocks
-  
-  private
-  
+
+  unless ActionController::Base.consider_all_requests_local
+    rescue_from Exception,                           :with => :render_error
+    rescue_from ActiveRecord::RecordNotFound,        :with => :render_not_found
+    rescue_from ActionController::RoutingError,      :with => :render_not_found
+    rescue_from ActionController::UnknownController, :with => :render_not_found
+    rescue_from ActionController::UnknownAction,     :with => :render_not_found
+  end
+
+private
+
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
   end
-  
+
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
   end
-  
+
   def require_user
     unless current_user
       store_location
@@ -32,7 +40,7 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+
   def require_admin
     unless current_user.admin?
       flash[:notice] = "You must be an admin to access this page"
@@ -40,7 +48,7 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+
   def require_no_user
     if current_user
       store_location
@@ -49,16 +57,16 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+
   def store_location
     session[:return_to] = request.request_uri
   end
-  
+
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
-  
+
   def require_membership
     raise ActiveRecord::RecordNotFound if project.nil?
     membership = project.memberships.find(:first, :conditions => { :user_id => current_user.id })
@@ -68,7 +76,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
     return false
   end
-  
+
   def require_ownership
     raise ActiveRecord::RecordNotFound if project.nil?
     membership = project.memberships.find(:first, :conditions => { :user_id => current_user.id })
@@ -78,13 +86,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
     return false
   end
-  
+
   def project ; nil ; end
-  
+
   def sidebar_blocks
     @sidebar_blocks ||= {}
   end
-  
+
   def invites_left(total=nil)
     unless total.nil?
       users = User.find(:all)
@@ -92,5 +100,19 @@ class ApplicationController < ActionController::Base
       %{#{ total - users.length + admins.length }}
     end
   end
-  
+
+  def render_not_found(exception)
+    Rails.logger.info exception
+    render :template => "/error_pages/404.html.haml",
+           :status => 404,
+           :layout => 'error.html.haml'
+  end
+
+  def render_error(exception)
+    Rails.logger.error exception
+    render :template => "/error_pages/500.html.haml",
+           :status => 404,
+           :layout => 'error.html.haml'
+  end
+
 end

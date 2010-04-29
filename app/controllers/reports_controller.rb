@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
-  
+
   protect_from_forgery :only => []
-  
+
   def create
     report.save!
     response = { :success => 1 }
@@ -17,14 +17,14 @@ class ReportsController < ApplicationController
       end
     end
   end
-  
+
   private
-  
+
   def report
     if String === params[:report]
       params[:report] = JSON.parse(Base64.decode64(params[:report]))
     end
     @report ||= Report.new(params[:report])
   end
-  
+
 end

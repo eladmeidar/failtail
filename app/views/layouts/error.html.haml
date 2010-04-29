@@ -1,0 +1,78 @@
+!!! Strict
+%html{:xmlns=>"http://www.w3.org/1999/xhtml", :lang=>"en"}
+  %head
+    %meta{:'http-equiv'=>"Content-Type", :content=>"text/html; charset=utf-8"}
+    %meta{:name=>"keywords", :content=>"failtale, error reporting, error, reporting, logging, log, production, live, development, rails, ruby, ruby on rails, php, javascript, air"}
+    %title Failtale
+    = render_shared :home_assets
+  %body#home
+
+    #wrapper
+      #header.clearfix
+
+        %ul.clearfix
+          %li
+            %a{ :href => user_session_path, :title => "Login" }
+              Login
+
+        %h1
+          %a{ :href => "/", :title => "Failtale (beta) - Telling you more about failing applications." }
+            Failtale
+            %sup Beta
+            \- Telling you more about failing applications.
+
+        - numbers=("%07d" % Occurence.count).split(//)
+        %div.counter-holder.clearfix
+          %div.counter
+            %span
+              = numbers[0]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span.dot
+              \.
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[1]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[2]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[3]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span.dot
+              \.
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[4]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[5]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+            %span
+              = numbers[6]
+              %img{ :src =>"/images/splash/separator.gif", :alt =>""}
+
+
+      #container
+        = yield
+
+
+      %ul#shots
+        %li
+          %img{:src => "/images/splash/screen1.jpg", :alt => "Failtale screenshot"}
+        %li
+          %img{:src => "/images/splash/screen2.jpg", :alt => "Failtale screenshot"}
+        %li
+          %img{:src => "/images/splash/screen1.jpg", :alt => "Failtale screenshot"}
+
+      %a.forkMe{:href => "http://github.com/mrhenry/failtale/", :title => "Fork me on GitHub"}
+        Fork me on GitHub
+
+      #footer
+        %p
+          a
+          %a{:href => "http://www.mrhenry.be", :title => "Mr. Henry"}
+            %img{:src => "/images/splash/logo_mrhenry.png", :title => "Mr. Henry", :alt => "Mr. Henry"}
+          webapplication, with love &copy; 2009 - 2010
+
+    = render_shared :google if FAILTALE[:google_analytics]

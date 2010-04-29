@@ -1,10 +1,10 @@
 class Admin::InvitationRequestsController < ApplicationController
-  
+
   helper_method :invitation_requests, :invitation_request
-  
+
   before_filter :require_user
   before_filter :require_admin
-  
+
   def index
     invitation_requests
     respond_to do |format|
@@ -13,7 +13,7 @@ class Admin::InvitationRequestsController < ApplicationController
       format.json { render :json => invitation_requests }
     end
   end
-  
+
   def update
     invitation_request.create_invitation
     respond_to do |format|
@@ -28,7 +28,7 @@ class Admin::InvitationRequestsController < ApplicationController
       format.json { render :json => e.record.errors, :status => :unprocessable_entity }
     end
   end
-  
+
   def destroy
     invitation_request.destroy
     respond_to do |format|
@@ -37,13 +37,13 @@ class Admin::InvitationRequestsController < ApplicationController
       format.json { render :noting, :status => :success }
     end
   end
-  
-  private
-  
+
+private
+
   def invitation_requests
     @invitation_requests ||= InvitationRequest.paginate :page => params[:page]
   end
-  
+
   def invitation_request
     if params[:id].blank?
       @invitation_request
@@ -51,5 +51,5 @@ class Admin::InvitationRequestsController < ApplicationController
       @invitation_request ||= InvitationRequest.find(params[:id])
     end
   end
-  
+
 end

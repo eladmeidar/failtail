@@ -13,14 +13,15 @@ Rails::Initializer.run do |config|
   config.gem 'railsgarden-message_block', :lib => 'message_block'
   config.gem 'haml'
   config.gem 'will_paginate'
-  
+  config.gem 'campaigning'
+
   config.time_zone = 'UTC'
-  
+
   config.action_controller.session = {
     :session_key => '_errors_session',
     :secret      => '729bdf4f8affcc1dc4cd4e5d8b7c6b8fc91e5341e8a486d5203ed62679e60f0b324f707a36b60c04deb17aa4308e51ebecb440fc92bbb929cc72d87b434d8c8e'
   }
-  
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {

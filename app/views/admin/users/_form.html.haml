@@ -8,6 +8,9 @@
   = form.label :login, nil, :class => 'title'
   = form.text_field :login, :class => 'text'
 .group
+  = form.label :newsletter, 'Subscribe to newsletter', :class => 'title'
+  = form.check_box :newsletter, :class => 'text'
+.group
   = form.label :password, form.object.new_record? ? nil : "Change password", :class => 'title'
   = form.password_field :password, :class => 'text'
 .group

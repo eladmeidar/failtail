@@ -1,13 +1,14 @@
+- sidebar_blocks[:comments]  = true
 
 - block occurence.name do |link|
   - link.to 'Summary /', occurence
   - link.to 'Backtrace /', [:backtrace, occurence]     if occurence.backtrace?
   - link.to 'Environment', [:environment, occurence] if occurence.properties?
-  
+
   %p= occurence.description
-  
+
   = render_reporter occurence
-  
+
   - if occurence.backtrace?
     %h3 Backtrace
     %pre= occurence.backtrace.split("\n")[0..5].join("\n")
