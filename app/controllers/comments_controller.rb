@@ -1,11 +1,11 @@
-class ComentsController < ApplicationController
+class CommentsController < ApplicationController
 
   before_filter :require_user
 
   def create
     comment_params = params[:comment] || {}
     comment_params[:user_id] = current_user.id
-    comment_params[:error_id] = params[:id]
+    comment_params[:error_id] = params[:error_id]
     @comment = Comment.create! comment_params
 
     respond_to do |format|
