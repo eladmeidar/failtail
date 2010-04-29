@@ -85,7 +85,7 @@ body
         :height 160px
         :width 160px
         :text-indent -8888px
-      
+
 
   #content
     :float left
@@ -163,6 +163,9 @@ body
       &.environment
         :width 1000px
 
+      &.projects, &.errors, &.occurrences
+        :cursor pointer
+
       th
         :text-transform uppercase
         :font-weight bold
@@ -176,7 +179,7 @@ body
         :padding 8px
         :word-wrap break-word
 
-      tr + tr + tr
+      tr +tr
         :border-top 1px solid #ecefe6
 
       td.select, th.select
@@ -215,10 +218,10 @@ body
 
         .flash
           :background-color #ee3124
-          
+
         .air
           :background-color rgb(110, 149, 194)
-          
+
         .javascript
           :background-color rgb(255,122,225)
 
@@ -312,13 +315,13 @@ body
           :width 250px
         input.submit
           :margin-left 150px
-          
+
       .forgot-password
         :padding-left 150px
         a
           :color= !grey_light
           :font-style italic
-      
+
     .api-key
       strong
         :display block
@@ -597,7 +600,7 @@ body
 
 .delete:hover
   :background-image url(/images/backgrounds/bg-button-delete-hover.png)
-  
+
 .notice
   :padding 10px 20px
   :background #EEEF86

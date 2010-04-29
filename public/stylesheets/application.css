@@ -202,6 +202,8 @@ body {
       margin: 0 0 10px 0; }
       #container #content table.environment {
         width: 1000px; }
+      #container #content table.projects, #container #content table.errors, #container #content table.occurrences {
+        cursor: pointer; }
       #container #content table th {
         text-transform: uppercase;
         font-weight: bold;
@@ -212,7 +214,7 @@ body {
       #container #content table td, #container #content table th {
         padding: 8px;
         word-wrap: break-word; }
-      #container #content table tr + tr + tr {
+      #container #content table tr +tr {
         border-top: 1px solid #ecefe6; }
       #container #content table td.select, #container #content table th.select {
         width: 154px;

@@ -114,10 +114,16 @@ $(document).ready(function() {
     }
     return false;
   });
-  
+
    /*
     * Clearfield
     */
-    $('.clear-field').clearField();
-  
+  $('.clear-field').clearField();
+
+  $('table.projects a, table.errors a, table.occurrences a').each(function(){
+    var a   = $(this),
+        row = a.parent('td');
+    $(row).click(function(){ window.location.href = a.attr('href'); });
+  })
+
 }); // End DOM ready
