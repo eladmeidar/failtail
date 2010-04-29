@@ -102,7 +102,7 @@ body {
       font-weight: bold; }
     #container #profile .greeting {
       float: left;
-      padding: 0 10px 0 0; }
+      padding: 0 15px 0 0; }
     #container #profile .actions {
       float: left; }
       #container #profile .actions a {
@@ -291,6 +291,29 @@ body {
         color: #f4ac30; }
       #container #content div.inner a:hover {
         text-decoration: none; }
+      #container #content div.inner form label {
+        display: block;
+        float: left;
+        font-size: 18px;
+        line-height: 45px;
+        width: 150px; }
+      #container #content div.inner form input.text {
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border: 1px solid #B2B5AE;
+        float: left;
+        font-size: 18px;
+        font-style: italic;
+        padding: 8px;
+        width: 250px; }
+      #container #content div.inner form input.submit {
+        margin-left: 150px; }
+      #container #content div.inner .forgot-password {
+        padding-left: 150px; }
+        #container #content div.inner .forgot-password a {
+          color: #b2b5ae;
+          font-style: italic; }
     #container #content .api-key strong {
       display: block;
       padding: 10px;
@@ -504,3 +527,8 @@ body {
 
 .delete:hover {
   background-image: url(/images/backgrounds/bg-button-delete-hover.png); }
+
+.notice {
+  padding: 10px 20px;
+  background: #EEEF86;
+  color: rgb(94, 95, 23); }

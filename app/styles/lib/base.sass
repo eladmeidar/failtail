@@ -270,6 +270,29 @@ body
         :color= !orange
       a:hover
         :text-decoration none
+      form
+        label
+          :display block
+          :float left
+          :font-size 18px
+          :line-height 45px
+          :width 150px
+        input.text
+          +border-radius-3
+          :border 1px solid #B2B5AE
+          :float left
+          :font-size 18px
+          :font-style italic
+          :padding 8px
+          :width 250px
+        input.submit
+          :margin-left 150px
+          
+      .forgot-password
+        :padding-left 150px
+        a
+          :color= !grey_light
+          :font-style italic
       
     .api-key
       strong
@@ -512,3 +535,7 @@ body
 .delete:hover
   :background-image url(/images/backgrounds/bg-button-delete-hover.png)
   
+.notice
+  :padding 10px 20px
+  :background #EEEF86
+  :color rgb(94, 95, 23)

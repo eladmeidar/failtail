@@ -51,4 +51,9 @@ class User < ActiveRecord::Base
     self.admin or self.owned_projects.size < 3
   end
   
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    Notifier.deliver_password_reset_instructions(self)
+  end
+  
 end

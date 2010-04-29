@@ -138,4 +138,29 @@ module ApplicationHelper
     end
   end
   
+  def abbreviation(value=nil)
+    unless value.nil?
+      abbreviation = value
+      case value
+        when 'javascript'
+          abbreviation = 'js'
+      end
+      return abbreviation
+    end
+  end
+  
+  def breadcrumb_root
+    unless @breadcrumb_root
+      if @user or @users
+        @breadcrumb_root = { :text => 'Users', :link => admin_users_path }
+      elsif @project or @projects
+        @breadcrumb_root = { :text => 'Projects', :link => root_path }
+      elsif @user_session
+        @breadcrumb_root = { :text => 'Login', :link => new_user_session_path }
+      else
+        @breadcrumb_root = { :text => 'Home', :link => root_path }
+      end
+    end
+  end
+  
 end

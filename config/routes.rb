@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resource :user_session, :only => [:new, :show, :create, :destroy]
+  map.resources :password_resets
   map.resource :account, :only => [:new, :edit, :create, :update], :controller => 'users'
   map.resources :invitations, :only => [:new, :create]
   map.resources :invitation_requests, :only => [:new, :create]

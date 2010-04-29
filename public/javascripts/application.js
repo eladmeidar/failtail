@@ -97,6 +97,11 @@ $(document).ready(function() {
    //     minLength: 2
    // });
   
+   /*
+    * Clearfield
+    */
+    $('.clear-field').clearField();
+  
 }); // End DOM ready
 
 

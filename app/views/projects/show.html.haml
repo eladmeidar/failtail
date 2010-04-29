@@ -1,22 +1,24 @@
 - sidebar_blocks[:members]  = true
 - sidebar_blocks[:api_key]  = true
 
-%table
-  %tr
-    %th.select
-      = check_box_tag 'selectAll'
-    %th.label
-      %span label
-    %th 
-      %span error
-    %th.count 
-      %span count
-  - unless open_errors.empty?
-    = render open_errors
-  - else
+%table.errors
+  %thead
     %tr
-      %td
-      %td{:colspan=>3} There are no open errors.
+      %th.select
+        = check_box_tag 'selectAll'
+      %th.label
+        %span label
+      %th 
+        %span error
+      %th{ :class => "count {sorter: 'digit'}" }
+        %span count
+  %tbody
+    - unless open_errors.empty?
+      = render open_errors
+    - else
+      %tr
+        %td
+        %td{:colspan=>3} There are no open errors.
 
 - if open_errors.empty?
   %div.block.inner
