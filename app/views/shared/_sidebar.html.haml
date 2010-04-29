@@ -38,7 +38,7 @@
               = comment.created_at.to_s(:short)
             %span.email
               = comment.body
-      %ul.form
+      %li.form
         - form_for [@error, Comment.new] do |f|
           = f.text_area :body
           = f.submit
