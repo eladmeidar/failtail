@@ -155,6 +155,10 @@ module ApplicationHelper
       @breadcrumb_root = { :text => 'Users', :link => admin_users_path }
     elsif @project or @projects
       @breadcrumb_root = { :text => 'Projects', :link => root_path }
+    elsif @error or @errors
+      @breadcrumb_root = { :text => 'Projects', :link => root_path }
+    elsif @occurence or @occurences
+      @breadcrumb_root = { :text => 'Projects', :link => root_path }
     elsif @user_session
       @breadcrumb_root = { :text => 'Login', :link => new_user_session_path }
     else
