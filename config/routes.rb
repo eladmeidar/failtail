@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # is this realy used?
   map.resources :errors,
-    :only => :index,
+    :only => :index
 
   member = {
     :close_all_errors => :put,
