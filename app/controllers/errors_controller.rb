@@ -1,10 +1,10 @@
 class ErrorsController < ApplicationController
-  
+
   helper_method :errors, :error, :project, :occurences
-  
+
   before_filter :require_user
   before_filter :require_membership, :except => [:index]
-  
+
   def index
     errors
     respond_to do |format|
@@ -13,7 +13,7 @@ class ErrorsController < ApplicationController
       format.json { render :json => errors }
     end
   end
-  
+
   def show
     error
     respond_to do |format|
@@ -22,7 +22,7 @@ class ErrorsController < ApplicationController
       format.json { render :json => error }
     end
   end
-  
+
   def update
     error.update_attributes! params[:error]
     respond_to do |format|
@@ -37,21 +37,21 @@ class ErrorsController < ApplicationController
       format.json { render :json => e.record.errors, :status => :unprocessable_entity }
     end
   end
-  
+
   private
-  
+
   def errors
     @errors ||= Error.open.owned_by(current_user).all
   end
-  
+
   def error
     @error ||= Error.find(params[:id])
   end
-  
+
   def occurences
     @occurences ||= error.occurences.paginate :page => params[:page]
   end
-  
+
   def require_membership
     unless current_user.member?(error)
       store_location
@@ -60,5 +60,5 @@ class ErrorsController < ApplicationController
       return false
     end
   end
-  
+
 end

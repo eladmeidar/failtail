@@ -1,17 +1,17 @@
 class MembershipsController < ApplicationController
-  
+
   before_filter :require_user
   before_filter :require_project_ownership, :only => [:new, :create]
   before_filter :require_ownership, :only => [:destroy]
-  
+
   def new
     @membership = project.memberships.build
   end
-  
+
   def edit
     allowed_services = Service::Base.enabled_services.dup
     @service_settings = membership.service_settings.all
-    
+
     @service_settings = @service_settings.collect do |service_setting|
       type_name = service_setting.service_type
       if allowed_services.include? type_name
@@ -21,7 +21,7 @@ class MembershipsController < ApplicationController
         service_setting.destroy
       end
     end.compact
-    
+
     allowed_services.each do |type_name|
       @service_settings.push(ServiceSetting.new(
         :service_owner => membership,
@@ -30,11 +30,11 @@ class MembershipsController < ApplicationController
       ))
     end
   end
-  
+
   def create
     @membership = project.memberships.build(params[:membership])
     @membership.save!
-    
+
     respond_to do |format|
       format.html { redirect_to project }
       format.xml  { render :xml  => @membership, :status => :created }
@@ -47,22 +47,22 @@ class MembershipsController < ApplicationController
       format.json { render :json => e.record.errors, :status => :unprocessable_entity }
     end
   end
-  
+
   def destroy
     membership.destroy
     redirect_to project
   end
-  
+
 private
-  
+
   def project
     @project ||= current_user.projects.find(params[:project_id])
   end
-  
+
   def membership
     @membership ||= Membership.find(params[:id])
   end
-  
+
   def require_project_ownership
     unless current_user.owner?(project)
       store_location
@@ -75,7 +75,7 @@ private
       return false
     end
   end
-  
+
   def require_ownership
     unless current_user.owner?(membership)
       store_location
@@ -84,5 +84,5 @@ private
       return false
     end
   end
-  
+
 end

@@ -1,7 +1,7 @@
 class OccurencesController < ApplicationController
 
   helper_method :project, :error, :occurence
-  
+
   before_filter :require_user
   before_filter :require_membership
 
@@ -30,7 +30,7 @@ class OccurencesController < ApplicationController
   def occurence
     @occurence ||= Occurence.find(params[:id])
   end
-  
+
   def require_membership
     unless current_user.member?(occurence)
       store_location
