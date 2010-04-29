@@ -202,6 +202,8 @@ body {
       margin: 0 0 10px 0; }
       #container #content table.environment {
         width: 1000px; }
+      #container #content table.projects, #container #content table.errors, #container #content table.occurrences {
+        cursor: pointer; }
       #container #content table th {
         text-transform: uppercase;
         font-weight: bold;
