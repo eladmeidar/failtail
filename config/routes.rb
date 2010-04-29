@@ -16,6 +16,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :invitation_requests,
     :only => [:new, :create]
 
+  map.resource :subscription,
+    :only => [:create]
+
   # is this realy used?
   map.resources :errors,
     :only => :index

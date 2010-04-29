@@ -1,4 +1,4 @@
-/* 
+/*
 
 Author: Mr. Henry
 Date: 2009-01-26
@@ -32,20 +32,20 @@ body#home{background:#fff url(/images/splash/bg.png) repeat-x center top;font-si
 #home #header{padding:0 0 0 350px; position: relative; }
 	#home #header h1{width:518px;height:135px;margin:36px 0 0 0;clear:both;}
 	#home #header h1 a{display:block;width:518px;height:135px;background:transparent url(/images/splash/logo.png) no-repeat 0 0;text-indent:-9999px;}
-	
+
 	#home #header ul{height:44px;}
 		#home #header ul li{font-size:1.5em;height:24px;padding:20px 20px 0 20px;float:right;border-right:1px solid #daddd5;}
 	    #home #header .invites-counter { color: #B2B5AE; font-size: 15px; font-style: italic; }
 	    #home #header strong    { color: rgb(123, 123, 121); }
-		
+
 #home #container{background:#f6f7f3;margin:20px 50px 0 30px;padding:22px;}
 #home #contentBlock{background:#ecefe6 none;height:251px;padding:22px 22px 22px 440px;font-size:1.2em;line-height:1.4em; }
 	#home #contentBlock p{margin:0 0 20px 0;}
 	#home #contentBlock a{text-decoration:underline;color:#333;}
-	
+
 #home #content5{padding:40px 0 0 0;text-align:center;}
  #home #content5 input{text-align:center;}
-	
+
 #home .features{width:425px;float:left;position:absolute;}
 #home .features li a{display:block;height: 59px; background: url(/images/splash/sprite_features.png) no-repeat 0 0; text-indent: -8885px; }
 #home .features .restfull-api a         { background-position: 0 -5px; }
@@ -61,7 +61,7 @@ body#home{background:#fff url(/images/splash/bg.png) repeat-x center top;font-si
 
 #home ul#shots{border-top:1px solid #c3c5bf;border-bottom:1px solid #c3c5bf;margin:66px 0;padding:38px 50px 38px 42px;}
 	#home ul#shots li{display:inline;margin:0 5px;}
-	
+
 
 #home #login{position:absolute;top:0;margin-left:410px;padding:10px 10px 0px 10px;background:transparent url(/images/splash/bg_login.png) repeat 0 0;border:1px solid #dee1da;border-top:none;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
  #home #login p{margin:0 0 10px 0;}
@@ -73,6 +73,9 @@ body#home{background:#fff url(/images/splash/bg.png) repeat-x center top;font-si
  #home input.request{background:url(/images/splash/button_request.png) no-repeat 0 0;width:187px;margin:0;}
  .invalid{display:block;color:#ff0000;margin:15px 0 0 0;padding:0 0 0 5px;}
  .valid{display:block;color:#008800;margin:15px 0 0 0;padding:0 0 0 5px;}
+
+#home #subscribe{position:absolute;top:0;margin-left:321px;padding:10px 10px 0px 10px;background:transparent url(/images/splash/bg_login.png) repeat 0 0;border:1px solid #dee1da;border-top:none;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
+ #home #subscribe p{margin:0 0 10px 0;}
 
 .forkMe{display:block;position:absolute;top:0;left:0;width:149px;height:149px;background:transparent url(/images/splash/forkme.png) no-repeat 0 0;text-indent:-9999px;}
 
@@ -138,15 +141,15 @@ hr  { display:none; }
 	line-height: 0;
 	height: 0;
 }
- 
+
 .clearfix {
 	display: inline-block;
 }
- 
+
 html[xmlns] .clearfix {
 	display: block;
 }
- 
+
 * html .clearfix {
 	height: 1%;
 }
