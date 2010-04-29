@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
     :dependent  => :destroy,
     :order      => 'comments.created_at ASC'
 
+  after_save :manage_newsletter_subscription
+
   default_scope :order => 'name ASC'
 
   def owner?(record, aggregate=false)
@@ -57,6 +59,30 @@ class User < ActiveRecord::Base
 
   def can_create_one_more_project?
     self.admin or self.owned_projects.size < 3
+  end
+
+private
+
+  def manage_newsletter_subscription
+    if self.news_record? or self.newsletter_changed?
+      if self.newsletter
+        subscribe_to_newsletter
+      else
+        unsubscribe_from_newsletter
+      end
+    end
+  end
+
+  def subscribe_to_newsletter
+    subscriber = Campaigning::Subscriber.new(self.email, self.name)
+    subscriber.add_and_resubscribe!(CAMPAIGN_MONITOR_LIST_ID)
+    true
+  end
+
+  def unsubscribe_from_newsletter
+    subscriber = Campaigning::Subscriber.new(self.email)
+    subscriber.unsubscribe!(CAMPAIGN_MONITOR_LIST_ID)
+    true
   end
 
 end
