@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
 private
 
   def manage_newsletter_subscription
-    if self.news_record? or self.newsletter_changed?
+    if self.new_record? or self.newsletter_changed?
       if self.newsletter
         subscribe_to_newsletter
       else
