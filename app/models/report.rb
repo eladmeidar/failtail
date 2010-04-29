@@ -1,26 +1,26 @@
 class Report < ActivePresenter::Base
-  
+
   def self.human_name
     "Report"
   end
-  
+
   presents :project, :error, :occurence
-  
+
   before_validation :find_project
   before_validation :find_error
-  
+
   before_validation :link_error_to_project
   before_validation :link_occurence_to_error
-  
+
   after_save :deliver_notifications_to_services
-  
-  private
-  
+
+private
+
   def find_project
     pro = Project.find_by_api_token(@project.api_token)
     @project = pro if pro
   end
-  
+
   def find_error
     err = @project.reports.find_by_hash_string(@error.hash_string)
     if err
@@ -28,15 +28,15 @@ class Report < ActivePresenter::Base
       @error = err
     end
   end
-  
+
   def link_error_to_project
     @error.project = @project
   end
-  
+
   def link_occurence_to_error
     @occurence.error = @error
   end
-  
+
   def deliver_notifications_to_services
     find_service_settings.each do |service_setting|
       next unless service_setting.enabled
@@ -51,7 +51,7 @@ class Report < ActivePresenter::Base
       end
     end
   end
-  
+
   def find_service_settings
     service_settings = []
     service_settings.concat @project.service_settings.all
@@ -60,5 +60,5 @@ class Report < ActivePresenter::Base
     end
     service_settings
   end
-  
+
 end

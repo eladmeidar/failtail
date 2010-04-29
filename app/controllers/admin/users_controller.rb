@@ -1,10 +1,10 @@
 class Admin::UsersController < ApplicationController
-  
+
   helper_method :users, :user
-  
+
   before_filter :require_user
   before_filter :require_admin
-  
+
   def index
     users
     respond_to do |format|
@@ -13,11 +13,11 @@ class Admin::UsersController < ApplicationController
       format.json { render :json => users }
     end
   end
-  
+
   def show
     redirect_to [:edit, :admin, user]
   end
-  
+
   def new
     @user = User.new(params[:user])
     respond_to do |format|
@@ -26,7 +26,7 @@ class Admin::UsersController < ApplicationController
       format.json { render :json => user }
     end
   end
-  
+
   def edit
     user
     respond_to do |format|
@@ -35,7 +35,7 @@ class Admin::UsersController < ApplicationController
       format.json { render :json => user }
     end
   end
-  
+
   def create
     @user = User.create!(params[:user])
     respond_to do |format|
@@ -51,7 +51,7 @@ class Admin::UsersController < ApplicationController
       format.json { render :json => e.record.errors, :status => :unprocessable_entity }
     end
   end
-  
+
   def update
     user.update_attributes! params[:user]
     respond_to do |format|
@@ -66,7 +66,7 @@ class Admin::UsersController < ApplicationController
       format.json { render :json => e.record.errors, :status => :unprocessable_entity }
     end
   end
-  
+
   def destroy
     user.destroy
     respond_to do |format|
@@ -75,13 +75,13 @@ class Admin::UsersController < ApplicationController
       format.json { render :noting, :status => :success }
     end
   end
-  
-  private
-  
+
+private
+
   def users
     @users ||= User.paginate :page => params[:page]
   end
-  
+
   def user
     if params[:id].blank?
       @user
@@ -89,5 +89,5 @@ class Admin::UsersController < ApplicationController
       @user ||= User.find(params[:id])
     end
   end
-  
+
 end

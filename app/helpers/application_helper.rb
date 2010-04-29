@@ -1,18 +1,18 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  
+
   def sidebar_message_block
     mb = message_block.strip
     unless mb == '<div id="message_block"></div>'
       "<div class=\"block\"><h3></h3>#{mb}</div>"
     end
   end
-  
+
   def render_shared(template,options={})
     options[:partial] = "/shared/#{template}"
     render options
   end
-  
+
   def render_reporter(occurence)
     reporter = Reporter.find(occurence.reporter)
     return '' if reporter.nil?
@@ -20,7 +20,7 @@ module ApplicationHelper
       :occurence  => occurence,
       :properties => occurence.properties }
   end
-  
+
   class MenuBlockBuilder
     def initialize(template, split=false)
       @template = template
@@ -28,7 +28,7 @@ module ApplicationHelper
       @links = []
       @content = ""
     end
-    
+
     def build(&block)
       if @split
         @content = @template.send(:capture, self, &block)
@@ -46,7 +46,7 @@ module ApplicationHelper
       end
       @content
     end
-    
+
     def to(name, url, *args, &conditions)
       url = @template.send(:url_for, url)
       conditions ||= lambda { @template.send(:request).path == url }
@@ -54,7 +54,7 @@ module ApplicationHelper
       @links << [link, conditions.call]
     end
   end
-  
+
   def menu_block(options={}, &block)
     split = options.delete(:split) || false
     concat(tag("ul", options, true))
@@ -62,7 +62,7 @@ module ApplicationHelper
     concat(%{ </ul> })
     content
   end
-  
+
   def actions(&block)
     content_for :sidebar_actions do
       concat('<div class="block"><h3>Actions</h3>')
@@ -70,24 +70,24 @@ module ApplicationHelper
       concat('</div>')
     end
   end
-  
+
   def list(colection, options={}, item_options={})
     concat(tag("ul", options, true))
     l = colection.size - 1
     colection.each_with_index do |item, i|
-      
+
       classes = [(item_options[:class] || '').split(' ')].flatten.compact
       classes << 'first'  if i == 0
       classes << 'last'   if i == l
       item_options[:class] = classes.join(' ')
-      
+
       concat(tag("li", item_options, true))
       yield(item)
       concat('</li>')
     end
     concat('</ul>')
   end
-  
+
   def block(title=nil, &block)
     concat(%{<div class="block"><div class="secondary-navigation">})
     content = menu_block(:split => true, &block) if block.arity == 1
@@ -101,7 +101,7 @@ module ApplicationHelper
     end
     concat(%{</div></div>})
   end
-  
+
   def block2(title=nil, &block)
     concat(%{<div class="block">})
     concat(%{<h2 class="title">#{h(title)}</h2>}) if title
@@ -113,7 +113,7 @@ module ApplicationHelper
     end
     concat(%{</div></div>})
   end
-  
+
   def css_class_first(value=nil, check=nil)
     unless value.nil? or check.nil?
       if value == check
@@ -121,7 +121,7 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def css_class_last(value=nil, check=nil)
     unless value.nil? or check.nil?
       if value == check
@@ -129,7 +129,7 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def css_class(class_name='', value=nil, check=nil)
     unless value.nil? or check.nil?
       if value == check
@@ -137,5 +137,5 @@ module ApplicationHelper
       end
     end
   end
-  
+
 end

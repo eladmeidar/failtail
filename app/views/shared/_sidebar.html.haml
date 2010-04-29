@@ -10,12 +10,9 @@
 - if sidebar_blocks[:members]
   .block.members
     %h3 Members
-    - unless @project.members.empty?
-      %ul
+    %ul
+      - unless @project.members.empty?
         - @project.members.each_with_index do |member, idx|
-          - Rails.logger.debug('==========================')
-          -Rails.logger.debug(member.owner?(@project).inspect)
-          -Rails.logger.debug('==========================')
           %li{:class => %{clearfix #{css_class('first', idx, 0)} #{css_class('last', idx, (@project.members.length - 1))} #{css_class('owner', member.owner?(@project), true)}} }
             = image_tag member.gravatar_url(:size => 40)
             %span.info
@@ -23,7 +20,7 @@
                 = member.name
               %span.email
                 = member.email
-    - if current_user.owner?(@project)
-      %ul
+
+      - if current_user.owner?(@project)
         %li.clearfix.last.add-member
           = link_to 'Add a member', [:new, @project, :membership]
