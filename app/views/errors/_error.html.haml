@@ -6,7 +6,7 @@
   %td.label
     %span{:class => error.last_occurence.reporter}
       = abbreviation(error.last_occurence.reporter)
-  %td
+  %td.error
     = link_to h(truncate(error.name, :length => 100)), error
   %td.count
     %div
