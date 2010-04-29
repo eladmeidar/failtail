@@ -121,5 +121,3 @@ $(document).ready(function() {
     $('.clear-field').clearField();
   
 }); // End DOM ready
-
-}); // End DOM ready
