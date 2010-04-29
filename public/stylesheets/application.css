@@ -473,7 +473,9 @@ body {
       #container #sidebar .block.comments ul li.me {
         background: url(/images/backgrounds/bg-me-label.gif) no-repeat right center; }
       #container #sidebar .block.comments ul li.form {
-        position: relative; }
+        position: relative;
+        border: none;
+        padding: 20px 0 0 0; }
         #container #sidebar .block.comments ul li.form textarea {
           width: 100%;
           height: 5em; }
@@ -584,3 +586,14 @@ body {
   padding: 10px 20px;
   background: #EEEF86;
   color: rgb(94, 95, 23); }
+
+textarea {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #DCDCDC #EBEBEB #EBEBEB #DCDCDC;
+  padding: 5px;
+  background: #FFF;
+  font-family: helvetica, arial, sans-serif; }
