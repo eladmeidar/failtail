@@ -17,9 +17,8 @@ var switchContent = (function(sender){
 });
 
 var validateEmail = (function(address){
-  // var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-  // !(reg.test(address) == false);
-  return true;
+  var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+  return reg.test(address);
 });
 
 /*
@@ -125,16 +124,18 @@ $(document).ready(function() {
   $('.clear-field').clearField();
   
   
-  /*
-   * Table sorter
-   */
-   // $("table.sortable").tablesorter({textExtraction: 'complex'}); 
-   // $("table.sortable th").filter(function(idx){
-   //     if ($(this).hasClass('sortable')) {
-   //         return false;
-   //     } else {
-   //         return $(this);
-   //     }
-   // }).unbind('click');
-   
+  try {
+    /*
+     * Table sorter
+     */
+    $("table.sortable").tablesorter({textExtraction: 'complex'}); 
+    $("table.sortable th").filter(function(idx){
+        if ($(this).hasClass('sortable')) {
+            return false;
+        } else {
+            return $(this);
+        }
+    }).unbind('click');
+  } catch (e) { /* ignore */ };
+  
 }); // End DOM ready
