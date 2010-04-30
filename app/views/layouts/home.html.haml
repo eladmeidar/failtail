@@ -21,10 +21,11 @@
             %a{ :href => "#", :title => "Newsletter" }
               Newsletter
           %li.invites-counter
-            Only
-            %strong
-              = invites_left(50)
-            invites left, so hurry!
+            - if invites_left(50).to_i > 0
+              Only
+              %strong
+                = invites_left(50)
+              invites left, so hurry!
 
         %h1
           %a{ :href => "/", :title => "Failtale (beta) - Telling you more about failing applications." }
@@ -124,7 +125,7 @@
                 %span.valid{:style => "display:none;"}
                 %span.invalid{:style => "display:none;"}
               %p
-                = f.submit "Request invitation", :class => 'button request'
+                = f.submit "Request invitation", :class => 'button'
 
       #login{:style => "display:none;"}
         - form_for UserSession.new, :url => user_session_path, :html => {:class => 'form'} do |f|
