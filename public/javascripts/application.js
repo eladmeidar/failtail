@@ -17,8 +17,9 @@ var switchContent = (function(sender){
 });
 
 var validateEmail = (function(address){
-  var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-  !(reg.test(address) == false);
+  // var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+  // !(reg.test(address) == false);
+  return true;
 });
 
 /*
