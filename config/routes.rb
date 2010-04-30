@@ -32,22 +32,22 @@ ActionController::Routing::Routes.draw do |map|
     :shallow => true,
     :member => member do |projects|
 
-    projects.resources :memberships,
-      :except => [:index, :show]
+      projects.resources :memberships,
+        :except => [:index, :show]
 
-    projects.resources :errors,
-      :shallow => true,
-      :only => [:show, :update] do |errors|
+      projects.resources :errors,
+        :shallow => true,
+        :only => [:show, :update] do |errors|
 
-      errors.resources :comments,
-        :only => [:create]
+        errors.resources :comments,
+          :only => [:create]
 
-      errors.resources :occurences,
-        :only => [:show],
-        :member => {
-          :backtrace   => :get,
-          :environment => :get }
-
+        errors.resources :occurences,
+          :only => [:show],
+          :member => {
+            :backtrace   => :get,
+            :environment => :get }
+            
     end
   end
 

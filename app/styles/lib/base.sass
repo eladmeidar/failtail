@@ -425,12 +425,14 @@ body
         :padding 0
         :list-style none
         li
+          :position relative
           :clear both
           :border-top 1px solid rgb(255,255,255)
           :border-bottom 1px solid rgb(228,230,223)
           img
             :float left
           .info
+            :position relative
             :float left
             :padding 7px 10px
             :line-height 1em
@@ -439,6 +441,18 @@ body
             .email
               :font-size 10px
               :color rgb(178,181,174)
+          .delete
+            :position absolute
+            :display block
+            :top 50%
+            :right 0
+            :margin -8px 0 0 0
+            :border none
+            :width 16px
+            :height 16px
+            :background url(/images/icons/delete.png) no-repeat center center
+            :text-indent -8888px
+              
         li.first
           :border-top none
         li.last
