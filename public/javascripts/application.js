@@ -127,13 +127,13 @@ $(document).ready(function() {
   /*
    * Table sorter
    */
-   $("table.sortable").tablesorter({textExtraction: 'complex'}); 
-   $("table.sortable th").filter(function(idx){
-       if ($(this).hasClass('sortable')) {
-           return false;
-       } else {
-           return $(this);
-       }
-   }).unbind('click');
+   // $("table.sortable").tablesorter({textExtraction: 'complex'}); 
+   // $("table.sortable th").filter(function(idx){
+   //     if ($(this).hasClass('sortable')) {
+   //         return false;
+   //     } else {
+   //         return $(this);
+   //     }
+   // }).unbind('click');
    
 }); // End DOM ready
