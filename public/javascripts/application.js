@@ -21,6 +21,9 @@ var validateEmail = (function(address){
   !(reg.test(address) == false);
 });
 
+/*
+ * DOM Ready
+ */
 $(document).ready(function() {
   var header    = $('#header'),
       footer    = $('#footer'),
@@ -114,16 +117,23 @@ $(document).ready(function() {
     }
     return false;
   });
-
-   /*
-    * Clearfield
-    */
+  
+  /*
+   * Clearfield
+   */
   $('.clear-field').clearField();
-
-  $('table.projects a, table.errors a, table.occurrences a').each(function(){
-    var a   = $(this),
-        row = a.parent('td');
-    $(row).click(function(){ window.location.href = a.attr('href'); });
-  })
-
+  
+  
+  /*
+   * Table sorter
+   */
+   $("table.sortable").tablesorter({textExtraction: 'complex'}); 
+   $("table.sortable th").filter(function(idx){
+       if ($(this).hasClass('sortable')) {
+           return false;
+       } else {
+           return $(this);
+       }
+   }).unbind('click');
+   
 }); // End DOM ready

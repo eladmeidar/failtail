@@ -163,17 +163,22 @@ body
       &.environment
         :width 1000px
 
-      &.projects, &.errors, &.occurrences
-        :cursor pointer
-
       th
         :text-transform uppercase
         :font-weight bold
         :font-size 10px
 
-      th span
+      th.sortable span
+        :padding-right 10px
         :border-bottom 1px solid
         :border-color= !grey_light
+        :cursor pointer
+        
+      th.headerSortUp span
+        :background url(/images/backgrounds/bg-sortable-arrow-up.gif) no-repeat right center
+      
+      th.headerSortDown span
+        :background url(/images/backgrounds/bg-sortable-arrow-down.gif) no-repeat right center
 
       td, th
         :padding 8px

@@ -202,15 +202,19 @@ body {
       margin: 0 0 10px 0; }
       #container #content table.environment {
         width: 1000px; }
-      #container #content table.projects, #container #content table.errors, #container #content table.occurrences {
-        cursor: pointer; }
       #container #content table th {
         text-transform: uppercase;
         font-weight: bold;
         font-size: 10px; }
-      #container #content table th span {
+      #container #content table th.sortable span {
+        padding-right: 10px;
         border-bottom: 1px solid;
-        border-color: #b2b5ae; }
+        border-color: #b2b5ae;
+        cursor: pointer; }
+      #container #content table th.headerSortUp span {
+        background: url(/images/backgrounds/bg-sortable-arrow-up.gif) no-repeat right center; }
+      #container #content table th.headerSortDown span {
+        background: url(/images/backgrounds/bg-sortable-arrow-down.gif) no-repeat right center; }
       #container #content table td, #container #content table th {
         padding: 8px;
         word-wrap: break-word; }
