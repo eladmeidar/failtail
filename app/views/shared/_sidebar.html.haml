@@ -11,7 +11,8 @@
   .block.members
     %h3 Members
     %ul
-      - @project.members.each_with_index do |member, idx|
+      - @project.memberships.all(:include => :user).each_with_index do |membership, idx|
+        - member = membership.user
         %li{:class => %{clearfix #{css_class('first', idx, 0)} #{css_class('last', idx, (@project.members.length - 1))} #{css_class('owner', member.owner?(@project), true)}} }
           = image_tag member.gravatar_url(:size => 40)
           %span.info
@@ -19,6 +20,9 @@
               = member.name
             %span.email
               = member.email
+          - if current_user.owner?(@project) and current_user != member
+            = link_to 'Delete', membership_path(membership), :class => 'delete', :method => :delete, :confirm => "Are you sure you want to delete this member?"
+                
 
       - if current_user.owner?(@project)
         %li.clearfix.last.add-member
@@ -29,7 +33,7 @@
     %h3 Comments
     %ul
       - @error.comments.each_with_index do |comment, idx|
-        %li{:class => %{clearfix #{css_class('first', idx, 0)} #{css_class('last', idx, (@project.members.length - 1))} #{css_class('me', comment.user.id == current_user.id, true)}} }
+        %li{:class => %{clearfix #{css_class('first', idx, 0)} #{css_class('last', idx, (@error.comments.length - 1))} #{css_class('me', comment.user.id == current_user.id, true)}} }
           = image_tag comment.user.gravatar_url(:size => 40)
           %span.info
             %strong.user
@@ -41,4 +45,4 @@
       %li.form
         - form_for [@error, Comment.new] do |f|
           = f.text_area :body
-          = f.submit
+          = f.submit 'Comment', :class => 'button'

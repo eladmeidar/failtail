@@ -163,17 +163,22 @@ body
       &.environment
         :width 1000px
 
-      &.projects, &.errors, &.occurrences
-        :cursor pointer
-
       th
         :text-transform uppercase
         :font-weight bold
         :font-size 10px
 
-      th span
+      th.sortable span
+        :padding-right 10px
         :border-bottom 1px solid
         :border-color= !grey_light
+        :cursor pointer
+        
+      th.headerSortUp span
+        :background url(/images/backgrounds/bg-sortable-arrow-up.gif) no-repeat right center
+      
+      th.headerSortDown span
+        :background url(/images/backgrounds/bg-sortable-arrow-down.gif) no-repeat right center
 
       td, th
         :padding 8px
@@ -232,7 +237,12 @@ body
         +links
 
       td.project
+        :padding 0
         :font-size 1.4em
+        
+        a
+          :padding 8px
+          :display block
 
       td.count, th.count
         :text-align center
@@ -262,7 +272,14 @@ body
         :font
           :size 12px
           :weight bold
-
+      
+      td.error
+        :padding 0
+        
+        a
+          :display block
+          :padding 8px
+          
     div.pagination
       :font-size 1em
       a
@@ -285,6 +302,7 @@ body
         :color= !orange
       a:hover
         :text-decoration none
+        
       form
         label
           :display block
@@ -407,12 +425,14 @@ body
         :padding 0
         :list-style none
         li
+          :position relative
           :clear both
           :border-top 1px solid rgb(255,255,255)
           :border-bottom 1px solid rgb(228,230,223)
           img
             :float left
           .info
+            :position relative
             :float left
             :padding 7px 10px
             :line-height 1em
@@ -421,6 +441,18 @@ body
             .email
               :font-size 10px
               :color rgb(178,181,174)
+          .delete
+            :position absolute
+            :display block
+            :top 50%
+            :right 0
+            :margin -8px 0 0 0
+            :border none
+            :width 16px
+            :height 16px
+            :background url(/images/icons/delete.png) no-repeat center center
+            :text-indent -8888px
+              
         li.first
           :border-top none
         li.last
@@ -469,11 +501,12 @@ body
         li.me
           :background url(/images/backgrounds/bg-me-label.gif) no-repeat right center
         li.form
-          position: relative
-
+          :position relative
+          :border none
+          :padding 20px 0 0 0
           textarea
-            width: 100%
-            height: 5em
+            :width 100%
+            :height 5em
 
 
   #footer
@@ -591,3 +624,13 @@ body
   :padding 10px 20px
   :background #EEEF86
   :color rgb(94, 95, 23)
+  
+textarea
+  +border-radius-3
+  :border-width 1px
+  :border-style solid
+  :border-color #DCDCDC #EBEBEB #EBEBEB #DCDCDC
+  :padding 5px
+  :background #FFF
+  :font-family helvetica, arial, sans-serif
+  

@@ -1,16 +1,16 @@
 - sidebar_blocks[:members]  = true
 - sidebar_blocks[:api_key]  = true
 
-%table.errors
+%table.errors.sortable
   %thead
     %tr
       %th.select
         = check_box_tag 'selectAll'
       %th.label
         %span label
-      %th 
+      %th.sortable
         %span error
-      %th{ :class => "count {sorter: 'digit'}" }
+      %th.count.sortable
         %span count
   %tbody
     - unless open_errors.empty?

@@ -50,7 +50,7 @@ class MembershipsController < ApplicationController
 
   def destroy
     membership.destroy
-    redirect_to project
+    redirect_to membership.project
   end
 
 private
@@ -70,17 +70,17 @@ private
       if current_user.member?(project)
         redirect_to project
       else
-        redirect_to home_path
+        redirect_to project_path()
       end
       return false
     end
   end
 
   def require_ownership
-    unless current_user.owner?(membership)
+    unless current_user.owner?(membership) or current_user.owner?(membership.project)
       store_location
       flash[:notice] = "You must be the owner of this project"
-      redirect_to home_path
+      redirect_to membership.project
       return false
     end
   end
