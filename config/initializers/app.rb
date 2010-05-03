@@ -4,5 +4,6 @@ CAMPAIGN_MONITOR_LIST_ID   = ENV['CAMPAIGN_MONITOR_LIST_ID']
 
 FAILTALE = {
   :allow_registration => false,
-  :allow_invitations => true
+  :allow_invitations  => true,
+  :google_analytics   => ENV['GOOGLE_ANALYTICS']
 }
