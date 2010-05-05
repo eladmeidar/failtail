@@ -66,5 +66,10 @@ ActionController::Routing::Routes.draw do |map|
     :action => 'index'
 
   map.resources :service_settings
+  
+  map.with_options :controller => 'api' do |submap|
+    submap.status '/api/status', :action => 'status'
+  end 
+    
 
 end
