@@ -1,4 +1,5 @@
 source :gemcutter
+gem 'mysql', '2.8.1'
 gem 'rails', '2.3.5'
 gem 'cucumber', '0.6.4'
 gem 'factory_girl', '1.2.4'
